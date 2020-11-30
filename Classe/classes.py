@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 #Auteur : Cécile Bonnet - Clémentine Sacré
+#bonjour clem
 
 import random
 import json
