@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 #Auteur : Cécile Bonnet - Clémentine Sacré
-#bonjour clem
 
 import random
 import json
 from datetime import date
 import csv
 import os
+from Graphique import console_graphique as cg
 
 
 def aleatoire(questions, nbr_questions):
@@ -438,6 +438,7 @@ def introduction():
                 print("Vos scores précédents :\n")
                 joueur.resultats(dictionnaire)
                 separation()
+            dessin = cg.Graphique(dictionnaire)
 
     except FileNotFoundError:
         print('Fichier introuvable.')
@@ -573,7 +574,7 @@ def supprimer_theme() :
             len(librairie.retourne_themes())) + " : "))
     librairie.suppression_theme(librairie.retourne_themes()[numero_theme-1][1][8:], numero_theme-1)
 
-    sepratation()
+    separation()
     modifier()
 
 def modifier():
