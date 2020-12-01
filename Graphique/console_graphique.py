@@ -99,8 +99,18 @@ class Graphique:
         for theme in self.__liste_theme:
             theme.destroy()
         self.__quitter.destroy()
+        self.__quitter = tk.Button(self.__racine, text="Back", height=2, width=15, bg='#5D5F56', fg='#ffffff', bd=1,
+                                   activebackground='#FFFFFF', activeforeground='#CCCCFF', cursor='circle',
+                                   command=lambda: self.revenir_menu())
+        self.__titre_joueur = tk.Label(self.__racine, text="Noms des joueurs :", bg='#E7EBD6', height=2, width=18,
+                                       fg='#5D5F56', font=10)
         self.initialisation()
 
-k =  {"test": {"geographie": [[54, "14/09/2020"]], "math": [[92.1, "19/09/2020"]]}, "clem": {"geographie": [], "math": [[100.0, "25/11/2020"], [100.0, "25/11/2020"], [50.0, "25/11/2020"], [100.0, "25/11/2020"], [0.0, "25/11/2020"], [100.0, "25/11/2020"], [100.0, "25/11/2020"], [100.0, "25/11/2020"], [10, "cc"], [20, "ll"], [100.0, "25/11/2020"], [100.0, "25/11/2020"], [50.0, "25/11/2020"], [100.0, "25/11/2020"]]}, "gui" : {"geographie": [[36, "11/09/2020"]], "math": [[82.1, "19/19/2020"]]}}
+"""
+k =  {"test": {"geographie": [[54, "14/09/2020"]], "math": [[92.1, "19/09/2020"]]}, "clem": {"geographie": [],
+    "math": [[100.0, "25/11/2020"], [100.0, "25/11/2020"], [50.0, "25/11/2020"], [100.0, "25/11/2020"],
+    [0.0, "25/11/2020"], [100.0, "25/11/2020"], [100.0, "25/11/2020"], [100.0, "25/11/2020"], [10, "cc"],
+    [20, "ll"], [100.0, "25/11/2020"], [100.0, "25/11/2020"], [50.0, "25/11/2020"], [100.0, "25/11/2020"]]},
+      "gui" : {"geographie": [[36, "11/09/2020"]], "math": [[82.1, "19/19/2020"]]}}
 
-obj1 = Graphique(k)
+obj1 = Graphique(k)"""

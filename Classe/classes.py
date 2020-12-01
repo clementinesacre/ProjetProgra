@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
-#Auteur : Cécile Bonnet - Clémentine Sacré
+# Auteur : Cécile Bonnet - Clémentine Sacré
 
 import random
 import json
 from datetime import date
 import csv
 import os
-from Graphique import console_graphique as cg
+# from Graphique import console_graphique as cg
 
 
 def aleatoire(questions, nbr_questions):
@@ -67,7 +67,6 @@ class Bibliotheque:
         self.__nom_fichier_bibliotheque = nom_fichier_bibliotheque
         self.__liste_themes = []
         self.__dictionnaire_themes = {}
-        self.__question = Question("cc")
 
     def retourne_fichier_bibliotheque(self):
         return recup_donnees_fichier(self.__nom_fichier_bibliotheque)
@@ -109,22 +108,28 @@ class Bibliotheque:
             self.__dictionnaire_themes[theme.nom_theme[0]] = theme.retourne_question_theme()
         return self.__dictionnaire_themes
 
-    def creation_theme(self, nom_du_new_fichier):
-        nouveau_theme = Theme(nom_du_new_fichier+".csv")
-        #nouveau_theme = str(nom_du_new_fichier) + ".csv"
-
+    def creation_theme(self, nom_nouveau_fichier):
+        nouveau_theme = Theme(nom_nouveau_fichier + ".csv")
         nom_fichier = nouveau_theme.nom_theme[1]
-        with open(nom_fichier, 'w', newline='') as csvfile:
-            write = csv.writer(csvfile)
-            write.writerow(["questions","bonneReponse","reponseA","reponseB","reponseC","reponseD"])
 
-        self.__liste_themes.append(nom_du_new_fichier)
+        try:
+            with open(nom_fichier, 'w', newline='') as csvfile:
+                write = csv.writer(csvfile)
+                write.writerow(["questions", "bonneReponse", "reponseA", "reponseB", "reponseC", "reponseD"])
 
-        self.__dictionnaire_themes['nom_du_fichier'] = ""
+            with open("fichier/themes.csv", 'a', newline='') as doss21:
+                write = csv.writer(doss21)
+                write.writerow([nom_fichier[8:]])
 
-        with open("fichier/themes.csv", 'a', newline='') as doss21:
-            write = csv.writer(doss21)
-            write.writerow([nom_fichier[8:]])
+        except FileNotFoundError:
+            print('Fichier introuvable.')
+        except IOError:
+            print('Erreur IO.')
+
+        self.__liste_themes.append(nouveau_theme)
+        self.__dictionnaire_themes[nouveau_theme.nom_theme[0]] = ""
+
+        print("\nLe thème " + nom_nouveau_fichier + " a été ajouté !")
 
     def suppression_theme(self, nom_du_fichier, indice):
         os.remove("fichier/" + nom_du_fichier)
@@ -141,6 +146,7 @@ class Bibliotheque:
             write = csv.writer(doss2)
             for i in liste_fichiers:
                 write.writerow([i])
+
 
 ##############################################################################
 
@@ -191,7 +197,7 @@ class Theme:
 
     def ecriture_question(self, liste):
         try:
-            with open(self.__nom_fichier, "a") as fichier:
+            with open(self.__nom_fichier, "a", newline='') as fichier:
                 nouveau_fichier = csv.writer(fichier, quotechar=',')
                 nouveau_fichier.writerow(liste)
         except FileNotFoundError:
@@ -214,7 +220,6 @@ class Theme:
             print('Fichier introuvable.')
         except IOError:
             print('Erreur IO.')
-
 
 
 ##############################################################################
@@ -385,7 +390,7 @@ class Manche():
             print('Erreur IO.')
 
 
-##initialisation
+# initialisation
 """
 Initalise les informations de l'application, telles que
 la librairie, les thèmes, les questions et réponses.
@@ -438,7 +443,7 @@ def introduction():
                 print("Vos scores précédents :\n")
                 joueur.resultats(dictionnaire)
                 separation()
-            dessin = cg.Graphique(dictionnaire)
+            return dictionnaire
 
     except FileNotFoundError:
         print('Fichier introuvable.')
@@ -453,6 +458,7 @@ def jouer():
     print("Thèmes : ")
     for i in range(len(librairie.retourne_themes())):
         print("    " + str(i + 1) + ". " + librairie.retourne_themes()[i][0])
+    print("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb")
     print("")
 
     question = "Choisir un thème (entre 1 et " + str(len(librairie.retourne_themes())) + ") : "
@@ -480,7 +486,6 @@ def ajouter_questions():
     print(
         "\nVous allez maintenant devoir entrer des réponses. Une seule réponse peut être bonne, les 3 autres doivent être fausses.")
     print("L'ordre n'a pas d'importance.\n")
-    print("Lorsque vous ne voulez plus ajouter de réponse, tapez 'quitter' \n")
 
     liste_reponses = []
     reponse = ""
@@ -507,6 +512,7 @@ def ajouter_questions():
     separation()
 
     refaire = input("Voulez-vous rajouter une nouvelle question ? (oui ou non) : ")
+    separation()
     if refaire == "oui":
         ajouter_questions()
     else:
@@ -554,28 +560,51 @@ def supprimer_questions():
     separation()
     modifier()
 
-def ajouter_theme() :
+
+def ajouter_theme():
     nouveau_theme = input("Quel est le nom du thème que vous voulez ajouter : ")
     librairie.creation_theme(nouveau_theme)
 
     separation()
     modifier()
 
-def supprimer_theme() :
+
+def supprimer_theme():
     print("Thèmes : ")
     for i in range(len(librairie.retourne_themes())):
         print("    " + str(i + 1) + ". " + librairie.retourne_themes()[i][0])
     print("")
 
-    numero_theme = int(input("Sélectionner le numéro du thème que vous désirez supprimer entre " + str(1) + " et " + str(
-        len(librairie.retourne_themes())) + " : "))
+    numero_theme = int(
+        input("Sélectionner le numéro du thème que vous désirez supprimer entre " + str(1) + " et " + str(
+            len(librairie.retourne_themes())) + " : "))
     while int(numero_theme) > len(librairie.retourne_themes()):
         num = int(input("Sélectionner le numéro du thème que vous désirez supprimer entre " + str(1) + "et " + str(
             len(librairie.retourne_themes())) + " : "))
-    librairie.suppression_theme(librairie.retourne_themes()[numero_theme-1][1][8:], numero_theme-1)
+
+    separation()
+
+    while True:
+        validation_theme = input("Etes-vous sur de vouloir supprimer le thème '" +
+                                 librairie.retourne_themes()[numero_theme - 1][1][8:] + "' ? (oui ou non) : ")
+        try:
+            if validation_theme == "oui" or validation_theme == "non":
+                break
+            else:
+                print("Les seules réponses acceptées sont 'oui' et 'non'.")
+        except:
+            print("Les seules réponses acceptées sont 'oui' et 'non'.")
+
+    if validation_theme == "oui":
+        librairie.suppression_theme(librairie.retourne_themes()[numero_theme - 1][1][8:], numero_theme - 1)
+        print("\nLe thème '" + librairie.retourne_themes()[numero_theme - 1][1][8:] + "' a été supprimé !")
+
+    else:
+        print("\nAnnulation. Aucun thème n'a été supprimé.")
 
     separation()
     modifier()
+
 
 def modifier():
     """
@@ -636,3 +665,9 @@ def menu():
 pseudo = input("Bonjour. Veuillez entrez votre pseudo : ")
 joueur = Utilisateur(pseudo)
 
+
+def lancement_application():
+    separation()
+    dico_scores = introduction()
+    menu()
+    # dessin = cg.Graphique(dico_scores)
