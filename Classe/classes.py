@@ -81,6 +81,26 @@ def validation_question(question, longueur):
     return nombre
 
 
+def validation_oui_non(question):
+    """
+    Vérifie que le paramètre entré est une string valant "oui" ou "non".
+    Boucle tant que ces conditions ne sont pas respectées.
+
+    Pre : question doit être une chaine de caractère.
+
+    Post : Retourne la string respectant les conditions.
+    """
+    while True:
+        reponse = input(question + " (oui ou non) : ")
+        try:
+            if reponse == "oui" or reponse == "non":
+                break
+            else:
+                print("Les seules réponses acceptées sont 'oui' et 'non'.")
+        except:
+            print("Les seules réponses acceptées sont 'oui' et 'non'.")
+    return reponse
+
 ##############################################################################
 
 class Bibliotheque:
@@ -136,6 +156,10 @@ class Bibliotheque:
         return self.__dictionnaire_themes
 
     def creation_theme(self, nom_nouveau_fichier):
+        """
+        Crée un nouveau thème, en créant son fichier, en ajoutant le thème dans le fichier thèmes et dans la liste de
+        thème.
+        """
         nouveau_theme = Theme(nom_nouveau_fichier + ".csv")
         nom_fichier = nouveau_theme.nom_theme[1]
 
@@ -157,8 +181,12 @@ class Bibliotheque:
         self.__dictionnaire_themes[nouveau_theme.nom_theme[0]] = ""
 
         print("\nLe thème '" + nom_nouveau_fichier + "' a été ajouté !")
+        print("Vous allez maintenant devoir rajouter des questions dans le nouveau thème.")
 
     def suppression_theme(self, nom_du_fichier, indice):
+        """
+        Supprime un thème existant, en supprimant son fichier et en le retirant du fichier et de la liste de thèmes.
+        """
         os.remove("fichier/" + nom_du_fichier)
         del self.__liste_themes[indice]
 
@@ -223,6 +251,9 @@ class Theme:
         self.__liste_questions.append(objet_q)
 
     def ecriture_question(self, liste):
+        """
+        Ecrit une nouvelle question et les réponses associées dans le fichier d'un thème précis.
+        """
         try:
             with open(self.__nom_fichier, "a", newline='') as fichier:
                 nouveau_fichier = csv.writer(fichier, quotechar=',')
@@ -233,6 +264,10 @@ class Theme:
             print('Erreur IO.')
 
     def suppression_question(self, question):
+        """
+        Supprime une question précise en la supprimant du dictionnaire de questions ainsi que du fichier de thème dans
+        lequel elle se trouvait.
+        """
         del self.__dictionnaire[question]
         try:
             with open(self.__nom_fichier, "w", newline='') as fichier:
@@ -483,7 +518,7 @@ def jouer():
     joueur.creation_manche(theme_manche)
 
 
-def ajouter_questions():
+def ajouter_question():
     """
     Ajoute une question et ses réponses dans le thème précisé (dans l'objet Bibliothèque
     et dans le fichier du thème précisé).
@@ -495,7 +530,8 @@ def ajouter_questions():
     choix_theme = validation_question("Choisissez un thème dans lequel rajouter une question.",
                                       len(librairie.retourne_themes()))
 
-    theme_a_modifier = librairie.recuperer_theme(librairie.retourne_themes()[int(choix_theme) - 1][0])
+    theme_a_modifier = librairie.recuperer_theme(librairie.retourne_themes()[choix_theme - 1][0])
+
     separation()
     question = input("Entrez la question : ")
     print("\nVous allez maintenant devoir entrer des réponses. Une seule réponse peut être bonne, "
@@ -503,7 +539,6 @@ def ajouter_questions():
     print("L'ordre n'a pas d'importance.\n")
 
     liste_reponses = []
-    reponse = ""
     for i in range(4):
         reponse = input("Entrez la réponse " + str(i + 1) + " : ")
         liste_reponses.append(reponse)
@@ -528,20 +563,24 @@ def ajouter_questions():
     separation()
 
     print("La question '" + question + "' a été rajoutée dans le thème '" +
-          librairie.retourne_themes()[int(choix_theme) - 1][0] + "', avec '" + liste_reponses[bonne_reponse] +
+          librairie.retourne_themes()[choix_theme - 1][0] + "', avec '" + liste_reponses[bonne_reponse+2] +
           "' comme bonne réponse !")
 
     separation()
 
-    refaire = input("Voulez-vous rajouter une nouvelle question ? (oui ou non) : ")
+    refaire = validation_oui_non("Voulez-vous rajouter une nouvelle question ?")
     separation()
     if refaire == "oui":
-        ajouter_questions()
+        ajouter_question()
     else:
         modifier()
 
 
-def supprimer_questions():
+def supprimer_question():
+    """
+    Supprime une question et ses réponses dans le thème précisé (dans l'objet Bibliothèque
+    et dans le fichier du thème précisé).
+    """
     print("Thèmes : ")
     for i in range(len(librairie.retourne_themes())):
         print("    " + str(i + 1) + ". " + librairie.retourne_themes()[i][0])
@@ -556,27 +595,18 @@ def supprimer_questions():
     indice = 1
     questions_theme = list(theme_a_modifier.retourne_question_theme().keys())
     for question in questions_theme:
-        print("    ", indice, ". ", question)
+        print("    " + str(indice) + ". " + question)
         indice += 1
     print("")
 
     question_a_supprimer = validation_question("Choisissez la question à supprimer.", indice-1)
     separation()
 
-    while True:
-        valider_question = input("Etes-vous sur de vouloir supprimer la question '" + questions_theme[
-            int(question_a_supprimer) - 1] + "' ? (oui ou non) : ")
-        try:
-            if valider_question == "oui" or valider_question == "non":
-                break
-            else:
-                print("Les seules réponses acceptées sont 'oui' et 'non'.")
-        except:
-            print("Les seules réponses acceptées sont 'oui' et 'non'.")
-
+    valider_question = validation_oui_non("Etes-vous sur de vouloir supprimer la question '" +
+                                          questions_theme[question_a_supprimer - 1] + "' ?")
     if valider_question == "oui":
-        theme_a_modifier.suppression_question(questions_theme[int(question_a_supprimer) - 1])
-        print("\nLa question '" + questions_theme[int(question_a_supprimer) - 1] + "' a été supprimée !")
+        theme_a_modifier.suppression_question(questions_theme[question_a_supprimer - 1])
+        print("\nLa question '" + questions_theme[question_a_supprimer - 1] + "' a été supprimée !")
 
     else:
         print("\nAnnulation. Aucune question n'a été supprimée.")
@@ -586,6 +616,10 @@ def supprimer_questions():
 
 
 def ajouter_theme():
+    """
+    Permet de créer un thème et de l'ajouter à l'application (en lui créant un fichier, en notant son nom dans le
+    fichier thèmes, et en le rajoutant à la liste de thèmes).
+    """
     nouveau_theme = input("Quel est le nom du thème que vous voulez ajouter : ")
     librairie.creation_theme(nouveau_theme)
 
@@ -594,6 +628,10 @@ def ajouter_theme():
 
 
 def supprimer_theme():
+    """
+    Permet de supprimer un thème en l'enlevant de l'application (en supprimant son fichier, et en le retirant du fichier
+    des thèmes et de la liste des thèmes).
+    """
     print("Thèmes : ")
     for i in range(len(librairie.retourne_themes())):
         print("    " + str(i + 1) + ". " + librairie.retourne_themes()[i][0])
@@ -602,19 +640,10 @@ def supprimer_theme():
     numero_theme = validation_question("Quel thème voulez-vous supprimer ? ", len(librairie.retourne_themes()))
     separation()
 
-    while True:
-        validation_theme = input("Etes-vous sur de vouloir supprimer le thème '" +
-                                 librairie.retourne_themes()[numero_theme - 1][1][8:] + "' ? (oui ou non) : ")
-        try:
-            if validation_theme == "oui" or validation_theme == "non":
-                break
-            else:
-                print("Les seules réponses acceptées sont 'oui' et 'non'.")
-        except:
-            print("Les seules réponses acceptées sont 'oui' et 'non'.")
-
+    validation_theme = validation_oui_non("Etes-vous sur de vouloir supprimer le thème '" +
+                                          librairie.retourne_themes()[numero_theme - 1][1][8:] + "' ?")
     if validation_theme == "oui":
-        print("\nLe thème '" + librairie.retourne_themes()[numero_theme - 1][1][8:] + "' a été supprimé !")
+        print("\nLe thème '" + librairie.retourne_themes()[numero_theme - 1][0] + "' a été supprimé !")
         librairie.suppression_theme(librairie.retourne_themes()[numero_theme - 1][1][8:], numero_theme - 1)
 
     else:
@@ -630,9 +659,9 @@ def modifier():
     """
     print("Menu > Modifier :")
     print("    1. Ajouter un thème")
-    print("    2. Ajouter des questions")
+    print("    2. Ajouter une question")
     print("    3. Supprimer un thème")
-    print("    4. Supprimer des questions")
+    print("    4. Supprimer une question")
     print("    5. Revenir en arrière")
     print("")
     mode = validation_question("Choisissez une option.", 5)
@@ -642,11 +671,11 @@ def modifier():
     if mode == 1:
         ajouter_theme()
     elif mode == 2:
-        ajouter_questions()
+        ajouter_question()
     elif mode == 3:
         supprimer_theme()
     elif mode == 4:
-        supprimer_questions()
+        supprimer_question()
     else:
         menu()
 
