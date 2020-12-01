@@ -59,6 +59,28 @@ def separation():
     print("                                         ")
 
 
+def validation_question(question, longueur):
+    """
+    Vérifie que le paramètre entré est un objet de type int se trouvant entre 1 et la longueur précisée.
+    Boucle tant que ces conditions ne sont pas respectées.
+
+    Pre : question doit être une chaine de caractère, longueur doit être un entier.
+
+    Post : Retourne le chiffre respectant les conditions sous forme d'int.
+    """
+    while True:
+        try:
+            nombre = int(input(question + " (entrez un chiffre entre 1 et " + str(longueur) + ") : "))
+            if 0 < nombre <= longueur:
+                break
+            else:
+                print("Veuillez entrez un chiffre entre 1 et " + str(longueur) + ".")
+        except:
+            print('Veuillez entrer un nombre naturel.')
+
+    return nombre
+
+
 ##############################################################################
 
 class Bibliotheque:
@@ -69,6 +91,11 @@ class Bibliotheque:
         self.__dictionnaire_themes = {}
 
     def retourne_fichier_bibliotheque(self):
+        """
+        Renvoie le fichier de l'objet Bibliotheque
+
+        Post : retourne le nom du fichier de l'objet Bibliotheque sous forme de string.
+        """
         return recup_donnees_fichier(self.__nom_fichier_bibliotheque)
 
     def initialisation_theme(self, nom_theme):
@@ -129,7 +156,7 @@ class Bibliotheque:
         self.__liste_themes.append(nouveau_theme)
         self.__dictionnaire_themes[nouveau_theme.nom_theme[0]] = ""
 
-        print("\nLe thème " + nom_nouveau_fichier + " a été ajouté !")
+        print("\nLe thème '" + nom_nouveau_fichier + "' a été ajouté !")
 
     def suppression_theme(self, nom_du_fichier, indice):
         os.remove("fichier/" + nom_du_fichier)
@@ -224,7 +251,7 @@ class Theme:
 
 ##############################################################################
 
-class Question():
+class Question:
     def __init__(self, nom_question):
         self.__nom_question = nom_question
         self.__liste_reponse = []
@@ -257,7 +284,7 @@ class Question():
 
 ##############################################################################
 
-class Reponse():
+class Reponse:
     def __init__(self, nom_reponse, type_bonne_reponse):
         self.__nom_reponse = nom_reponse
         self.__type_bonne_reponse = type_bonne_reponse
@@ -274,7 +301,7 @@ class Reponse():
 
 ##############################################################################
 
-class Utilisateur():
+class Utilisateur:
     def __init__(self, nom):
         self.__nom = nom
 
@@ -317,7 +344,7 @@ class Utilisateur():
 ##############################################################################
 
 
-class Manche():
+class Manche:
     def __init__(self, theme):
         self.__theme = theme
         self.__nbr_questions = 0
@@ -331,19 +358,7 @@ class Manche():
         """
         liste_questions = librairie.retourne_total()[self.__theme]
 
-        valid = False
-        while True:
-            try:
-                nombre_questions = int(input("Combien de questions pour la partie ? (entrer un chiffre entre 1 et " +
-                                             str(len(liste_questions)) + ") : "))
-                if 0 < nombre_questions <= len(liste_questions):
-                    break
-                else:
-                    print("Veuillez entrez un chiffre entre 1 et " + str(len(liste_questions)) + ".")
-            except:
-                print('Veuillez entrer un nombre naturel.')
-
-        self.__nbr_questions = nombre_questions
+        self.__nbr_questions = validation_question("Combien de questions pour la partie ?", len(liste_questions))
         separation()
 
         liste_questions_aleatoires = aleatoire(liste_questions, self.__nbr_questions)
@@ -354,7 +369,7 @@ class Manche():
             for i in range(len(reponses)):
                 print("    " + str(i + 1) + ". " + reponses[i][0])
 
-            reponse_joueur = int(input("Entrer un chiffre de 1 à " + str(len(reponses)) + " : "))
+            reponse_joueur = validation_question("Quelle réponse choisissez-vous ?", len(reponses))
 
             if reponses[reponse_joueur - 1][1]:
                 print("\nCorrect !")
@@ -458,11 +473,10 @@ def jouer():
     print("Thèmes : ")
     for i in range(len(librairie.retourne_themes())):
         print("    " + str(i + 1) + ". " + librairie.retourne_themes()[i][0])
-    print("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb")
+    print("RETOUR??")
     print("")
 
-    question = "Choisir un thème (entre 1 et " + str(len(librairie.retourne_themes())) + ") : "
-    choix_theme = int(input(question))
+    choix_theme = validation_question("Choisissez un thème.", len(librairie.retourne_themes()))
     separation()
 
     theme_manche = librairie.retourne_themes()[choix_theme - 1][0]
@@ -478,13 +492,14 @@ def ajouter_questions():
     for i in range(len(librairie.retourne_themes())):
         print("    " + str(i + 1) + ". " + librairie.retourne_themes()[i][0])
     print("")
-    choix_theme = input("Choisir un thème dans lequel rajouter une question (entre 1 et " + str(
-        len(librairie.retourne_themes())) + ") : ")
+    choix_theme = validation_question("Choisissez un thème dans lequel rajouter une question.",
+                                      len(librairie.retourne_themes()))
+
     theme_a_modifier = librairie.recuperer_theme(librairie.retourne_themes()[int(choix_theme) - 1][0])
     separation()
     question = input("Entrez la question : ")
-    print(
-        "\nVous allez maintenant devoir entrer des réponses. Une seule réponse peut être bonne, les 3 autres doivent être fausses.")
+    print("\nVous allez maintenant devoir entrer des réponses. Une seule réponse peut être bonne, "
+          "les 3 autres doivent être fausses.")
     print("L'ordre n'a pas d'importance.\n")
 
     liste_reponses = []
@@ -492,8 +507,9 @@ def ajouter_questions():
     for i in range(4):
         reponse = input("Entrez la réponse " + str(i + 1) + " : ")
         liste_reponses.append(reponse)
+    print("")
 
-    bonne_reponse = int(input("\nQuelle réponse est la bonne ? (entrez le numéro de la réponse, entre 1 et 4) : ")) - 1
+    bonne_reponse = validation_question("Quelle réponse est la bonne ? Entrez le numéro de la réponse.", 4) - 1
 
     # Ajout de la question et réponses dans l'objet Theme
     liste = []
@@ -511,6 +527,12 @@ def ajouter_questions():
 
     separation()
 
+    print("La question '" + question + "' a été rajoutée dans le thème '" +
+          librairie.retourne_themes()[int(choix_theme) - 1][0] + "', avec '" + liste_reponses[bonne_reponse] +
+          "' comme bonne réponse !")
+
+    separation()
+
     refaire = input("Voulez-vous rajouter une nouvelle question ? (oui ou non) : ")
     separation()
     if refaire == "oui":
@@ -524,33 +546,35 @@ def supprimer_questions():
     for i in range(len(librairie.retourne_themes())):
         print("    " + str(i + 1) + ". " + librairie.retourne_themes()[i][0])
     print("")
-    choix_theme = input("Choisir un thème dans lequel supprimer une question (entre 1 et " + str(
-        len(librairie.retourne_themes())) + ") : ")
-    theme_a_modifier = librairie.recuperer_theme(librairie.retourne_themes()[int(choix_theme) - 1][0])
+    choix_theme = validation_question("Choisissez le thème dans lequel supprimer une question",
+                                      len(librairie.retourne_themes()))
+
+    theme_a_modifier = librairie.recuperer_theme(librairie.retourne_themes()[choix_theme - 1][0])
     separation()
 
-    print("Questions du thème " + librairie.retourne_themes()[int(choix_theme) - 1][0])
+    print("Questions du thème '" + librairie.retourne_themes()[choix_theme - 1][0] +"' :")
     indice = 1
     questions_theme = list(theme_a_modifier.retourne_question_theme().keys())
     for question in questions_theme:
         print("    ", indice, ". ", question)
         indice += 1
+    print("")
 
-    question_a_supprimer = input("Choisir la question à supprimer (entre 1 et " + str(indice - 1) + ") : ")
+    question_a_supprimer = validation_question("Choisissez la question à supprimer.", indice-1)
     separation()
 
     while True:
-        validation_question = input("Etes-vous sur de vouloir supprimer la question '" + questions_theme[
+        valider_question = input("Etes-vous sur de vouloir supprimer la question '" + questions_theme[
             int(question_a_supprimer) - 1] + "' ? (oui ou non) : ")
         try:
-            if validation_question == "oui" or validation_question == "non":
+            if valider_question == "oui" or valider_question == "non":
                 break
             else:
                 print("Les seules réponses acceptées sont 'oui' et 'non'.")
         except:
             print("Les seules réponses acceptées sont 'oui' et 'non'.")
 
-    if validation_question == "oui":
+    if valider_question == "oui":
         theme_a_modifier.suppression_question(questions_theme[int(question_a_supprimer) - 1])
         print("\nLa question '" + questions_theme[int(question_a_supprimer) - 1] + "' a été supprimée !")
 
@@ -575,13 +599,7 @@ def supprimer_theme():
         print("    " + str(i + 1) + ". " + librairie.retourne_themes()[i][0])
     print("")
 
-    numero_theme = int(
-        input("Sélectionner le numéro du thème que vous désirez supprimer entre " + str(1) + " et " + str(
-            len(librairie.retourne_themes())) + " : "))
-    while int(numero_theme) > len(librairie.retourne_themes()):
-        num = int(input("Sélectionner le numéro du thème que vous désirez supprimer entre " + str(1) + "et " + str(
-            len(librairie.retourne_themes())) + " : "))
-
+    numero_theme = validation_question("Quel thème voulez-vous supprimer ? ", len(librairie.retourne_themes()))
     separation()
 
     while True:
@@ -596,8 +614,8 @@ def supprimer_theme():
             print("Les seules réponses acceptées sont 'oui' et 'non'.")
 
     if validation_theme == "oui":
-        librairie.suppression_theme(librairie.retourne_themes()[numero_theme - 1][1][8:], numero_theme - 1)
         print("\nLe thème '" + librairie.retourne_themes()[numero_theme - 1][1][8:] + "' a été supprimé !")
+        librairie.suppression_theme(librairie.retourne_themes()[numero_theme - 1][1][8:], numero_theme - 1)
 
     else:
         print("\nAnnulation. Aucun thème n'a été supprimé.")
@@ -617,17 +635,17 @@ def modifier():
     print("    4. Supprimer des questions")
     print("    5. Revenir en arrière")
     print("")
-    mode = input("Choisir une option (1, 2, 3, 4 ou 5) : ")
+    mode = validation_question("Choisissez une option.", 5)
     separation()
     # clear
 
-    if mode == "1":
+    if mode == 1:
         ajouter_theme()
-    elif mode == "2":
+    elif mode == 2:
         ajouter_questions()
-    elif mode == "3":
+    elif mode == 3:
         supprimer_theme()
-    elif mode == "4":
+    elif mode == 4:
         supprimer_questions()
     else:
         menu()
@@ -650,15 +668,14 @@ def menu():
     print("    2. Modifier")
     print("    3. Quitter")
     print("")
-    mode = input("Choisir une option (1, 2 ou 3) : ")
+    mode = validation_question("Choisissez une option.", 3)
     separation()
-    # clear
 
-    if mode == "1":
+    if mode == 1:
         jouer()
-    elif mode == "2":
+    elif mode == 2:
         modifier()
-    elif mode == "3":
+    elif mode == 3:
         quitter()
 
 
