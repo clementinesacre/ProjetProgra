@@ -305,7 +305,7 @@ class Manche:
         Permet de lancer une manche, c'est à dire de répondre à des questions,
         puis de noter le score de cette manche de l'Utilisateur qui a lancé la manche.
         """
-        questions_liste = librairie.retourne_total()[self.__theme]
+        questions_liste = librairie.retourne_total()[self.__theme.nom_theme[0]]
 
         self.__nbr_questions = f.validation_question("Combien de questions pour la partie ?", len(questions_liste))
         f.separation()
@@ -314,8 +314,7 @@ class Manche:
         points_joueur = 0
         for question_manche in liste_questions_aleatoires:
             print(question_manche)
-            reponses = librairie.recuperer_theme(self.__theme).recuperer_question(question_manche). \
-                retourne_reponses_question()
+            reponses = self.__theme.recuperer_question(question_manche).retourne_reponses_question()
             for i in range(len(reponses)):
                 print("    " + str(i + 1) + ". " + reponses[i][0])
 
@@ -344,7 +343,7 @@ class Manche:
         try:
             with open('fichier/scores.json', 'r') as file:
                 dico_python = json.load(file)
-                dico_python[joueur.nom][self.__theme].append([round(self.__pourcentage, 2), self.__date])
+                dico_python[joueur.nom][self.__theme.nom_theme[0]].append([round(self.__pourcentage, 2), self.__date])
             with open('fichier/scores.json', 'w') as fichier:
                 dico_json = json.dumps(dico_python)
                 fichier.write(dico_json)
@@ -423,13 +422,15 @@ def jouer():
     print("Thèmes : ")
     for i in range(len(librairie.retourne_themes())):
         print("    " + str(i + 1) + ". " + librairie.retourne_themes()[i][0])
-    print("RETOUR??")
+    print("    " + str(len(librairie.retourne_themes())+1) + ". Revenir en arrière")
     print("")
 
-    choix_theme = f.validation_question("Choisissez un thème.", len(librairie.retourne_themes()))
+    choix_theme = f.validation_question("Choisissez un thème.", len(librairie.retourne_themes())+1)
     f.separation()
 
-    theme_manche = librairie.retourne_themes()[choix_theme - 1][0]
+    if choix_theme == len(librairie.retourne_themes())+1 :
+        menu()
+    theme_manche = librairie.recuperer_theme(librairie.retourne_themes()[choix_theme - 1][0])
     joueur.creation_manche(theme_manche)
 
 
@@ -459,8 +460,7 @@ def ajouter_question():
         reponses_liste.append(reponse_ajouter)
     print("")
 
-    bonne_reponse = f.validation_question("Quelle réponse est la bonne ? \
-                                                Entrez le numéro de la réponse.", 4) - 1
+    bonne_reponse = f.validation_question("Quelle réponse est la bonne ? Entrez le numéro de la réponse.", 4) - 1
 
     # Ajout de la question et réponses dans l'objet Theme
     liste = []
@@ -600,7 +600,7 @@ def quitter():
     """
     Permet de fermer le programme. Si on veut le relancer, il faudra l'exécuter à nouveau.
     """
-    print("Au revoir ", joueur.nom, ".\n")
+    print("Au revoir " + joueur.nom + ".\n")
     print("Application fermée.")
 
 
