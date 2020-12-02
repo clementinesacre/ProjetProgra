@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
-from Classe import classes
+from options import menu
+#from fichier import clem
 
 if __name__ == '__main__':
-    classes.lancement_application()
+    menu.lancement_application()
+    #clem.initialisation()
+    #print(clem.joueur)
