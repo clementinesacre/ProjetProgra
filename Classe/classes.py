@@ -2,10 +2,11 @@
 # Auteur : Cécile Bonnet - Clémentine Sacré
 
 
-import json
-from datetime import date
 import csv
+import json
 import os
+from datetime import date
+
 from Simplification import fonctions as f
 
 
@@ -44,18 +45,18 @@ class Bibliotheque:
         Post : renvoie les thèmes dans une liste.
         """
         liste = []
-        for theme in self.__liste_themes:
-            liste.append(theme.nom_theme)
+        for theme_retourne in self.__liste_themes:
+            liste.append(theme_retourne.nom_theme)
         return liste
 
     def recuperer_theme(self, nom_theme):
         """
         Retourne l'objet Theme sur base de son nom ou du nom de son fichier.
         """
-        for theme in range(len(self.__liste_themes)):
-            if self.__liste_themes[theme].nom_theme[0] == nom_theme or \
-                    self.__liste_themes[theme].nom_theme[1] == nom_theme:
-                return self.__liste_themes[theme]
+        for theme_recuperer in range(len(self.__liste_themes)):
+            if self.__liste_themes[theme_recuperer].nom_theme[0] == nom_theme or \
+                    self.__liste_themes[theme_recuperer].nom_theme[1] == nom_theme:
+                return self.__liste_themes[theme_recuperer]
 
     def retourne_total(self):
         """
@@ -63,8 +64,8 @@ class Bibliotheque:
 
         Post : renvoie un dictionnaire, avec comme clé le nom du thème (pas le nom du fichier).
         """
-        for theme in self.__liste_themes:
-            self.__dictionnaire_themes[theme.nom_theme[0]] = theme.retourne_question_theme()
+        for theme_total in self.__liste_themes:
+            self.__dictionnaire_themes[theme_total.nom_theme[0]] = theme_total.retourne_question_theme()
         return self.__dictionnaire_themes
 
     def creation_theme(self, nom_nouveau_fichier):
@@ -146,9 +147,9 @@ class Theme:
         """
         Retourne l'objet Theme sur base de son nom ou du nom de son fichier.
         """
-        for question in range(len(self.__liste_questions)):
-            if self.__liste_questions[question].nom_question == question_a_recuperer:
-                return self.__liste_questions[question]
+        for question_recuperer in range(len(self.__liste_questions)):
+            if self.__liste_questions[question_recuperer].nom_question == question_a_recuperer:
+                return self.__liste_questions[question_recuperer]
 
     def creation_question(self, nom_question, reponses):
         """
@@ -175,19 +176,19 @@ class Theme:
         except IOError:
             print('Erreur IO.')
 
-    def suppression_question(self, question):
+    def suppression_question(self, questions):
         """
         Supprime une question précise en la supprimant du dictionnaire de questions ainsi que du fichier de thème dans
         lequel elle se trouvait.
         """
-        del self.__dictionnaire[question]
+        del self.__dictionnaire[questions]
         try:
             with open(self.__nom_fichier, "w", newline='') as fichier:
                 nouveau_fichier = csv.writer(fichier, quotechar=',', quoting=csv.QUOTE_MINIMAL)
                 nouveau_fichier.writerow(["questions", "bonneReponse", "reponseA", "reponseB", "reponseC", "reponseD"])
-                for question in self.__dictionnaire:
-                    reponses = self.__dictionnaire[question]
-                    nouveau_fichier.writerow([question, list(filter(lambda x: x[1] is True, reponses))[0][0],
+                for question_supprimer in self.__dictionnaire:
+                    reponses = self.__dictionnaire[question_supprimer]
+                    nouveau_fichier.writerow([question_supprimer, list(filter(lambda x: x[1] is True, reponses))[0][0],
                                               reponses[0][0], reponses[1][0], reponses[2][0], reponses[3][0]])
 
         except FileNotFoundError:
@@ -224,8 +225,8 @@ class Question:
         """
         Permet de créer un objet Réponse et de l'ajouter à la liste de l'objet Question.
         """
-        for reponse in reponses:
-            objet_r = Reponse(reponse[0], reponse[1])
+        for reponse_creation in reponses:
+            objet_r = Reponse(reponse_creation[0], reponse_creation[1])
             self.__liste_reponse.append(objet_r.nom_reponse)
 
 
@@ -249,8 +250,8 @@ class Reponse:
 ##############################################################################
 
 class Utilisateur:
-    def __init__(self, nom):
-        self.__nom = nom
+    def __init__(self, noms):
+        self.__nom = noms
 
     @property
     def nom(self):
@@ -274,17 +275,17 @@ class Utilisateur:
         """
         Affiche tout résultats confondus de l'utilisateur connecté.
         """
-        for theme in dico[self.__nom]:
-            print(theme, " : ")
+        for theme_resultats in dico[self.__nom]:
+            print(theme_resultats, " : ")
             for score in dico[self.__nom][theme]:
                 print("    ", score[0], "% - ", score[1])
             print("")
 
-    def creation_manche(self, theme):
+    def creation_manche(self, theme_manche):
         """
         Crée un objet Manche et le lance.
         """
-        manche = Manche(theme)
+        manche = Manche(theme_manche)
         manche.lancer_manche()
 
 
@@ -292,8 +293,8 @@ class Utilisateur:
 
 
 class Manche:
-    def __init__(self, theme):
-        self.__theme = theme
+    def __init__(self, theme_manche):
+        self.__theme = theme_manche
         self.__nbr_questions = 0
         self.__pourcentage = 0
         self.__date = date.today().strftime('%d/%m/%Y')
@@ -303,16 +304,17 @@ class Manche:
         Permet de lancer une manche, c'est à dire de répondre à des questions,
         puis de noter le score de cette manche de l'Utilisateur qui a lancé la manche.
         """
-        liste_questions = librairie.retourne_total()[self.__theme]
+        questions_liste = librairie.retourne_total()[self.__theme]
 
-        self.__nbr_questions = f.validation_question("Combien de questions pour la partie ?", len(liste_questions))
+        self.__nbr_questions = f.validation_question("Combien de questions pour la partie ?", len(questions_liste))
         f.separation()
 
-        liste_questions_aleatoires = f.aleatoire(liste_questions, self.__nbr_questions)
+        liste_questions_aleatoires = f.aleatoire(questions_liste, self.__nbr_questions)
         points_joueur = 0
-        for question in liste_questions_aleatoires:
-            print(question)
-            reponses = librairie.recuperer_theme(self.__theme).recuperer_question(question).retourne_reponses_question()
+        for question_manche in liste_questions_aleatoires:
+            print(question_manche)
+            reponses = librairie.recuperer_theme(self.__theme).recuperer_question(question_manche). \
+                retourne_reponses_question()
             for i in range(len(reponses)):
                 print("    " + str(i + 1) + ". " + reponses[i][0])
 
@@ -440,42 +442,43 @@ def ajouter_question():
         print("    " + str(i + 1) + ". " + librairie.retourne_themes()[i][0])
     print("")
     choix_theme = f.validation_question("Choisissez un thème dans lequel rajouter une question.",
-                                      len(librairie.retourne_themes()))
+                                        len(librairie.retourne_themes()))
 
     theme_a_modifier = librairie.recuperer_theme(librairie.retourne_themes()[choix_theme - 1][0])
 
     f.separation()
-    question = input("Entrez la question : ")
+    question_ajouter = input("Entrez la question : ")
     print("\nVous allez maintenant devoir entrer des réponses. Une seule réponse peut être bonne, "
           "les 3 autres doivent être fausses.")
     print("L'ordre n'a pas d'importance.\n")
 
-    liste_reponses = []
+    reponses_liste = []
     for i in range(4):
-        reponse = input("Entrez la réponse " + str(i + 1) + " : ")
-        liste_reponses.append(reponse)
+        reponse_ajouter = input("Entrez la réponse " + str(i + 1) + " : ")
+        reponses_liste.append(reponse_ajouter)
     print("")
 
-    bonne_reponse = f.validation_question("Quelle réponse est la bonne ? Entrez le numéro de la réponse.", 4) - 1
+    bonne_reponse = f.validation_question_ajouter("Quelle réponse est la bonne ? \
+                                                Entrez le numéro de la réponse.", 4) - 1
 
     # Ajout de la question et réponses dans l'objet Theme
     liste = []
-    for reponse in liste_reponses:
+    for reponse_liste in liste_reponses:
         correction = False
-        if reponse == liste_reponses[bonne_reponse]:
+        if reponse_liste == liste_reponses[bonne_reponse]:
             correction = True
-        liste.append([reponse, correction])
-    theme_a_modifier.creation_question(question, liste)
+        liste.append([reponse_liste, correction])
+    theme_a_modifier.creation_question_ajouter(question_ajouter, liste)
 
     # Ajout de la question dans le fichier theme
-    liste_reponses.insert(0, liste_reponses[bonne_reponse])
-    liste_reponses.insert(0, question)
-    theme_a_modifier.ecriture_question(liste_reponses)
+    reponses_liste.insert(0, liste_reponses[bonne_reponse])
+    reponses_liste.insert(0, question_ajouter)
+    theme_a_modifier.ecriture_question_ajouter(reponses_liste)
 
     f.separation()
 
-    print("La question '" + question + "' a été rajoutée dans le thème '" +
-          librairie.retourne_themes()[choix_theme - 1][0] + "', avec '" + liste_reponses[bonne_reponse + 2] +
+    print("La question '" + question_ajouter + "' a été rajoutée dans le thème '" +
+          librairie.retourne_themes()[choix_theme - 1][0] + "', avec '" + reponses_liste[bonne_reponse + 2] +
           "' comme bonne réponse !")
 
     f.separation()
@@ -498,7 +501,7 @@ def supprimer_question():
         print("    " + str(i + 1) + ". " + librairie.retourne_themes()[i][0])
     print("")
     choix_theme = f.validation_question("Choisissez le thème dans lequel supprimer une question",
-                                      len(librairie.retourne_themes()))
+                                        len(librairie.retourne_themes()))
 
     theme_a_modifier = librairie.recuperer_theme(librairie.retourne_themes()[choix_theme - 1][0])
     f.separation()
@@ -506,8 +509,8 @@ def supprimer_question():
     print("Questions du thème '" + librairie.retourne_themes()[choix_theme - 1][0] + "' :")
     indice = 1
     questions_theme = list(theme_a_modifier.retourne_question_theme().keys())
-    for question in questions_theme:
-        print("    " + str(indice) + ". " + question)
+    for question_supprimer in questions_theme:
+        print("    " + str(indice) + ". " + question_supprimer)
         indice += 1
     print("")
 
@@ -515,7 +518,7 @@ def supprimer_question():
     f.separation()
 
     valider_question = f.validation_oui_non("Etes-vous sur de vouloir supprimer la question '" +
-                                          questions_theme[question_a_supprimer - 1] + "' ?")
+                                            questions_theme[question_a_supprimer - 1] + "' ?")
     if valider_question == "oui":
         theme_a_modifier.suppression_question(questions_theme[question_a_supprimer - 1])
         print("\nLa question '" + questions_theme[question_a_supprimer - 1] + "' a été supprimée !")
@@ -553,7 +556,7 @@ def supprimer_theme():
     f.separation()
 
     validation_theme = f.validation_oui_non("Etes-vous sur de vouloir supprimer le thème '" +
-                                          librairie.retourne_themes()[numero_theme - 1][1][8:] + "' ?")
+                                            librairie.retourne_themes()[numero_theme - 1][1][8:] + "' ?")
     if validation_theme == "oui":
         print("\nLe thème '" + librairie.retourne_themes()[numero_theme - 1][0] + "' a été supprimé !")
         librairie.suppression_theme(librairie.retourne_themes()[numero_theme - 1][1][8:], numero_theme - 1)
