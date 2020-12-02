@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
+# Auteur : Cécile Bonnet - Clémentine Sacré
+
 
 import json
 from classe import variable_globale as vb
 from classe.bibliotheque import *
+from graphique import console_graphique as cg
 
 
 def introduction():
@@ -267,6 +270,12 @@ def menu_principal():
 
 
 def initialisation_bibliotheque():
+    """
+    Initalise les informations de l'application, telles que
+    la librairie, les thèmes, les questions et réponses.
+    Initialise ces informations en global pour que tout le monde
+    puisse y accéder de n'importe où.
+    """
     themes = vb.librairie.retourne_fichier_bibliotheque()
     for theme in themes:
         for nom in theme:
