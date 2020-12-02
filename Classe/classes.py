@@ -95,6 +95,7 @@ class Bibliotheque:
 
         print("\nLe thème '" + nom_nouveau_fichier + "' a été ajouté !")
         print("Vous allez maintenant devoir rajouter des questions dans le nouveau thème.")
+        ajouter_question()
 
     def suppression_theme(self, nom_du_fichier, indice):
         """
@@ -420,15 +421,18 @@ def jouer():
     Selon le thème choisi par le joueur, la fonction lance une manche.
     """
     print("Thèmes : ")
-    for i in range(len(librairie.retourne_themes())):
-        print("    " + str(i + 1) + ". " + librairie.retourne_themes()[i][0])
-    print("    " + str(len(librairie.retourne_themes())+1) + ". Revenir en arrière")
+    indice = 1
+    for theme_nom in librairie.retourne_themes():
+        if len(librairie.recuperer_theme(theme_nom[0]).retourne_question_theme()) > 0:
+            print("    " + str(indice) + ". " + theme_nom[0])
+            indice += 1
+    print("    " + str(indice) + ". Revenir en arrière")
     print("")
 
-    choix_theme = f.validation_question("Choisissez un thème.", len(librairie.retourne_themes())+1)
+    choix_theme = f.validation_question("Choisissez un thème.", indice)
     f.separation()
 
-    if choix_theme == len(librairie.retourne_themes())+1 :
+    if choix_theme == indice:
         menu()
     theme_manche = librairie.recuperer_theme(librairie.retourne_themes()[choix_theme - 1][0])
     joueur.creation_manche(theme_manche)
