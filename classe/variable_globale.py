@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from Classe import bibliotheque, utilisateur
+from classe import bibliotheque, utilisateur
 
 joueur = None
 librairie = None

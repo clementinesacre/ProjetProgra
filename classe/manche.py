@@ -4,8 +4,8 @@ from datetime import date
 
 from options.menu import *
 import options.menu as om
-from Simplification import fonctions as fct
-from Classe import variable_globale as vb
+from simplification import fonctions as fct
+from classe import variable_globale as vb
 
 
 class Manche:

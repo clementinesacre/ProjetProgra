@@ -3,7 +3,7 @@
 import csv
 
 from options.menu import *
-from Classe.question_reponse import *
+from classe.question_reponse import *
 
 
 class Theme:

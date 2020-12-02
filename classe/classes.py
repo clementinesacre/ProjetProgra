@@ -7,7 +7,7 @@ import json
 import os
 
 
-from Simplification import fonctions as f
+from simplification import fonctions as f
 
 
 # from Graphique import console_graphique as cg

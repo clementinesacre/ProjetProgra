@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from Simplification import fonctions as f
+from simplification import fonctions as f
 import unittest
 
 

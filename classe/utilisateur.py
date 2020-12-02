@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from Classe.manche import *
+from classe.manche import *
 
 
 class Utilisateur:

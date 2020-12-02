@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
 import json
-from Classe import variable_globale as vb
-from Simplification import fonctions as fct
-from Classe.bibliotheque import *
-from Classe.theme import *
+from classe import variable_globale as vb
+from simplification import fonctions as fct
+from classe.bibliotheque import *
+from classe.theme import *
 
 
 def introduction():

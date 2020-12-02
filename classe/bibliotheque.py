@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
 
-import csv
 import os
 
 from options.menu import *
 import options.menu as om
-from Simplification import fonctions as fct
-from Classe.theme import *
+from simplification import fonctions as fct
+from classe.theme import *
 
 
 class Bibliotheque:
@@ -88,6 +87,7 @@ class Bibliotheque:
 
         print("\nLe thème '" + nom_nouveau_fichier + "' a été ajouté !")
         print("Vous allez maintenant devoir rajouter des questions dans le nouveau thème.")
+        fct.separation()
         om.ajouter_question()
 
     def suppression_theme(self, nom_du_fichier, indice):
