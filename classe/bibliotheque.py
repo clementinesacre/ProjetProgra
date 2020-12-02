@@ -15,9 +15,9 @@ class Bibliotheque:
 
     def retourne_fichier_bibliotheque(self):
         """
-        Renvoie le fichier de l'objet Bibliotheque
+        Renvoie le ressources de l'objet Bibliotheque
 
-        Post : retourne le nom du fichier de l'objet Bibliotheque sous forme de string.
+        Post : retourne le nom du ressources de l'objet Bibliotheque sous forme de string.
         """
         return fct.recup_donnees_fichier(self.__nom_fichier_bibliotheque)
 
@@ -41,7 +41,7 @@ class Bibliotheque:
 
     def recuperer_theme(self, nom_theme):
         """
-        Retourne l'objet Theme sur base de son nom ou du nom de son fichier.
+        Retourne l'objet Theme sur base de son nom ou du nom de son ressources.
         """
         for theme_recuperer in range(len(self.__liste_themes)):
             if self.__liste_themes[theme_recuperer].nom_theme[0] == nom_theme or \
@@ -52,7 +52,7 @@ class Bibliotheque:
         """
         Renvoie les questions et réponses de tous les objet Theme de l'objet Bibliotheque.
 
-        Post : renvoie un dictionnaire, avec comme clé le nom du thème (pas le nom du fichier).
+        Post : renvoie un dictionnaire, avec comme clé le nom du thème (pas le nom du ressources).
         """
         for theme_total in self.__liste_themes:
             self.__dictionnaire_themes[theme_total.nom_theme[0]] = theme_total.retourne_question_theme()
@@ -60,7 +60,7 @@ class Bibliotheque:
 
     def creation_theme(self, nom_nouveau_fichier):
         """
-        Crée un nouveau thème, en créant son fichier, en ajoutant le thème dans le fichier thèmes et dans la liste de
+        Crée un nouveau thème, en créant son ressources, en ajoutant le thème dans le ressources thèmes et dans la liste de
         thème.
         """
         nouveau_theme = Theme(nom_nouveau_fichier + ".csv")
@@ -71,7 +71,7 @@ class Bibliotheque:
                 write = csv.writer(csvfile)
                 write.writerow(["questions", "bonneReponse", "reponseA", "reponseB", "reponseC", "reponseD"])
 
-            with open("fichier/themes.csv", 'a', newline='') as doss21:
+            with open("ressources/themes.csv", 'a', newline='') as doss21:
                 write = csv.writer(doss21)
                 write.writerow([nom_fichier[8:]])
 
@@ -90,19 +90,19 @@ class Bibliotheque:
 
     def suppression_theme(self, nom_du_fichier, indice):
         """
-        Supprime un thème existant, en supprimant son fichier et en le retirant du fichier et de la liste de thèmes.
+        Supprime un thème existant, en supprimant son ressources et en le retirant du ressources et de la liste de thèmes.
         """
-        os.remove("fichier/" + nom_du_fichier)
+        os.remove("ressources/" + nom_du_fichier)
         del self.__liste_themes[indice]
 
         liste_fichiers = []
-        with open("fichier/themes.csv", "r") as doss1:
+        with open("ressources/themes.csv", "r") as doss1:
             lire = csv.reader(doss1)
             for ligne in lire:
                 if nom_du_fichier != (','.join(ligne).rstrip()):
                     liste_fichiers.append(','.join(ligne))
 
-        with open("fichier/themes.csv", 'w', newline='') as doss2:
+        with open("ressources/themes.csv", 'w', newline='') as doss2:
             write = csv.writer(doss2)
             for i in liste_fichiers:
                 write.writerow([i])

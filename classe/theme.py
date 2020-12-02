@@ -7,14 +7,14 @@ import csv
 class Theme:
     def __init__(self, nom_fichier):
         self.__nom_theme = nom_fichier[:-4]
-        self.__nom_fichier = "fichier/" + nom_fichier
+        self.__nom_fichier = "ressources/" + nom_fichier
         self.__dictionnaire = {}
         self.__liste_questions = []
 
     @property
     def nom_theme(self):
         """
-        Renvoie le nom de l'objet Theme et le nom du fichier qui contient les questions
+        Renvoie le nom de l'objet Theme et le nom du ressources qui contient les questions
         de l'objet Theme.
 
         Post : renvoie les deux informations dans une liste.
@@ -31,7 +31,7 @@ class Theme:
 
     def recuperer_question(self, question_a_recuperer):
         """
-        Retourne l'objet Theme sur base de son nom ou du nom de son fichier.
+        Retourne l'objet Theme sur base de son nom ou du nom de son ressources.
         """
         for question_recuperer in range(len(self.__liste_questions)):
             if self.__liste_questions[question_recuperer].nom_question == question_a_recuperer:
@@ -51,7 +51,7 @@ class Theme:
 
     def ecriture_question(self, liste):
         """
-        Ecrit une nouvelle question et les réponses associées dans le fichier d'un thème précis.
+        Ecrit une nouvelle question et les réponses associées dans le ressources d'un thème précis.
         """
         try:
             with open(self.__nom_fichier, "a", newline='') as fichier:
@@ -64,7 +64,7 @@ class Theme:
 
     def suppression_question(self, questions):
         """
-        Supprime une question précise en la supprimant du dictionnaire de questions ainsi que du fichier de thème dans
+        Supprime une question précise en la supprimant du dictionnaire de questions ainsi que du ressources de thème dans
         lequel elle se trouvait.
         """
         del self.__dictionnaire[questions]

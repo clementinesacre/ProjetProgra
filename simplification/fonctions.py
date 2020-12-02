@@ -25,9 +25,9 @@ def aleatoire(questions, nbr_questions):
 
 def recup_donnees_fichier(fichier_a_ouvrir):
     """
-    Récupère les informations d'un fichier pour pouvoir les utiliser.
+    Récupère les informations d'un ressources pour pouvoir les utiliser.
 
-    Pré : fichier csv.
+    Pré : ressources csv.
 
     Post : retourne les informations sour forme de liste.
     """

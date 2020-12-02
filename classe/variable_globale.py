@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 from classe import bibliotheque, utilisateur
 
 joueur = None
@@ -7,7 +8,7 @@ librairie = None
 
 def initialisation_informations():
     global librairie
-    librairie = bibliotheque.Bibliotheque("Application", "fichier/themes.csv")
+    librairie = bibliotheque.Bibliotheque("Application", "ressources/themes.csv")
 
 
 def initialisation_joueur():

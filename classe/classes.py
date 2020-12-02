@@ -10,7 +10,7 @@ import os
 from simplification import fonctions as f
 
 
-# from Graphique import console_graphique as cg
+# from graphique import console_graphique as cg
 
 
 

@@ -12,13 +12,13 @@ def introduction():
     Si il n'est pas encore encodé, son pseudo est enregistré dans l'application.
     """
     try:
-        with open('fichier/scores.json') as file:
+        with open('ressources/scores.json') as file:
             dictionnaire = json.load(file)
 
             if vb.joueur.nom not in dictionnaire:
                 dictionnaire[vb.joueur.nom] = vb.joueur.init_resultats()
                 try:
-                    with open('fichier/scores.json', 'w') as fichier:
+                    with open('ressources/scores.json', 'w') as fichier:
                         nouveau_dictionnaire = json.dumps(dictionnaire)
                         fichier.write(nouveau_dictionnaire)
 
@@ -64,7 +64,7 @@ def jouer():
 def ajouter_question():
     """
     Ajoute une question et ses réponses dans le thème précisé (dans l'objet Bibliothèque
-    et dans le fichier du thème précisé).
+    et dans le ressources du thème précisé).
     """
     print("Thèmes : ")
     for i in range(len(vb.librairie.retourne_themes())):
@@ -98,7 +98,7 @@ def ajouter_question():
         liste.append([reponse_liste, correction])
     theme_a_modifier.creation_question(question_ajouter, liste)
 
-    # Ajout de la question dans le fichier theme
+    # Ajout de la question dans le ressources theme
     reponses_liste.insert(0, reponses_liste[bonne_reponse])
     reponses_liste.insert(0, question_ajouter)
     theme_a_modifier.ecriture_question(reponses_liste)
@@ -122,7 +122,7 @@ def ajouter_question():
 def supprimer_question():
     """
     Supprime une question et ses réponses dans le thème précisé (dans l'objet Bibliothèque
-    et dans le fichier du thème précisé).
+    et dans le ressources du thème précisé).
     """
     """print("Thèmes : ")
     for i in range(len(vb.librairie.retourne_themes())):
@@ -175,8 +175,8 @@ def supprimer_question():
 
 def ajouter_theme():
     """
-    Permet de créer un thème et de l'ajouter à l'application (en lui créant un fichier, en notant son nom dans le
-    fichier thèmes, et en le rajoutant à la liste de thèmes).
+    Permet de créer un thème et de l'ajouter à l'application (en lui créant un ressources, en notant son nom dans le
+    ressources thèmes, et en le rajoutant à la liste de thèmes).
     """
     nouveau_theme = input("Quel est le nom du thème que vous voulez ajouter : ")
     vb.librairie.creation_theme(nouveau_theme)
@@ -187,7 +187,7 @@ def ajouter_theme():
 
 def supprimer_theme():
     """
-    Permet de supprimer un thème en l'enlevant de l'application (en supprimant son fichier, et en le retirant du fichier
+    Permet de supprimer un thème en l'enlevant de l'application (en supprimant son ressources, et en le retirant du ressources
     des thèmes et de la liste des thèmes).
     """
     print("Thèmes : ")
@@ -293,4 +293,4 @@ def lancement_application():
     fct.separation()
     dico_scores = introduction()
     menu_principal()
-    # dessin = cg.Graphique(dico_scores)
+    # dessin = cg.graphique(dico_scores)

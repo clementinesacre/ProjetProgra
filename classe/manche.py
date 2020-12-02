@@ -56,11 +56,11 @@ class Manche:
         Permet d'ajouter un score à l'objet Utilisateur.
         """
         try:
-            with open('fichier/scores.json', 'r') as file:
+            with open('ressources/scores.json', 'r') as file:
                 dico_python = json.load(file)
                 dico_python[vb.joueur.nom][self.__theme.nom_theme[0]].append(
                     [round(self.__pourcentage, 2), self.__date])
-            with open('fichier/scores.json', 'w') as fichier:
+            with open('ressources/scores.json', 'w') as fichier:
                 dico_json = json.dumps(dico_python)
                 fichier.write(dico_json)
 
