@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from Simplification import fonctions as f
 import unittest
 

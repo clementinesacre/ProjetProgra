@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import random
 import csv
 
@@ -32,8 +34,7 @@ def recup_donnees_fichier(fichier_a_ouvrir):
     try:
         with open(fichier_a_ouvrir) as file:
             lecture = csv.reader(file)
-            liste = list(map(lambda x: x, lecture))
-            del liste[0]
+            liste = list(map(lambda x: x, lecture))[1:]
             return liste
 
     except FileNotFoundError:
@@ -68,8 +69,9 @@ def validation_question(question, longueur):
                 break
             else:
                 print("Veuillez entrez un chiffre entre 1 et " + str(longueur) + ".")
-        except:
-            print('Veuillez entrer un nombre naturel.')
+
+        except ValueError:
+            print("Veuillez entrer un nombre.")
 
     return nombre
 
@@ -90,6 +92,7 @@ def validation_oui_non(question):
                 break
             else:
                 print("Les seules réponses acceptées sont 'oui' et 'non'.")
-        except:
-            print("Les seules réponses acceptées sont 'oui' et 'non'.")
+        except TypeError:
+            print("Erreur.")
+
     return reponse
