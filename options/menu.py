@@ -2,9 +2,7 @@
 
 import json
 from classe import variable_globale as vb
-from simplification import fonctions as fct
 from classe.bibliotheque import *
-from classe.theme import *
 
 
 def introduction():
@@ -73,7 +71,7 @@ def ajouter_question():
         print("    " + str(i + 1) + ". " + vb.librairie.retourne_themes()[i][0])
     print("")
     choix_theme = fct.validation_question("Choisissez un thème dans lequel rajouter une question.",
-                                        len(vb.librairie.retourne_themes()))
+                                          len(vb.librairie.retourne_themes()))
 
     theme_a_modifier = vb.librairie.recuperer_theme(vb.librairie.retourne_themes()[choix_theme - 1][0])
 
@@ -126,29 +124,44 @@ def supprimer_question():
     Supprime une question et ses réponses dans le thème précisé (dans l'objet Bibliothèque
     et dans le fichier du thème précisé).
     """
-    print("Thèmes : ")
+    """print("Thèmes : ")
     for i in range(len(vb.librairie.retourne_themes())):
         print("    " + str(i + 1) + ". " + vb.librairie.retourne_themes()[i][0])
+    print("")"""
+    print("Thèmes : ")
+    indice_theme = 1
+    for theme_nom in vb.librairie.retourne_themes():
+        print("    " + str(indice_theme) + ". " + theme_nom[0])
+        indice_theme += 1
+    print("    " + str(indice_theme) + ". Revenir en arrière")
     print("")
-    choix_theme = fct.validation_question("Choisissez le thème dans lequel supprimer une question",
-                                        len(vb.librairie.retourne_themes()))
+
+    choix_theme = fct.validation_question("Choisissez le thème dans lequel supprimer une question", indice_theme)
+    if choix_theme == indice_theme:
+        modifier()
 
     theme_a_modifier = vb.librairie.recuperer_theme(vb.librairie.retourne_themes()[choix_theme - 1][0])
     fct.separation()
 
+    if len(vb.librairie.recuperer_theme(vb.librairie.retourne_themes()[choix_theme - 1][0]).retourne_question_theme()) \
+            == 0:
+        print("Il n'y a pas de question dans ce thème.")
+        fct.separation()
+        supprimer_question()
+
     print("Questions du thème '" + vb.librairie.retourne_themes()[choix_theme - 1][0] + "' :")
-    indice = 1
+    indice_question = 1
     questions_theme = list(theme_a_modifier.retourne_question_theme().keys())
     for question_supprimer in questions_theme:
-        print("    " + str(indice) + ". " + question_supprimer)
-        indice += 1
+        print("    " + str(indice_question) + ". " + question_supprimer)
+        indice_question += 1
     print("")
 
-    question_a_supprimer = fct.validation_question("Choisissez la question à supprimer.", indice - 1)
+    question_a_supprimer = fct.validation_question("Choisissez la question à supprimer.", indice_question - 1)
     fct.separation()
 
     valider_question = fct.validation_oui_non("Etes-vous sur de vouloir supprimer la question '" +
-                                            questions_theme[question_a_supprimer - 1] + "' ?")
+                                              questions_theme[question_a_supprimer - 1] + "' ?")
     if valider_question == "oui":
         theme_a_modifier.suppression_question(questions_theme[question_a_supprimer - 1])
         print("\nLa question '" + questions_theme[question_a_supprimer - 1] + "' a été supprimée !")
@@ -186,7 +199,7 @@ def supprimer_theme():
     fct.separation()
 
     validation_theme = fct.validation_oui_non("Etes-vous sur de vouloir supprimer le thème '" +
-                                            vb.librairie.retourne_themes()[numero_theme - 1][0] + "' ?")
+                                              vb.librairie.retourne_themes()[numero_theme - 1][0] + "' ?")
     if validation_theme == "oui":
         print("\nLe thème '" + vb.librairie.retourne_themes()[numero_theme - 1][0] + "' a été supprimé !")
         vb.librairie.suppression_theme(vb.librairie.retourne_themes()[numero_theme - 1][1][8:], numero_theme - 1)
@@ -281,5 +294,3 @@ def lancement_application():
     dico_scores = introduction()
     menu_principal()
     # dessin = cg.Graphique(dico_scores)
-
-

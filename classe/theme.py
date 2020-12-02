@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 
-import csv
-
-from options.menu import *
 from classe.question_reponse import *
+import csv
 
 
 class Theme:

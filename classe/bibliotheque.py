@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
 
-import os
-
-from options.menu import *
 import options.menu as om
 from simplification import fonctions as fct
 from classe.theme import *
+import os
 
 
 class Bibliotheque:
