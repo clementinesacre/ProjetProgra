@@ -7,7 +7,7 @@ import json
 import os
 from datetime import date
 
-from ProjetPrograSimplification  import fonctions as f
+from Simplification import fonctions as f
 
 
 # from Graphique import console_graphique as cg
@@ -275,9 +275,10 @@ class Utilisateur:
         """
         Affiche tout résultats confondus de l'utilisateur connecté.
         """
+        print(dico[self.__nom])
         for theme_resultats in dico[self.__nom]:
             print(theme_resultats, " : ")
-            for score in dico[self.__nom][theme]:
+            for score in dico[self.__nom][theme_resultats]:
                 print("    ", score[0], "% - ", score[1])
             print("")
 
@@ -473,7 +474,7 @@ def ajouter_question():
     # Ajout de la question dans le fichier theme
     reponses_liste.insert(0, reponses_liste[bonne_reponse])
     reponses_liste.insert(0, question_ajouter)
-    theme_a_modifier.ecriture_question_ajouter(reponses_liste)
+    theme_a_modifier.ecriture_question(reponses_liste)
 
     f.separation()
 
@@ -556,7 +557,7 @@ def supprimer_theme():
     f.separation()
 
     validation_theme = f.validation_oui_non("Etes-vous sur de vouloir supprimer le thème '" +
-                                            librairie.retourne_themes()[numero_theme - 1][1][8:] + "' ?")
+                                            librairie.retourne_themes()[numero_theme - 1][0] + "' ?")
     if validation_theme == "oui":
         print("\nLe thème '" + librairie.retourne_themes()[numero_theme - 1][0] + "' a été supprimé !")
         librairie.suppression_theme(librairie.retourne_themes()[numero_theme - 1][1][8:], numero_theme - 1)
