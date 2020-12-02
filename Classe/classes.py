@@ -7,7 +7,7 @@ import json
 import os
 from datetime import date
 
-from Simplification import fonctions as f
+from ProjetPrograSimplification  import fonctions as f
 
 
 # from Graphique import console_graphique as cg
@@ -458,20 +458,20 @@ def ajouter_question():
         reponses_liste.append(reponse_ajouter)
     print("")
 
-    bonne_reponse = f.validation_question_ajouter("Quelle réponse est la bonne ? \
+    bonne_reponse = f.validation_question("Quelle réponse est la bonne ? \
                                                 Entrez le numéro de la réponse.", 4) - 1
 
     # Ajout de la question et réponses dans l'objet Theme
     liste = []
-    for reponse_liste in liste_reponses:
+    for reponse_liste in reponses_liste:
         correction = False
-        if reponse_liste == liste_reponses[bonne_reponse]:
+        if reponse_liste == reponses_liste[bonne_reponse]:
             correction = True
         liste.append([reponse_liste, correction])
-    theme_a_modifier.creation_question_ajouter(question_ajouter, liste)
+    theme_a_modifier.creation_question(question_ajouter, liste)
 
     # Ajout de la question dans le fichier theme
-    reponses_liste.insert(0, liste_reponses[bonne_reponse])
+    reponses_liste.insert(0, reponses_liste[bonne_reponse])
     reponses_liste.insert(0, question_ajouter)
     theme_a_modifier.ecriture_question_ajouter(reponses_liste)
 
