@@ -5,6 +5,8 @@
 import json
 from classe import variable_globale as vb
 from classe.bibliotheque import *
+import argparse
+import sys
 from graphique import console_graphique as cg
 
 
@@ -347,11 +349,30 @@ def initialisation_bibliotheque():
 
 
 def lancement_application():
-    vb.initialisation_informations()
-    initialisation_bibliotheque()
-    vb.initialisation_joueur()
+    commande = sys.argv
+    if len(commande) != 2 :
+        print("faux")
+    elif commande[1] == "console":
+        vb.initialisation_informations()
+        initialisation_bibliotheque()
+        vb.initialisation_joueur()
+        fct.separation()
+        introduction()
+        menu_principal()
 
-    fct.separation()
-    dico_scores = introduction()
-    menu_principal()
-    # dessin = cg.graphique(dico_scores)
+    elif commande[1] == "graphique":
+        try:
+            with open('ressources/scores.json', 'r') as file:
+                dico_scores = json.load(file)
+
+        except FileNotFoundError:
+            print('Fichier introuvable.')
+        except IOError:
+            print('Erreur IO.')
+
+        cg.Graphique(dico_scores)
+
+    else:
+        print("faux")
+
+
