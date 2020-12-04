@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from classe.manche import *
+from datetime import date
 
 
 class Utilisateur:
@@ -36,9 +37,27 @@ class Utilisateur:
                 print("    ", score[0], "% - ", score[1])
             print("")
 
-    def creation_manche(self, theme_manche):
-        """
+    """def creation_manche(self, theme_manche):
+        
         Crée un objet Manche et le lance.
-        """
+        
         manche = Manche(theme_manche)
-        manche.lancer_manche()
+        #return manche"""
+
+    def ajout_score(self, theme, point):
+        """
+        Permet d'ajouter un score à l'objet Utilisateur.
+        """
+        try:
+            with open('ressources/scores.json', 'r') as file:
+                dico_python = json.load(file)
+                dico_python[vb.joueur.nom][theme.nom_theme[0]].append([round(point, 2),
+                                                                              date.today().strftime('%d/%m/%Y')])
+            with open('ressources/scores.json', 'w') as fichier:
+                dico_json = json.dumps(dico_python)
+                fichier.write(dico_json)
+
+        except FileNotFoundError:
+            print('Fichier introuvable.')
+        except IOError:
+            print('Erreur IO.')

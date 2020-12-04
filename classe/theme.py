@@ -64,8 +64,8 @@ class Theme:
 
     def suppression_question(self, questions):
         """
-        Supprime une question précise en la supprimant du dictionnaire de questions ainsi que du ressources de thème dans
-        lequel elle se trouvait.
+        Supprime une question précise en la supprimant du dictionnaire de questions ainsi que du ressources de thème
+        dans lequel elle se trouvait.
         """
         del self.__dictionnaire[questions]
         try:

@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+#ne sert plus à rien
+
 from datetime import date
 
 from options.menu import *

@@ -62,7 +62,7 @@ class Bibliotheque:
 
     def creation_theme(self, nom_nouveau_fichier):
         """
-        Crée un nouveau thème, en créant son ressources, en ajoutant le thème dans le ressources thèmes et dans la liste de
+        Crée un nouveau thème, en créant son ressources, en ajoutant le thème dans le fichier thèmes et dans la liste de
         thème.
         """
         nouveau_theme = Theme(nom_nouveau_fichier + ".csv")
@@ -75,7 +75,7 @@ class Bibliotheque:
 
             with open("ressources/themes.csv", 'a', newline='') as doss21:
                 write = csv.writer(doss21)
-                write.writerow([nom_fichier[8:]])
+                write.writerow([nom_fichier[11:]])
 
         except FileNotFoundError:
             print('Fichier introuvable.')
@@ -90,9 +90,9 @@ class Bibliotheque:
         fct.separation()
         om.ajouter_question()
 
-    def suppression_theme(self, nom_du_fichier, indice):
+    def suppression_theme(self,   nom_du_fichier, indice):
         """
-        Supprime un thème existant, en supprimant son ressources et en le retirant du ressources et de la liste de thèmes.
+        Supprime un thème existant, en supprimant son ressources et en le retirant du fichier et de la liste de thèmes.
         """
         os.remove("ressources/" + nom_du_fichier)
         del self.__liste_themes[indice]
