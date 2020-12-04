@@ -2,7 +2,7 @@
 
 import random
 import csv
-
+import json
 
 def aleatoire(questions, nbr_questions):
     """
@@ -96,3 +96,21 @@ def validation_oui_non(question):
             print("Erreur.")
 
     return reponse
+
+
+def recup_donnees_fichier_json(fichier):
+    """
+    Lit un fichier json.
+
+    PRE : le fichier doit être d'extension .json.
+    POST : retourne le dictionnaire contenu dans le fichier json.
+    """
+    try:
+        with open(fichier, 'r') as file:
+            donnees = json.load(file)
+
+    except FileNotFoundError:
+        print('Fichier introuvable.')
+    except IOError:
+        print('Erreur IO.')
+    return donnees

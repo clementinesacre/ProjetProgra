@@ -37,32 +37,25 @@ def introduction():
     Si le joueur est déjà encodé dans la base, on affiche ses scores précédents.
     Si il n'est pas encore encodé, son pseudo est enregistré dans l'application.
     """
-    try:
-        with open('ressources/scores.json') as file:
-            dictionnaire = json.load(file)
+    dictionnaire = fct.recup_donnees_fichier_json('ressources/scores.json')
+    if vb.joueur.nom not in dictionnaire:
+        dictionnaire[vb.joueur.nom] = vb.joueur.init_resultats()
+        try:
+            with open('ressources/scores.json', 'w') as fichier:
+                nouveau_dictionnaire = json.dumps(dictionnaire)
+                fichier.write(nouveau_dictionnaire)
 
-            if vb.joueur.nom not in dictionnaire:
-                dictionnaire[vb.joueur.nom] = vb.joueur.init_resultats()
-                try:
-                    with open('ressources/scores.json', 'w') as fichier:
-                        nouveau_dictionnaire = json.dumps(dictionnaire)
-                        fichier.write(nouveau_dictionnaire)
+        except FileNotFoundError:
+            print('Fichier introuvable.')
+        except IOError:
+            print('Erreur IO.')
 
-                except FileNotFoundError:
-                    print('Fichier introuvable.')
-                except IOError:
-                    print('Erreur IO.')
-                print("Bienvenue dans le jeu.")
-            else:
-                print("Vos scores précédents :\n")
-                vb.joueur.resultats(dictionnaire)
-                fct.separation()
-            return dictionnaire
-
-    except FileNotFoundError:
-        print('Fichier introuvable.')
-    except IOError:
-        print('Erreur IO.')
+        print("Bienvenue dans le jeu.")
+    else:
+        print("Vos scores précédents :\n")
+        vb.joueur.resultats(dictionnaire)
+        fct.separation()
+    return dictionnaire
 
 
 def jouer_console():
@@ -361,14 +354,7 @@ def lancement_application():
         menu_principal()
 
     elif commande[1] == "graphique":
-        try:
-            with open('ressources/scores.json', 'r') as file:
-                dico_scores = json.load(file)
-
-        except FileNotFoundError:
-            print('Fichier introuvable.')
-        except IOError:
-            print('Erreur IO.')
+        dico_scores = fct.recup_donnees_fichier_json('ressources/scores.json')
 
         cg.Graphique(dico_scores)
 
