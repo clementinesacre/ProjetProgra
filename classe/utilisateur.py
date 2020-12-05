@@ -31,10 +31,9 @@ class Utilisateur:
         Affiche tout résultats confondus de l'utilisateur connecté.
         """
         for theme_resultats in dico[self.__nom]:
-            print(theme_resultats, " : ")
+            print("{0} : ".format(theme_resultats))
             for score in dico[self.__nom][theme_resultats]:
-                print("    ", score[0], "% - ", score[1])
-            print("")
+                print("    {0}% - {1}".format(score[0], score[1]))
 
     """def creation_manche(self, theme_manche):
         

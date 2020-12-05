@@ -64,11 +64,11 @@ def validation_question(question, longueur):
     """
     while True:
         try:
-            nombre = int(input(question + " (entrez un chiffre entre 1 et " + str(longueur) + ") : "))
+            nombre = int(input("{0} (entrez un chiffre entre 1 et {1}) : ".format(question, longueur)))
             if 0 < nombre <= longueur:
                 break
             else:
-                print("Veuillez entrez un chiffre entre 1 et " + str(longueur) + ".")
+                print("Veuillez entrez un chiffre entre 1 et {0}.".format(longueur))
 
         except ValueError:
             print("Veuillez entrer un nombre.")
@@ -86,7 +86,7 @@ def validation_oui_non(question):
     Post : Retourne la string respectant les conditions.
     """
     while True:
-        reponse = input(question + " (oui ou non) : ")
+        reponse = input("{0} (oui ou non) : ".format(question))
         try:
             if reponse == "oui" or reponse == "non":
                 break

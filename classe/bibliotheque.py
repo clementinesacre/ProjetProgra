@@ -85,7 +85,7 @@ class Bibliotheque:
         self.__liste_themes.append(nouveau_theme)
         self.__dictionnaire_themes[nouveau_theme.nom_theme[0]] = ""
 
-        print("\nLe thème '" + nom_nouveau_fichier + "' a été ajouté !")
+        print("\nLe thème '{0}' a été ajouté.\n".format(nom_nouveau_fichier))
         print("Vous allez maintenant devoir rajouter des questions dans le nouveau thème.")
         fct.separation()
         om.ajouter_question()
