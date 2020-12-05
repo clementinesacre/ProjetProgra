@@ -42,17 +42,15 @@ def jouer_console():
     Selon le thème choisi par le joueur, la fonction lance une manche.
     """
     print("Thèmes : ")
-    indice = 1
-    for theme_nom in vb.librairie.retourne_themes():
-        if len(vb.librairie.recuperer_theme(theme_nom[0]).retourne_question_theme()) > 0:
-            print("    {0}. {1}".format(indice, theme_nom[0]))
-            indice += 1
-    print("    {0}. Revenir en arrière\n".format(indice))
+    propositions = list(filter(lambda x: len(x), vb.librairie.retourne_themes()))
+    for theme_nom in propositions:
+        print("    {0}. {1}".format(propositions.index(theme_nom) + 1, theme_nom[0]))
+    print("    {0}. Revenir en arrière\n".format(len(vb.librairie.retourne_themes()) + 1))
 
-    choix_theme = fct.validation_question("Choisissez un thème.", indice)
+    choix_theme = fct.validation_question("Choisissez un thème.", len(vb.librairie.retourne_themes()) + 1)
     fct.separation()
 
-    if choix_theme == indice:
+    if choix_theme == len(vb.librairie.retourne_themes()) + 1:
         return menu_principal()
 
     theme_manche = vb.librairie.recuperer_theme(vb.librairie.retourne_themes()[choix_theme - 1][0])
@@ -68,7 +66,7 @@ def jouer_console():
         print(question_manche)
         reponses = theme_manche.recuperer_question(question_manche).retourne_reponses_question()
         for i in range(len(reponses)):
-            print("    " + str(i + 1) + ". " + reponses[i][0])
+            print("    {0}. {1}".format(i + 1, reponses[i][0]))
 
         reponse_joueur = fct.validation_question("Quelle réponse choisissez-vous ?", len(reponses))
 
@@ -81,7 +79,7 @@ def jouer_console():
         fct.separation()
 
     pluriel = ("", "s")[points_joueur > 1]
-    print("Vous avez {0} bonne{1} réponses{1} sur {2}.".format(points_joueur, pluriel, len(liste_questions_aleatoires)))
+    print("Vous avez {0} bonne{1} réponse{1} sur {2}.".format(points_joueur, pluriel, len(liste_questions_aleatoires)))
     pourcentage = points_joueur / len(liste_questions_aleatoires) * 100
 
     vb.joueur.ajout_score(theme_manche, pourcentage)
@@ -97,9 +95,8 @@ def ajouter_question():
     """
     print("Thèmes : ")
     for i in range(len(vb.librairie.retourne_themes())):
-        print("    " + str(i + 1) + ". " + vb.librairie.retourne_themes()[i][0])
-    print("")
-    choix_theme = fct.validation_question("Choisissez un thème dans lequel rajouter une question.",
+        print("    {0}. {1}".format(i + 1, vb.librairie.retourne_themes()[i][0]))
+    choix_theme = fct.validation_question("\nChoisissez un thème dans lequel rajouter une question.",
                                           len(vb.librairie.retourne_themes()))
 
     theme_a_modifier = vb.librairie.recuperer_theme(vb.librairie.retourne_themes()[choix_theme - 1][0])
@@ -119,17 +116,11 @@ def ajouter_question():
     bonne_reponse = fct.validation_question("Quelle réponse est la bonne ? Entrez le numéro de la réponse.", 4) - 1
 
     # Ajout de la question et réponses dans l'objet Theme
-    liste = []
-    for reponse_liste in reponses_liste:
-        correction = False
-        if reponse_liste == reponses_liste[bonne_reponse]:
-            correction = True
-        liste.append([reponse_liste, correction])
+    liste = list(map(lambda x: [x, x == reponses_liste[bonne_reponse]], reponses_liste))
     theme_a_modifier.creation_question(question_ajouter, liste)
 
     # Ajout de la question dans le ressources theme
-    reponses_liste.insert(0, reponses_liste[bonne_reponse])
-    reponses_liste.insert(0, question_ajouter)
+    reponses_liste = [question_ajouter] + [reponses_liste[bonne_reponse]] + reponses_liste
     theme_a_modifier.ecriture_question(reponses_liste)
     fct.separation()
 
@@ -156,8 +147,7 @@ def supprimer_question_console():
     print("Thèmes : ")
     indice_theme = 1
     for theme_nom in vb.librairie.retourne_themes():
-        print("    {0}. {1}".format(indice_theme, theme_nom[0]))
-        indice_theme += 1
+        print("    {0}. {1}".format(vb.librairie.retourne_themes().index(theme_nom) + 1, theme_nom[0]))
     print("    {0}. Revenir en arrière\n".format(indice_theme))
 
     choix_theme = fct.validation_question("Choisissez le thème dans lequel supprimer une question", indice_theme)
@@ -218,7 +208,7 @@ def supprimer_theme_console():
     """
     print("Thèmes : ")
     for i in range(len(vb.librairie.retourne_themes())):
-        print("    {0}. {1}".format(i+1, vb.librairie.retourne_themes()[i][0]))
+        print("    {0}. {1}".format(i + 1, vb.librairie.retourne_themes()[i][0]))
 
     numero_theme = fct.validation_question("\nQuel thème voulez-vous supprimer ? ", len(vb.librairie.retourne_themes()))
     fct.separation()
@@ -297,6 +287,7 @@ def initialisation_bibliotheque():
     puisse y accéder de n'importe où.
     """
     themes = vb.librairie.retourne_fichier_bibliotheque()
+    # map(lambda x: vb.librairie.initialisation_theme(x[0]), themes)
     for theme in themes:
         for nom in theme:
             vb.librairie.initialisation_theme(nom)
@@ -304,13 +295,7 @@ def initialisation_bibliotheque():
     for theme_fichier in vb.librairie.retourne_themes():
         liste_questions = fct.recup_donnees_fichier(theme_fichier[1])
         for question in liste_questions:
-            liste_reponses = []
-            for reponse in range(2, len(question)):
-                if question[reponse] == question[1]:
-                    liste_reponses.append([question[reponse], True])
-
-                else:
-                    liste_reponses.append([question[reponse], False])
+            liste_reponses = list(map(lambda x: [x, x == question[1]], question[2:]))
             vb.librairie.recuperer_theme(theme_fichier[1]).creation_question(question[0], liste_reponses)
 
 

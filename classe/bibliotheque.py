@@ -27,6 +27,7 @@ class Bibliotheque:
         """
         Crée un objet Theme et l'ajoute à la liste de l'objet Bibliotheque.
         """
+        print(nom_theme)
         objet_t = Theme(nom_theme)
         self.__liste_themes.append(objet_t)
 
