@@ -5,8 +5,6 @@ from simplification import fonctions as fct
 from classe.theme import *
 import os
 
-#coucou
-
 
 class Bibliotheque:
     def __init__(self, nom_bibliotheque, nom_fichier_bibliotheque):
@@ -36,14 +34,14 @@ class Bibliotheque:
 
         Post : renvoie les thèmes dans une liste.
         """
-        return list(map(lambda x:x.nom_theme, self.__liste_themes))
+        return list(map(lambda x: x.nom_theme, self.__liste_themes))
 
     def recuperer_theme(self, nom_theme):
         """
         Retourne l'objet Theme sur base de son nom ou du nom de son ressources.
         """
-        for theme_recuperer in self.__liste_themes :
-            if theme_recuperer.nom_theme[0] == nom_theme or theme_recuperer.nom_theme[1] == nom_theme :
+        for theme_recuperer in self.__liste_themes:
+            if theme_recuperer.nom_theme[0] == nom_theme or theme_recuperer.nom_theme[1] == nom_theme:
                 return theme_recuperer
 
     def retourne_total(self):
@@ -81,10 +79,7 @@ class Bibliotheque:
         self.__liste_themes.append(nouveau_theme)
         self.__dictionnaire_themes[nouveau_theme.nom_theme[0]] = ""
 
-        print("\nLe thème '{0}' a été ajouté.\n".format(nom_nouveau_fichier))
-        print("Vous allez maintenant devoir rajouter des questions dans le nouveau thème.")
-        fct.separation()
-        om.ajouter_question()
+        om.ajouter_question_console()
 
     def suppression_theme(self,   nom_du_fichier, indice):
         """

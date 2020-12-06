@@ -8,7 +8,7 @@ librairie = None
 
 def initialisation_informations():
     global librairie
-    librairie = bibliotheque.Bibliotheque("Application", "ressources/themes.csv")
+    librairie = bibliotheque.Bibliotheque("Application", "./ressources/themes.csv")
 
 
 def initialisation_joueur():

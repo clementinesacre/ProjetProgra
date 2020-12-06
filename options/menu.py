@@ -88,7 +88,7 @@ def jouer_console():
     om.menu_principal()
 
 
-def ajouter_question():
+def ajouter_question_console():
     """
     Ajoute une question et ses réponses dans le thème précisé (dans l'objet Bibliothèque
     et dans le ressources du thème précisé).
@@ -132,7 +132,7 @@ def ajouter_question():
     refaire = fct.validation_oui_non("Voulez-vous rajouter une nouvelle question ?")
     fct.separation()
     if refaire == "oui":
-        return ajouter_question()
+        return ajouter_question_console()
     else:
         return modifier()
 
@@ -186,7 +186,7 @@ def supprimer_question_console():
     modifier()
 
 
-def ajouter_theme():
+def ajouter_theme_console():
     """
     Permet de créer un thème et de l'ajouter à l'application (en lui créant un ressources, en notant son nom dans le
     ressources thèmes, et en le rajoutant à la liste de thèmes).
@@ -194,6 +194,8 @@ def ajouter_theme():
     nouveau_theme = input("Quel est le nom du thème que vous voulez ajouter : ")
     vb.librairie.creation_theme(nouveau_theme)
 
+    print("\nLe thème '{0}' a été ajouté.\n".format(nouveau_theme))
+    print("Vous allez maintenant devoir rajouter des questions dans le nouveau thème.")
     fct.separation()
     modifier()
 
@@ -241,9 +243,9 @@ def modifier():
     fct.separation()
 
     if mode == 1:
-        ajouter_theme()
+        ajouter_theme_console()
     elif mode == 2:
-        ajouter_question()
+        ajouter_question_console()
     elif mode == 3:
         supprimer_theme_console()
     elif mode == 4:

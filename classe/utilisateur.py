@@ -26,22 +26,6 @@ class Utilisateur:
         """
         return {'geographie': [], 'math': []}
 
-    def resultats(self, dico):
-        """
-        Affiche tout résultats confondus de l'utilisateur connecté.
-        """
-        for theme_resultats in dico[self.__nom]:
-            print("{0} : ".format(theme_resultats))
-            for score in dico[self.__nom][theme_resultats]:
-                print("    {0}% - {1}".format(score[0], score[1]))
-
-    """def creation_manche(self, theme_manche):
-        
-        Crée un objet Manche et le lance.
-        
-        manche = Manche(theme_manche)
-        #return manche"""
-
     def ajout_score(self, theme, point):
         """
         Permet d'ajouter un score à l'objet Utilisateur.

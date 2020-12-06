@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-#ne sert plus à rien
+"""ne sert plus à rien"""
 
 from datetime import date
 
@@ -11,6 +11,7 @@ from classe import variable_globale as vb
 
 
 class Manche:
+
     def __init__(self, theme_manche):
         self.__theme = theme_manche
         self.__nbr_questions = 0
