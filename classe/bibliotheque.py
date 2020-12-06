@@ -27,7 +27,6 @@ class Bibliotheque:
         """
         Crée un objet Theme et l'ajoute à la liste de l'objet Bibliotheque.
         """
-        print(nom_theme)
         objet_t = Theme(nom_theme)
         self.__liste_themes.append(objet_t)
 
@@ -37,19 +36,15 @@ class Bibliotheque:
 
         Post : renvoie les thèmes dans une liste.
         """
-        liste = []
-        for theme_retourne in self.__liste_themes:
-            liste.append(theme_retourne.nom_theme)
-        return liste
+        return list(map(lambda x:x.nom_theme, self.__liste_themes))
 
     def recuperer_theme(self, nom_theme):
         """
         Retourne l'objet Theme sur base de son nom ou du nom de son ressources.
         """
-        for theme_recuperer in range(len(self.__liste_themes)):
-            if self.__liste_themes[theme_recuperer].nom_theme[0] == nom_theme or \
-                    self.__liste_themes[theme_recuperer].nom_theme[1] == nom_theme:
-                return self.__liste_themes[theme_recuperer]
+        for theme_recuperer in self.__liste_themes :
+            if theme_recuperer.nom_theme[0] == nom_theme or theme_recuperer.nom_theme[1] == nom_theme :
+                return theme_recuperer
 
     def retourne_total(self):
         """

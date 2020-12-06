@@ -4,6 +4,7 @@ import random
 import csv
 import json
 
+
 def aleatoire(questions, nbr_questions):
     """
     Renvoie x questions aléatoirement provenant de préférence d'un dictionnaire ou d'une
@@ -11,16 +12,9 @@ def aleatoire(questions, nbr_questions):
 
     Post : les questions sont renvoyées dans une liste.
     """
-    liste = []
-    compteur = 0
-    liste_questions = list(questions)
-    while compteur < nbr_questions:
-        x = random.randint(0, len(liste_questions) - 1)
-        if liste_questions[x] not in liste:
-            liste.append(liste_questions[x])
-            compteur += 1
-
-    return liste
+    liste = list(questions)
+    chiffres_aleatoires = random.sample(range(1, len(questions) + 1), nbr_questions)
+    return [liste[chiffre - 1] for chiffre in chiffres_aleatoires]
 
 
 def recup_donnees_fichier(fichier_a_ouvrir):
