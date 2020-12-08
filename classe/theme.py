@@ -8,7 +8,7 @@ class Theme:
     def __init__(self, nom_fichier):
         self.__nom_theme = nom_fichier[:-4]
         self.__nom_fichier = "ressources/" + nom_fichier
-        self.__dictionnaire = {}
+        self.__question_theme = {}
         self.__liste_questions = []
 
     @property
@@ -21,21 +21,24 @@ class Theme:
         """
         return [self.__nom_theme, self.__nom_fichier]
 
-    def retourne_question_theme(self):
+
+
+    @property
+    def question_theme(self):
         """
         Renvoie les questions et réponses de tous les objet Theme de l'objet Bibliotheque.
 
         Post : renvoie un dictionnaire.
         """
-        return self.__dictionnaire
+        return self.__question_theme
 
     def recuperer_question(self, question_a_recuperer):
         """
-        Retourne l'objet Theme sur base de son nom ou du nom de son ressources.
+        Retourne l'objet Question sur base de son nom (= la question).
+
+        PRE : question_a_recuperer est un string.
         """
-        for question_recuperer in range(len(self.__liste_questions)):
-            if self.__liste_questions[question_recuperer].nom_question == question_a_recuperer:
-                return self.__liste_questions[question_recuperer]
+        return list(filter(lambda x: x.nom_question == question_a_recuperer, self.__liste_questions))[0]
 
     def creation_question(self, nom_question, reponses):
         """
@@ -46,7 +49,7 @@ class Theme:
         """
         objet_q = Question(nom_question)
         objet_q.creation_reponses(reponses)
-        self.__dictionnaire[objet_q.nom_question] = objet_q.retourne_reponses_question()
+        self.__question_theme[objet_q.nom_question] = objet_q.reponses
         self.__liste_questions.append(objet_q)
 
     def ecriture_question(self, liste):
@@ -67,13 +70,13 @@ class Theme:
         Supprime une question précise en la supprimant du dictionnaire de questions ainsi que du ressources de thème
         dans lequel elle se trouvait.
         """
-        del self.__dictionnaire[questions]
+        del self.__question_theme[questions]
         try:
             with open(self.__nom_fichier, "w", newline='') as fichier:
                 nouveau_fichier = csv.writer(fichier, quotechar=',', quoting=csv.QUOTE_MINIMAL)
                 nouveau_fichier.writerow(["questions", "bonneReponse", "reponseA", "reponseB", "reponseC", "reponseD"])
-                for question_supprimer in self.__dictionnaire:
-                    reponses = self.__dictionnaire[question_supprimer]
+                for question_supprimer in self.__question_theme:
+                    reponses = self.__question_theme[question_supprimer]
                     nouveau_fichier.writerow([question_supprimer, list(filter(lambda x: x[1] is True, reponses))[0][0],
                                               reponses[0][0], reponses[1][0], reponses[2][0], reponses[3][0]])
 

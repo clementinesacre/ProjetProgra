@@ -32,7 +32,13 @@ def introduction():
         print("Bienvenue dans le jeu.")
     else:
         print("Vos scores précédents :\n")
-        vb.joueur.resultats(dictionnaire)
+
+        for theme_resultats in dictionnaire[vb.joueur.nom]:
+            print(theme_resultats, " : ")
+            for score in dictionnaire[vb.joueur.nom][theme_resultats]:
+                print("    ", score[0], "% - ", score[1])
+            print("")
+
         fct.separation()
     return dictionnaire
 
@@ -64,7 +70,7 @@ def jouer_console():
     points_joueur = 0
     for question_manche in liste_questions_aleatoires:
         print(question_manche)
-        reponses = theme_manche.recuperer_question(question_manche).retourne_reponses_question()
+        reponses = theme_manche.recuperer_question(question_manche).reponses
         for i in range(len(reponses)):
             print("    {0}. {1}".format(i + 1, reponses[i][0]))
 
@@ -157,7 +163,7 @@ def supprimer_question_console():
     theme_a_modifier = vb.librairie.recuperer_theme(vb.librairie.retourne_themes()[choix_theme - 1][0])
     fct.separation()
 
-    if len(vb.librairie.recuperer_theme(vb.librairie.retourne_themes()[choix_theme - 1][0]).retourne_question_theme()) \
+    if len(vb.librairie.recuperer_theme(vb.librairie.retourne_themes()[choix_theme - 1][0]).question_theme) \
             == 0:
         print("Il n'y a pas de question dans ce thème.")
         fct.separation()
@@ -165,7 +171,7 @@ def supprimer_question_console():
 
     print("Questions du thème '{0}' : ".format(vb.librairie.retourne_themes()[choix_theme - 1][0]))
     indice_question = 1
-    questions_theme = list(theme_a_modifier.retourne_question_theme().keys())
+    questions_theme = list(theme_a_modifier.question_theme.keys())
     for question_supprimer in questions_theme:
         print("    {0}. {1}".format(indice_question, question_supprimer))
         indice_question += 1
@@ -315,7 +321,6 @@ def lancement_application():
 
     elif commande[1] == "graphique":
         dico_scores = fct.recup_donnees_fichier_json('ressources/scores.json')
-
         cg.Graphique(dico_scores)
 
     else:

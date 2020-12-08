@@ -15,7 +15,7 @@ class Bibliotheque:
 
     def retourne_fichier_bibliotheque(self):
         """
-        Renvoie le ressources de l'objet Bibliotheque
+        Renvoie le fichier de l'objet Bibliotheque
 
         Post : retourne le nom du ressources de l'objet Bibliotheque sous forme de string.
         """
@@ -51,7 +51,7 @@ class Bibliotheque:
         Post : renvoie un dictionnaire, avec comme clé le nom du thème (pas le nom du ressources).
         """
         for theme_total in self.__liste_themes:
-            self.__dictionnaire_themes[theme_total.nom_theme[0]] = theme_total.retourne_question_theme()
+            self.__dictionnaire_themes[theme_total.nom_theme[0]] = theme_total.question_theme
         return self.__dictionnaire_themes
 
     def creation_theme(self, nom_nouveau_fichier):
@@ -81,7 +81,7 @@ class Bibliotheque:
 
         om.ajouter_question_console()
 
-    def suppression_theme(self,   nom_du_fichier, indice):
+    def suppression_theme(self, nom_du_fichier, indice):
         """
         Supprime un thème existant, en supprimant son ressources et en le retirant du fichier et de la liste de thèmes.
         """

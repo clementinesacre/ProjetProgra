@@ -4,7 +4,7 @@
 class Question:
     def __init__(self, nom_question):
         self.__nom_question = nom_question
-        self.__liste_reponse = []
+        self.__reponses = []
 
     @property
     def nom_question(self):
@@ -15,13 +15,14 @@ class Question:
         """
         return self.__nom_question
 
-    def retourne_reponses_question(self):
+    @property
+    def reponses(self):
         """
         Renvoie les reponses de l'objet Question.
 
         Post : renvoie une liste de liste.
         """
-        return self.__liste_reponse
+        return self.__reponses
 
     def creation_reponses(self, reponses):
         """
@@ -29,7 +30,7 @@ class Question:
         """
         for reponse_creation in reponses:
             objet_r = Reponse(reponse_creation[0], reponse_creation[1])
-            self.__liste_reponse.append(objet_r.nom_reponse)
+            self.__reponses.append(objet_r.nom_reponse)
 
 
 class Reponse:
