@@ -154,6 +154,7 @@ def supprimer_question_console():
     indice_theme = 1
     for theme_nom in vb.librairie.retourne_themes():
         print("    {0}. {1}".format(vb.librairie.retourne_themes().index(theme_nom) + 1, theme_nom[0]))
+        indice_theme += 1
     print("    {0}. Revenir en arrière\n".format(indice_theme))
 
     choix_theme = fct.validation_question("Choisissez le thème dans lequel supprimer une question", indice_theme)
