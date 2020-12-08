@@ -5,7 +5,7 @@
 import json
 from classe import variable_globale as vb
 from classe.bibliotheque import *
-import argparse
+"""import argparse"""
 import sys
 from graphique import console_graphique as cg
 
