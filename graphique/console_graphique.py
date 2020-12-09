@@ -3,6 +3,14 @@ import tkinter as tk
 
 class Graphique:
     def __init__(self, dictionnaire):
+        """
+        Permet d'initialiser les différentes fonctionnalités de la librairie graphique.
+
+        PRE : 'dictionnaire' est un dictionnaire avec des pseudo comme clés et des autres dictionnaires comme valeurs.
+        Ces autres dictionnaires contiennent des thèmes comme clés, et des listes de listes de scores comme valeurs.
+        POST : Crée la fenêtre, et la lance, crée le bouton pour revenir en arrière et le titre. Appelle la fonction
+        qui place ces dernières données.
+        """
         self.__dic = dictionnaire
         self.__racine = tk.Tk(className='Application')
         a_rajouter = 2
@@ -29,6 +37,13 @@ class Graphique:
         self.initialisation()
 
     def initialisation(self):
+        """
+        Permet d'afficher les différents pseudos.
+
+        PRE : -
+        POST : Crée et place les boutons contenant les pseudos des joueurs. Place également le bouton permettant de
+        revenir en arrière, et le titre.
+        """
         self.__titre_joueur.place(x=16, y=20)
 
         x_initial = 40
@@ -49,6 +64,13 @@ class Graphique:
         self.__racine.mainloop()
 
     def matieres(self, joueur):
+        """
+        Permet d'afficher les différents thèmes contenant des scores d'un joueur.
+
+        PRE : 'joueur' est une string.
+        POST : Supprime les boutons créés et placés précédemment. Crée et place les boutons contenant les thèmes. Place
+        également le bouton permettant de revenir en arrière.
+        """
         self.__joueur_courant = joueur
         for bouton in self.__liste_joueur:
             bouton.destroy()
@@ -73,6 +95,13 @@ class Graphique:
                 compteur_y += 1
 
     def points(self, theme):
+        """
+        Permet d'afficher les différents scores d'un thème d'un joueur.
+
+        PRE : 'thème' est une string.
+        POST : Supprime les boutons créés et placés précédemment. Crée et place des zones de texte  avec les scores.
+        Place également le bouton permettant de revenir en arrière.
+        """
         for bouton in self.__liste_theme:
             bouton.destroy()
 
@@ -94,6 +123,13 @@ class Graphique:
             self.__liste_score.append(label)
 
     def revenir_menu(self):
+        """
+        Permet de revenir au menu principal avec les différents joueurs.
+
+        PRE : -
+        POST : Supprime les boutons créés et placés précédemment. Recrée le bouton qui permet de revenir en arrière et
+        le titre.
+        """
         for points in self.__liste_score:
             points.destroy()
         for theme in self.__liste_theme:
@@ -106,12 +142,3 @@ class Graphique:
                                        fg='#5D5F56', font=10)
         self.initialisation()
 
-
-"""
-k =  {"test": {"geographie": [[54, "14/09/2020"]], "math": [[92.1, "19/09/2020"]]}, "clem": {"geographie": [],
-    "math": [[100.0, "25/11/2020"], [100.0, "25/11/2020"], [50.0, "25/11/2020"], [100.0, "25/11/2020"],
-    [0.0, "25/11/2020"], [100.0, "25/11/2020"], [100.0, "25/11/2020"], [100.0, "25/11/2020"], [10, "cc"],
-    [20, "ll"], [100.0, "25/11/2020"], [100.0, "25/11/2020"], [50.0, "25/11/2020"], [100.0, "25/11/2020"]]},
-      "gui" : {"geographie": [[36, "11/09/2020"]], "math": [[82.1, "19/19/2020"]]}}
-
-obj1 = graphique(k)"""

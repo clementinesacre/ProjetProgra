@@ -5,6 +5,7 @@
 import json
 from classe import variable_globale as vb
 from classe.bibliotheque import *
+
 """import argparse"""
 import sys
 from graphique import console_graphique as cg
@@ -12,9 +13,11 @@ from graphique import console_graphique as cg
 
 def introduction():
     """
-    Lance l'application en demandant le pseudo du joueur.
-    Si le joueur est déjà encodé dans la base, on affiche ses scores précédents.
-    Si il n'est pas encore encodé, son pseudo est enregistré dans l'application.
+    Permet de lancer l'application en accueillant le joueur.
+
+    PRE : L'objet Utilisateur utilisé via 'joueur' doit avoir été initialisé auparavant.
+    POST : Si le joueur est déjà encodé dans la base, on affiche ses scores précédents. Si il n'est pas encore encodé,
+    son pseudo est enregistré dans l'application.
     """
     dictionnaire = fct.recup_donnees_fichier_json('ressources/scores.json')
     if vb.joueur.nom not in dictionnaire:
@@ -37,7 +40,6 @@ def introduction():
             print(theme_resultats, " : ")
             for score in dictionnaire[vb.joueur.nom][theme_resultats]:
                 print("    ", score[0], "% - ", score[1])
-            print("")
 
         fct.separation()
     return dictionnaire
@@ -45,22 +47,28 @@ def introduction():
 
 def jouer_console():
     """
-    Selon le thème choisi par le joueur, la fonction lance une manche.
+    Permet à l'utilisateur de lancer une manche, selon le thème choisi qu'il a choisi.
+
+    PRE : 'joueur' et 'librairie' doivent avoir été initialisés auparavant en global, via leur objet respectif.
+    POST : Ajoute les points du joueur selon les réponses auxquelles il a répondu correctement.
     """
+    themes_jeu = vb.librairie.retourne_themes()
     print("Thèmes : ")
-    propositions = list(filter(lambda x: len(x), vb.librairie.retourne_themes()))
-    for theme_nom in propositions:
-        print("    {0}. {1}".format(propositions.index(theme_nom) + 1, theme_nom[0]))
+    [print("    {0}. {1}".format(themes_jeu.index(theme_nom) + 1, theme_nom)) for theme_nom in themes_jeu]
     print("    {0}. Revenir en arrière\n".format(len(vb.librairie.retourne_themes()) + 1))
 
-    choix_theme = fct.validation_question("Choisissez un thème.", len(vb.librairie.retourne_themes()) + 1)
+    choix_theme = fct.validation_question("Choisissez un thème.", len(themes_jeu) + 1)
+    vb.initialisation_theme(themes_jeu[choix_theme - 1])
     fct.separation()
 
-    if choix_theme == len(vb.librairie.retourne_themes()) + 1:
+    if choix_theme == len(themes_jeu) + 1:
         return menu_principal()
+    elif len(themes_jeu) == 0:
+        print("Il n'y a pas de question dans ce thème.")
+        fct.separation()
+        return jouer_console()
 
-    theme_manche = vb.librairie.recuperer_theme(vb.librairie.retourne_themes()[choix_theme - 1][0])
-    questions_liste = vb.librairie.retourne_total()[theme_manche.nom_theme[0]]
+    questions_liste = vb.theme_courant.question_theme
 
     # Lancement de la partie
     nbr_questions = fct.validation_question("Combien de questions pour la partie ?", len(questions_liste))
@@ -70,9 +78,8 @@ def jouer_console():
     points_joueur = 0
     for question_manche in liste_questions_aleatoires:
         print(question_manche)
-        reponses = theme_manche.recuperer_question(question_manche).reponses
-        for i in range(len(reponses)):
-            print("    {0}. {1}".format(i + 1, reponses[i][0]))
+        reponses = vb.theme_courant.recuperer_question(question_manche).reponses
+        [print("    {0}. {1}".format(reponses.index(reponse) + 1, reponse[0])) for reponse in reponses]
 
         reponse_joueur = fct.validation_question("Quelle réponse choisissez-vous ?", len(reponses))
 
@@ -85,10 +92,10 @@ def jouer_console():
         fct.separation()
 
     pluriel = ("", "s")[points_joueur > 1]
-    print("Vous avez {0} bonne{1} réponse{1} sur {2}.".format(points_joueur, pluriel, len(liste_questions_aleatoires)))
-    pourcentage = points_joueur / len(liste_questions_aleatoires) * 100
+    print("Vous avez {0} bonne{1} réponse{1} sur {2}.".format(points_joueur, pluriel, nbr_questions))
+    pourcentage = points_joueur / nbr_questions * 100
 
-    vb.joueur.ajout_score(theme_manche, pourcentage)
+    vb.joueur.ajout_score(vb.theme_courant, pourcentage)
 
     fct.separation()
     om.menu_principal()
@@ -96,43 +103,33 @@ def jouer_console():
 
 def ajouter_question_console():
     """
-    Ajoute une question et ses réponses dans le thème précisé (dans l'objet Bibliothèque
-    et dans le ressources du thème précisé).
+    Permet à l'utilisateur de créer une question.
+
+    PRE : 'librairie' doit avoir été initialisée auparavant en global, via son objet respectif.
+    POST : Ajoute la question et ses réponses dans le thème précisé (dans l'objet Bibliothèque
+    et dans le fichier du thème).
     """
+    themes_modif = vb.librairie.retourne_themes()
     print("Thèmes : ")
-    for i in range(len(vb.librairie.retourne_themes())):
-        print("    {0}. {1}".format(i + 1, vb.librairie.retourne_themes()[i][0]))
-    choix_theme = fct.validation_question("\nChoisissez un thème dans lequel rajouter une question.",
-                                          len(vb.librairie.retourne_themes()))
+    [print("    {0}. {1}".format(themes_modif.index(theme_nom) + 1, theme_nom)) for theme_nom in themes_modif]
 
-    theme_a_modifier = vb.librairie.recuperer_theme(vb.librairie.retourne_themes()[choix_theme - 1][0])
-
+    choix_theme = fct.validation_question("\nChoisissez un thème dans lequel rajouter une question.", len(themes_modif))
+    vb.initialisation_theme(themes_modif[choix_theme - 1])
     fct.separation()
+
     question_ajouter = input("Entrez la question : ")
     print("\nVous allez maintenant devoir entrer des réponses. Une seule réponse peut être bonne, "
-          "les 3 autres doivent être fausses.")
-    print("L'ordre n'a pas d'importance.\n")
+          "les 3 autres doivent être fausses.\nL'ordre n'a pas d'importance.\n")
 
-    reponses_liste = []
-    for i in range(4):
-        reponse_ajouter = input("Entrez la réponse {0} : ".format(i + 1))
-        reponses_liste.append(reponse_ajouter)
-    print("")
+    reponses_liste = [input("Entrez la réponse {0} : ".format(reponse + 1)) for reponse in range(4)]
+    bonne_reponse = fct.validation_question("\nQuelle réponse est la bonne ? Entrez le numéro de la réponse.", 4) - 1
 
-    bonne_reponse = fct.validation_question("Quelle réponse est la bonne ? Entrez le numéro de la réponse.", 4) - 1
-
-    # Ajout de la question et réponses dans l'objet Theme
-    liste = list(map(lambda x: [x, x == reponses_liste[bonne_reponse]], reponses_liste))
-    theme_a_modifier.creation_question(question_ajouter, liste)
-
-    # Ajout de la question dans le ressources theme
-    reponses_liste = [question_ajouter] + [reponses_liste[bonne_reponse]] + reponses_liste
-    theme_a_modifier.ecriture_question(reponses_liste)
+    ligne_donnees = [question_ajouter] + [reponses_liste[bonne_reponse]] + reponses_liste
+    vb.theme_courant.creation_question(ligne_donnees)
     fct.separation()
 
-    print("La question '{0}' a été ajoutée dans le thème '{1}', "
-          "avec '{2}' comme bonne réponse.".format(question_ajouter, vb.librairie.retourne_themes()[choix_theme - 1][0],
-                                                   reponses_liste[bonne_reponse + 2]))
+    print("La question '{0}' a été ajoutée dans le thème '{1}', avec '{2}' comme bonne réponse."
+          .format(question_ajouter, vb.theme_courant.nom_theme, reponses_liste[bonne_reponse]))
     fct.separation()
 
     refaire = fct.validation_oui_non("Voulez-vous rajouter une nouvelle question ?")
@@ -145,46 +142,44 @@ def ajouter_question_console():
 
 def supprimer_question_console():
     """
-    Permet à l'utilisateur de choisir la question qu'il souhaite supprimer dans un thème précis via l'interface console.
+    Permet à l'utilisateur de supprimer une question dans un thème précis.
 
-    PRE : -
-    POST : Soit appelle la fonction permettant de supprimer la question, soit annule l'opération.
+    PRE : 'librairie' doit avoir été initialisée auparavant en global, via son objet respectif.
+    POST : Soit appelle la fonction permettant de supprimer la question (en la supprimant de l'objet Bibliothèque
+    et du le fichier du thème), soit annule l'opération.
     """
+    themes_modif = vb.librairie.retourne_themes()
     print("Thèmes : ")
-    indice_theme = 1
-    for theme_nom in vb.librairie.retourne_themes():
-        print("    {0}. {1}".format(vb.librairie.retourne_themes().index(theme_nom) + 1, theme_nom[0]))
-        indice_theme += 1
-    print("    {0}. Revenir en arrière\n".format(indice_theme))
+    [print("    {0}. {1}".format(themes_modif.index(theme_nom) + 1, theme_nom)) for theme_nom in themes_modif]
+    print("    {0}. Revenir en arrière\n".format(len(themes_modif) + 1))
 
-    choix_theme = fct.validation_question("Choisissez le thème dans lequel supprimer une question", indice_theme)
-    if choix_theme == indice_theme:
+    numero_theme = fct.validation_question("Choisissez le thème dans lequel supprimer une question",
+                                           len(themes_modif) + 1)
+
+    if numero_theme == len(themes_modif) + 1:
         return modifier()
 
-    theme_a_modifier = vb.librairie.recuperer_theme(vb.librairie.retourne_themes()[choix_theme - 1][0])
+    vb.initialisation_theme(themes_modif[numero_theme - 1])
     fct.separation()
 
-    if len(vb.librairie.recuperer_theme(vb.librairie.retourne_themes()[choix_theme - 1][0]).question_theme) \
-            == 0:
+    if len(vb.theme_courant.question_theme) == 0:
         print("Il n'y a pas de question dans ce thème.")
         fct.separation()
         return supprimer_question_console()
 
-    print("Questions du thème '{0}' : ".format(vb.librairie.retourne_themes()[choix_theme - 1][0]))
-    indice_question = 1
-    questions_theme = list(theme_a_modifier.question_theme.keys())
-    for question_supprimer in questions_theme:
-        print("    {0}. {1}".format(indice_question, question_supprimer))
-        indice_question += 1
+    questions_theme = list(vb.theme_courant.question_theme.keys())
+    print("Questions du thème '{0}' : ".format(vb.theme_courant.nom_theme))
+    [print("    {0}. {1}".format(questions_theme.index(question_supprimer) + 1, question_supprimer)) for
+     question_supprimer in questions_theme]
 
-    question_a_supprimer = fct.validation_question("\nChoisissez la question à supprimer.", indice_question - 1)
+    choix_question = fct.validation_question("\nChoisissez la question à supprimer.", len(questions_theme))
     fct.separation()
 
     valider_question = fct.validation_oui_non("Etes-vous sur de vouloir supprimer la question '" +
-                                              questions_theme[question_a_supprimer - 1] + "' ?")
+                                              questions_theme[choix_question - 1] + "' ?")
     if valider_question == "oui":
-        theme_a_modifier.suppression_question(questions_theme[question_a_supprimer - 1])
-        print("\nLa question '{0}' a été supprimée.".format(questions_theme[question_a_supprimer - 1]))
+        vb.theme_courant.suppression_question(questions_theme[choix_question - 1])
+        print("\nLa question '{0}' a été supprimée.".format(questions_theme[choix_question - 1]))
 
     else:
         print("\nAnnulation. Aucune question n'a été supprimée.")
@@ -195,8 +190,11 @@ def supprimer_question_console():
 
 def ajouter_theme_console():
     """
-    Permet de créer un thème et de l'ajouter à l'application (en lui créant un ressources, en notant son nom dans le
-    ressources thèmes, et en le rajoutant à la liste de thèmes).
+    Permet à l'utilisateur de créer un thème.
+
+    PRE : 'librairie' doit avoir été initialisée auparavant en global, via son objet respectif.
+    POST : Ajoute le thème créé à l'application, en lui créant un fichier, en notant son nom dans le
+    fichier thèmes, et en le rajoutant à la liste de thèmes.
     """
     nouveau_theme = input("Quel est le nom du thème que vous voulez ajouter : ")
     vb.librairie.creation_theme(nouveau_theme)
@@ -209,24 +207,25 @@ def ajouter_theme_console():
 
 def supprimer_theme_console():
     """
-    Permet de supprimer un thème en l'enlevant de l'application (en supprimant son ressources, et en le retirant
-    du fichier des thèmes et de la liste des thèmes).
+    Permet à l'utilisateur de supprimer un thème.
 
-    PRE : -
-    POST : Soit appelle la fonction  permettant de supprimer le thème, soit annule l'opération.
+    PRE : 'librairie' doit avoir été initialisée auparavant en global, via son objet respectif.
+    POST : Soit appelle la fonction  permettant de supprimer le thème (en supprimant son fichier, et en le retirant
+    du fichier des thèmes et de la liste des thèmes), soit annule l'opération.
     """
+    themes_supp = vb.librairie.retourne_themes()
     print("Thèmes : ")
-    for i in range(len(vb.librairie.retourne_themes())):
-        print("    {0}. {1}".format(i + 1, vb.librairie.retourne_themes()[i][0]))
+    [print("    {0}. {1}".format(themes_supp.index(theme_nom) + 1, theme_nom)) for theme_nom in themes_supp]
 
-    numero_theme = fct.validation_question("\nQuel thème voulez-vous supprimer ? ", len(vb.librairie.retourne_themes()))
+    numero_theme = fct.validation_question("\nQuel thème voulez-vous supprimer ? ", len(themes_supp))
     fct.separation()
 
-    theme_supprime = vb.librairie.retourne_themes()[numero_theme - 1][0]
-    validation_theme = fct.validation_oui_non("Etes-vous sur de vouloir supprimer le thème '" + theme_supprime + "' ?")
+    vb.initialisation_theme(themes_supp[numero_theme - 1])
+    validation_theme = fct.validation_oui_non("Etes-vous sur de vouloir supprimer le thème '{0}' ?"
+                                              .format(vb.theme_courant.nom_theme))
     if validation_theme == "oui":
-        vb.librairie.suppression_theme(vb.librairie.retourne_themes()[numero_theme - 1][1][11:], numero_theme - 1)
-        print("\nLe thème '{0}' a été supprimé.".format(theme_supprime))
+        vb.librairie.suppression_theme(vb.theme_courant)
+        print("\nLe thème '{0}' a été supprimé.".format(vb.theme_courant.nom_theme))
 
     else:
         print("\nAnnulation. Aucun thème n'a été supprimé.")
@@ -238,6 +237,9 @@ def supprimer_theme_console():
 def modifier():
     """
     Permet au joueur de modifier l'application en ajoutant/supprimant des thèmes/questions.
+
+    PRE : -
+    POST : Redirige l'utilisateur selon son choix en appelant la fonction adéquate.
     """
     print("Menu > Modifier :")
     print("    1. Ajouter un thème")
@@ -263,14 +265,20 @@ def modifier():
 
 def quitter():
     """
-    Permet de fermer le programme. Si on veut le relancer, il faudra l'exécuter à nouveau.
+    Permet de fermer le programme. Si on veut le relancer, il faudra exécuter le fichier à nouveau.
+
+    PRE : 'joueur' doit avoir été initialisé auparavant en global, via son objet respectif.
+    POST : Affiche un message de fermeture.
     """
     print("Au revoir {0}.\n\nApplication fermée.".format(vb.joueur.nom))
 
 
 def menu_principal():
     """
-    Affiche les différentes options dans le menu et appelle la fonction selon le choix du joueur.
+    Permet au joueur de choisir si il souhaite jouer ou apporter des modifications à l'application.
+
+    PRE : -
+    POST : Redirige l'utilisateur selon son choix en appelant la fonction adéquate.
     """
     print("Menu :")
     print("    1. Jouer")
@@ -290,28 +298,38 @@ def menu_principal():
 
 def initialisation_bibliotheque():
     """
-    Initalise les informations de l'application, telles que
-    la librairie, les thèmes, les questions et réponses.
-    Initialise ces informations en global pour que tout le monde
-    puisse y accéder de n'importe où.
+    Initalise les informations de l'application, telles que les thèmes, les questions et les réponses.
+
+    PRE : Nécessite l'existance de l'objet Bibliotheque, instancié à librairie.
+    POST : Crée les thèmes, les questions, les réponses en tant qu'objet.
     """
     themes = vb.librairie.retourne_fichier_bibliotheque()
-    # map(lambda x: vb.librairie.initialisation_theme(x[0]), themes)
     for theme in themes:
         for nom in theme:
             vb.librairie.initialisation_theme(nom)
 
-    for theme_fichier in vb.librairie.retourne_themes():
-        liste_questions = fct.recup_donnees_fichier(theme_fichier[1])
+    for theme_fichier in vb.librairie.liste_themes():
+        vb.initialisation_theme(theme_fichier.nom_theme)
+        liste_questions = fct.recup_donnees_fichier(vb.theme_courant.nom_fichier)
         for question in liste_questions:
-            liste_reponses = list(map(lambda x: [x, x == question[1]], question[2:]))
-            vb.librairie.recuperer_theme(theme_fichier[1]).creation_question(question[0], liste_reponses)
+            vb.theme_courant.initialisation_question(question)
 
 
 def lancement_application():
+    """
+    Démarre l'application.
+
+    PRE : -
+    POST : Si console : Initialise l'objet librairie avec ses informations, et l'objet joueur. Lance ensuite l'initialisation du jeu,
+    puis l'accès au menu.
+    Si graphique : lance l'interface graphique permettant de voir les scores des joueurs par thème.
+    """
     commande = sys.argv
+
     if len(commande) != 2:
-        print("faux")
+        print("Commandes attendues :")
+        print("    pour lancer l'interface console : python main.py console ")
+        print("    pour lancer l'interface graphique : python main.py graphique")
     elif commande[1] == "console":
         vb.initialisation_informations()
         initialisation_bibliotheque()
@@ -325,4 +343,6 @@ def lancement_application():
         cg.Graphique(dico_scores)
 
     else:
-        print("faux")
+        print("Commandes attendues :")
+        print("    pour lancer l'interface console : python main.py console ")
+        print("    pour lancer l'interface graphique : python main.py graphique")

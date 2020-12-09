@@ -9,40 +9,58 @@ class Question:
     @property
     def nom_question(self):
         """
-        Renvoie la question de l'objet Question.
+        Permet de récupérer la question de l'objet Question.
 
-        Post : renvoie une string.
+        PRE : -
+        POST : Renvoie la questions sous forme de string.
         """
         return self.__nom_question
 
     @property
     def reponses(self):
         """
-        Renvoie les reponses de l'objet Question.
+        Permet de récupérer les réponses de l'objet Question.
 
-        Post : renvoie une liste de liste.
+        PRE : -
+        POST : renvoie les réponses dans une liste de liste.
         """
         return self.__reponses
 
     def creation_reponses(self, reponses):
         """
-        Permet de créer un objet Réponse et de l'ajouter à la liste de l'objet Question.
+        Permet de créer un objet Réponse.
+
+        PRE : 'reponses' est une liste, avec en première position le nom de la réponse et en deuxième position, son
+        type.
+        POST : Instancie 4 objets Reponse, sur base de leur nom et de leur type, et les ajoute à la liste de
+        l'objet Question.
         """
         for reponse_creation in reponses:
             objet_r = Reponse(reponse_creation[0], reponse_creation[1])
-            self.__reponses.append(objet_r.nom_reponse)
+            self.__reponses.append([objet_r.nom_reponse, objet_r.type_reponse])
 
 
 class Reponse:
     def __init__(self, nom_reponse, type_bonne_reponse):
         self.__nom_reponse = nom_reponse
-        self.__type_bonne_reponse = type_bonne_reponse
+        self.__type_reponse = type_bonne_reponse
 
     @property
     def nom_reponse(self):
         """
-        Renvoie le nom de la reponse de l'objet Reponse ainsi que son type (vraie ou fausse).
+        Permet de récupérer le nom de la réponse de l'objet.
 
-        Post : renvoie une liste contenant les deux informations.
+        PRE : -
+        POST : Renvoie le nom de la réponse sous forme de string.
         """
-        return [self.__nom_reponse, self.__type_bonne_reponse]
+        return self.__nom_reponse
+
+    @property
+    def type_reponse(self):
+        """
+        Permet de récupérer le type de la réponse (vraie ou fausse).
+
+        PRE : -
+        POST : Renvoie True ou False.
+        """
+        return self.__type_reponse

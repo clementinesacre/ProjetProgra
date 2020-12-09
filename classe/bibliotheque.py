@@ -17,50 +17,73 @@ class Bibliotheque:
         """
         Renvoie le fichier de l'objet Bibliotheque
 
-        Post : retourne le nom du ressources de l'objet Bibliotheque sous forme de string.
+        PRE : -
+        POST : Retourne le nom du fichier de l'objet sous forme de string.
         """
         return fct.recup_donnees_fichier(self.__nom_fichier_bibliotheque)
 
     def initialisation_theme(self, nom_theme):
         """
-        Crée un objet Theme et l'ajoute à la liste de l'objet Bibliotheque.
+        Crée un objet Theme.
+
+        PRE : 'nom_theme' est une string.
+        POST : Instancie un objet Theme et l'ajoute à la liste de l'objet Bibliotheque.
         """
         objet_t = Theme(nom_theme)
         self.__liste_themes.append(objet_t)
 
     def retourne_themes(self):
         """
-        Renvoie tous les objets Theme que l'objet Bibliotheque contient dans une liste.
+        Renvoie les noms de tous les objets Theme que l'objet Bibliotheque contient.
 
-        Post : renvoie les thèmes dans une liste.
+        PRE : -
+        POST : Renvoie les noms des objets Theme sous forme de string dans une liste.
         """
         return list(map(lambda x: x.nom_theme, self.__liste_themes))
 
+    def liste_themes(self):
+        """
+        Retourne tous les objets Theme instanciés dans l'objet Bibliotheque.
+
+        PRE : -
+        POST : Renvoie les objets Theme dans une liste.
+        """
+        return self.__liste_themes
+
     def recuperer_theme(self, nom_theme):
         """
-        Retourne l'objet Theme sur base de son nom ou du nom de son ressources.
+        Récupère l'objet d'un Theme.
+
+        PRE : 'nom_theme' est une string.
+        POST : Retourne l'objet Theme sur base de son nom ou du nom de son fichier.
         """
         for theme_recuperer in self.__liste_themes:
-            if theme_recuperer.nom_theme[0] == nom_theme or theme_recuperer.nom_theme[1] == nom_theme:
+            if theme_recuperer.nom_theme == nom_theme or theme_recuperer.nom_fichier == nom_theme:
                 return theme_recuperer
 
     def retourne_total(self):
         """
-        Renvoie les questions et réponses de tous les objet Theme de l'objet Bibliotheque.
+        Permet de récupérer toutes les données liées à l'objet Bibliotheque, tels que les thèmes avec leurs questions
+        et leurs réponses.
 
-        Post : renvoie un dictionnaire, avec comme clé le nom du thème (pas le nom du ressources).
+        PRE : -
+        POST : Renvoie un dictionnaire, avec comme clé le nom des thèmes, et un dictionnaire comme valeur, contenant
+        les questions et réponses du thème.
         """
         for theme_total in self.__liste_themes:
-            self.__dictionnaire_themes[theme_total.nom_theme[0]] = theme_total.question_theme
+            self.__dictionnaire_themes[theme_total.nom_theme] = theme_total.question_theme
         return self.__dictionnaire_themes
 
     def creation_theme(self, nom_nouveau_fichier):
         """
-        Crée un nouveau thème, en créant son ressources, en ajoutant le thème dans le fichier thèmes et dans la liste de
-        thème.
+        Permet de créer un nouveau thème.
+
+        PRE : 'nom_nouveau_fichier' est une string.
+        POST : Instancie un objet Theme, crée son fichie, l'ajoute dans le fichier thèmes et dans la liste des objets
+        Theme.
         """
         nouveau_theme = Theme(nom_nouveau_fichier + ".csv")
-        nom_fichier = nouveau_theme.nom_theme[1]
+        nom_fichier = nouveau_theme.nom_fichier
 
         try:
             with open(nom_fichier, 'w', newline='') as csvfile:
@@ -77,36 +100,28 @@ class Bibliotheque:
             print('Erreur IO.')
 
         self.__liste_themes.append(nouveau_theme)
-        self.__dictionnaire_themes[nouveau_theme.nom_theme[0]] = ""
+        self.__dictionnaire_themes[nouveau_theme.nom_theme] = ""
 
         om.ajouter_question_console()
 
-    def suppression_theme(self, nom_du_fichier, indice):
+    def suppression_theme(self, theme):
         """
-        Supprime un thème existant, en supprimant son ressources et en le retirant du fichier et de la liste de thèmes.
+        Permet de supprimer un thème existant.
+
+        PRE : 'theme' est un objet Theme.
+        POST : Supprime le fichier du thème et le retire du fichier des thèmes et de la liste des objets Themes.
         """
-        os.remove("ressources/" + nom_du_fichier)
-        del self.__liste_themes[indice]
+        os.remove(theme.nom_fichier)
+        del self.__liste_themes[self.__liste_themes.index(theme)]
 
         liste_fichiers = []
-        with open("ressources/themes.csv", "r") as doss1:
-            lire = csv.reader(doss1)
+        with open("ressources/themes.csv", "r") as fichier_lecture:
+            lire = csv.reader(fichier_lecture)
             for ligne in lire:
-                if nom_du_fichier != (','.join(ligne).rstrip()):
+                if theme.nom_fichier[11:] != (','.join(ligne).rstrip()):
                     liste_fichiers.append(','.join(ligne))
 
-        with open("ressources/themes.csv", 'w', newline='') as doss2:
-            write = csv.writer(doss2)
+        with open("ressources/themes.csv", 'w', newline='') as fichier_ecriture:
+            write = csv.writer(fichier_ecriture)
             for i in liste_fichiers:
                 write.writerow([i])
-
-
-"""#+-factory où get_bibliotheque est une méthode statique
-  #où test = objet biblio global
-  def get_bibliotheque(cls):
-      if test != none :
-          return test
-      test = cls()
-      return test
-
-biblio = Bibliotheque.get_bibliotheque()"""
