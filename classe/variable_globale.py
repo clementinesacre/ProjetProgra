@@ -30,6 +30,7 @@ def initialisation_joueur():
     joueur = utilisateur.Utilisateur(pseudo)
 
 
+
 def initialisation_theme(nom_du_theme):
     """
     Permet d'initialiser l'objet Theme courant.

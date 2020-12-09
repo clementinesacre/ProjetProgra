@@ -303,12 +303,12 @@ def initialisation_bibliotheque():
     PRE : Nécessite l'existance de l'objet Bibliotheque, instancié à librairie.
     POST : Crée les thèmes, les questions, les réponses en tant qu'objet.
     """
-    themes = vb.librairie.retourne_fichier_bibliotheque()
+    themes = vb.librairie.nom_fichier_bibliotheque
     for theme in themes:
         for nom in theme:
             vb.librairie.initialisation_theme(nom)
 
-    for theme_fichier in vb.librairie.liste_themes():
+    for theme_fichier in vb.librairie.liste_themes:
         vb.initialisation_theme(theme_fichier.nom_theme)
         liste_questions = fct.recup_donnees_fichier(vb.theme_courant.nom_fichier)
         for question in liste_questions:

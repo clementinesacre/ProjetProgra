@@ -13,7 +13,17 @@ class Bibliotheque:
         self.__liste_themes = []
         self.__dictionnaire_themes = {}
 
-    def retourne_fichier_bibliotheque(self):
+    @property
+    def nom_bibliotheque(self):
+        """
+                Renvoie le fichier de l'objet Bibliotheque
+
+                PRE : -
+                POST : Retourne le nom de la bibliotheque de l'objet sous forme de string.
+                """
+        return self.__nom_bibliotheque
+    @property
+    def nom_fichier_bibliotheque(self):
         """
         Renvoie le fichier de l'objet Bibliotheque
 
@@ -41,6 +51,7 @@ class Bibliotheque:
         """
         return list(map(lambda x: x.nom_theme, self.__liste_themes))
 
+    @property
     def liste_themes(self):
         """
         Retourne tous les objets Theme instanciés dans l'objet Bibliotheque.
@@ -61,7 +72,8 @@ class Bibliotheque:
             if theme_recuperer.nom_theme == nom_theme or theme_recuperer.nom_fichier == nom_theme:
                 return theme_recuperer
 
-    def retourne_total(self):
+    @property
+    def dictionnaire_themes(self):
         """
         Permet de récupérer toutes les données liées à l'objet Bibliotheque, tels que les thèmes avec leurs questions
         et leurs réponses.

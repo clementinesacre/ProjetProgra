@@ -51,5 +51,9 @@ class CultureGeneraleTest(unittest.TestCase):
     def test_nom_utilisateur(self):
         pass
 
+
+
+
+
 if __name__ == "__main__":
     unittest.main(argv=['first-arg-is-ignored'], exit=False)
