@@ -110,4 +110,3 @@ def recup_donnees_fichier_json(fichier):
         print('Erreur IO.')
     return donnees
 
-print(recup_donnees_fichier_json("../ressources/scores.json"))
