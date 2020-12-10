@@ -18,7 +18,6 @@ class CultureGeneraleTest(unittest.TestCase):
         self.assertEqual(len(f.aleatoire(['Combien vaut 2 + 2 = ?', 'Quelle est la racine carrée de 25 ?',
                                           'Quelle est le carré de 8 ?', 'Quel chiffre est un chiffre premier ?',
                                           'Quel chiffre est une puissance de 2 ?'], 6)), 1)
-        kk
 
     def test_recup_donnees_fichier(self):
         """self.assertEqual(f.recup_donnees_fichier("../ressources/geographie.csv"),
