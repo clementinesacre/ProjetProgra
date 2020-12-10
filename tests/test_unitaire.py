@@ -15,12 +15,16 @@ class CultureGeneraleTest(unittest.TestCase):
         self.assertEqual(len(f.aleatoire(['Combien vaut 2 + 2 = ?', 'Quelle est la racine carrée de 25 ?',
                                           'Quelle est le carré de 8 ?', 'Quel chiffre est un chiffre premier ?',
                                           'Quel chiffre est une puissance de 2 ?'], 1)), 1)
+        self.assertEqual(len(f.aleatoire(['Combien vaut 2 + 2 = ?', 'Quelle est la racine carrée de 25 ?',
+                                          'Quelle est le carré de 8 ?', 'Quel chiffre est un chiffre premier ?',
+                                          'Quel chiffre est une puissance de 2 ?'], 6)), 1)
+        kk
 
     def test_recup_donnees_fichier(self):
         """self.assertEqual(f.recup_donnees_fichier("../ressources/geographie.csv"),
                          [['Combien vaut 2 + 2 = ?', '4', '3', '8', '4', '12'],
                           ['Quelle est la capitale de la Belgique ?', 'Bruxelles', 'Bruxelles', 'Namur',
-                           'Ostende', 'Liege']])"""
+                           'Ostende', 'Liege']])""" # soucis de chemin
         self.assertRaises(FileNotFoundError, lambda: f.recup_donnees_fichier("azerty"))
         self.assertRaises(IOError, lambda: f.recup_donnees_fichier(""))
 
