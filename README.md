@@ -1,4 +1,4 @@
-# Projet programmation - Culture Générale
+# Projet programmation - Culture Générale ![Culture Générale](https://github.com/clementinesacre/ProjetProgra/workflows/Culture Générale/badge.svg?branch=master)
 Auteurs : Cécile Bonnet - Clémentine Sacré
 
 ##Etapes :
