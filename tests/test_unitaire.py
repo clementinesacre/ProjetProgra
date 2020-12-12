@@ -66,5 +66,5 @@ class CultureGeneraleTest(unittest.TestCase):
         self.assertEqual(obj2.nom_fichier, "ressources/math.csv")
 
 
-if __name__ == "__main__":
-    unittest.main(argv=['first-arg-is-ignored'], exit=False)
+"""if __name__ == "__main__":
+    unittest.main(argv=['first-arg-is-ignored'], exit=False)"""
