@@ -17,14 +17,6 @@ class CultureGeneraleTest(unittest.TestCase):
                                           'Quel chiffre est une puissance de 2 ?'], 1)), 1)
 
     def test_recup_donnees_fichier(self):
-        """self.assertEqual(f.recup_donnees_fichier("../ressources/geographie.csv"),
-                         [['Combien vaut 2 + 2 = ?', '4', '3', '8', '4', '12'],
-                          ['Quelle est la capitale de la Belgique ?', 'Bruxelles', 'Bruxelles', 'Namur',
-                           'Ostende', 'Liege']])"""
-        """self.assertEqual(f.recup_donnees_fichier("geographie.csv"),
-                         [['Combien vaut 2 + 2 = ?', '4', '3', '8', '4', '12'],
-                          ['Quelle est la capitale de la Belgique ?', 'Bruxelles', 'Bruxelles', 'Namur',
-                           'Ostende', 'Liege']])"""
         self.assertEqual(f.recup_donnees_fichier("./ressources/geographie.csv"),
                          [['Combien vaut 2 + 2 = ?', '4', '3', '8', '4', '12'],
                           ['Quelle est la capitale de la Belgique ?', 'Bruxelles', 'Bruxelles', 'Namur',
@@ -65,6 +57,3 @@ class CultureGeneraleTest(unittest.TestCase):
         self.assertEqual(obj2.nom_theme, "math")
         self.assertEqual(obj2.nom_fichier, "ressources/math.csv")
 
-
-"""if __name__ == "__main__":
-    unittest.main(argv=['first-arg-is-ignored'], exit=False)"""
