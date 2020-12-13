@@ -1,13 +1,13 @@
-from setuptools import setup
+import setuptools
 
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
-setup(
+setuptools.setup(
     name='cultureg',
-    version='1.0.2',
-    package_dir={'': 'ressources'},
+    version='1.0.5',
     url='https://github.com/clementinesacre/ProjetProgra',
+    packages=setuptools.find_packages(),
     license='',
     author='Cécile Bonnet, Clémentine Sacré',
     author_email='c.bonnet@students.ephec.be, c.sacre@students.ephec.be',
@@ -21,3 +21,4 @@ setup(
     ],
     python_requires='>=3.6',
 )
+
