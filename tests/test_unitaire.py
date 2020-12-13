@@ -60,31 +60,27 @@ class CultureGeneraleTest(unittest.TestCase):
         self.assertEqual(obj2.nom_theme, "math")
         self.assertEqual(obj2.nom_fichier, "ressources/math.csv")
 
-    def test_nom_bibliotheque(self):
-        self.assertEqual(bi.Bibliotheque('librairie', "./ressources/themes.csv").nom_bibliotheque, 'librairie')
-
-    def test_nom_fichier_bibliothque(self):
-        self.assertEqual(bi.Bibliotheque('librairie', "./ressources/themes.csv").nom_fichier_bibliotheque,
-                         [['geographie.csv'], ['math.csv']])
-
-    def test_retourne_themes(self):
-        self.assertEqual(bi.Bibliotheque('librairie', "./ressources/themes.csv").retourne_themes(), [])
-
-    def test_liste_themes(self):
-        self.assertEqual(bi.Bibliotheque('librairie', "./ressources/themes.csv").liste_themes, [])
-
-    def test_recuperer_theme(self):
-        self.assertEqual(bi.Bibliotheque('librairie', "./ressources/themes.csv").recuperer_theme('math'), None)
-
-    def test_dictionnaire_themes(self):
-        self.assertEqual(bi.Bibliotheque('librairie', "./ressources/themes.csv").dictionnaire_themes, {})
-
-    def test_suppression_theme(self):
+    def test_bibliotheque(self):
+        Bibli = bi.Bibliotheque('librairie', "./ressources/themes.csv")
+        Bibli.initialisation_theme('math.csv')
         obj = th.Theme('geo.csv')
         obj2 = th.Theme('')
-        self.assertRaises(FileNotFoundError, lambda: bi.Bibliotheque('librairie', "./ressources/themes.csv")
-                          .suppression_theme(obj))
-        self.assertRaises(IOError, lambda: bi.Bibliotheque('librairie', "./ressources/themes.csv")
-                          .suppression_theme(obj2))
+
+        self.assertEqual(Bibli.nom_bibliotheque, 'librairie')
+
+        self.assertEqual(Bibli.nom_fichier_bibliotheque,
+                         [['geographie.csv'], ['math.csv']])
+
+        self.assertEqual(Bibli.retourne_themes(), ['math'])
+
+        self.assertEqual(len(Bibli.liste_themes), 1)
+
+        #self.assertEqual(type(Bibli.recuperer_theme('math')), 'class classe.theme.Theme')
+        self.assertEqual(Bibli.recuperer_theme('test'), '')
+
+        self.assertEqual(Bibli.dictionnaire_themes,  {'math': {}})
+
+        self.assertRaises(FileNotFoundError, lambda: Bibli.suppression_theme(obj))
+        self.assertRaises(IOError, lambda: Bibli.suppression_theme(obj2))
 
 

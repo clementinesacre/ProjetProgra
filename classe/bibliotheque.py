@@ -68,12 +68,13 @@ class Bibliotheque:
         PRE : 'nom_theme' est une string.
         POST : Retourne l'objet Theme sur base de son nom ou du nom de son fichier.
         """
-        try:
-            for theme_recuperer in self.__liste_themes:
-                if theme_recuperer.nom_theme == nom_theme or theme_recuperer.nom_fichier == nom_theme:
-                    return theme_recuperer
-        except FileNotFoundError:
-            print("fichier introuvable")
+
+        for theme_recuperer in self.__liste_themes:
+            if theme_recuperer.nom_theme == nom_theme or theme_recuperer.nom_fichier == nom_theme:
+                return theme_recuperer
+
+        return ''
+
 
     @property
     def dictionnaire_themes(self):
@@ -145,7 +146,11 @@ class Bibliotheque:
         except IOError : print('Erreur IO ')
 
 
-
+if __name__ == "__main__":
+    a = Bibliotheque('librairie', "./ressources/themes.csv")
+    a.initialisation_theme('math.csv')
+    a.initialisation_theme('geographie.csv')
+    print(type(a.recuperer_theme('math')))
 
 
 
