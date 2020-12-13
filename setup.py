@@ -7,7 +7,7 @@ setup(
     name='cultureg',
     version='1.0.1',
     package_dir={'': 'ressources'},
-    url='',
+    url='https://github.com/clementinesacre/ProjetProgra',
     license='',
     author='Cécile Bonnet, Clémentine Sacré',
     author_email='c.bonnet@students.ephec.be, c.sacre@students.ephec.be',
