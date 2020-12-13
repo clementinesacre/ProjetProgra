@@ -16,11 +16,11 @@ class Bibliotheque:
     @property
     def nom_bibliotheque(self):
         """
-                Renvoie le fichier de l'objet Bibliotheque
+        Renvoie le fichier de l'objet Bibliotheque
 
-                PRE : -
-                POST : Retourne le nom de la bibliotheque de l'objet sous forme de string.
-                """
+        PRE : -
+        POST : Retourne le nom de la bibliotheque de l'objet sous forme de string.
+        """
         return self.__nom_bibliotheque
     @property
     def nom_fichier_bibliotheque(self):
