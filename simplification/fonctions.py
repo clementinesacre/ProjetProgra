@@ -110,5 +110,3 @@ def recup_donnees_fichier_json(fichier):
     return donnees
 
 
-if __name__ == "__main__":
-    recup_donnees_fichier_json('ressources/scores.json')
