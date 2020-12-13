@@ -103,10 +103,12 @@ def recup_donnees_fichier_json(fichier):
     try:
         with open(fichier, 'r') as file:
             donnees = json.load(file)
-
     except FileNotFoundError:
         print('Fichier introuvable.')
     except IOError:
         print('Erreur IO.')
     return donnees
 
+
+if __name__ == "__main__":
+    recup_donnees_fichier_json('ressources/scores.json')

@@ -68,9 +68,12 @@ class Bibliotheque:
         PRE : 'nom_theme' est une string.
         POST : Retourne l'objet Theme sur base de son nom ou du nom de son fichier.
         """
-        for theme_recuperer in self.__liste_themes:
-            if theme_recuperer.nom_theme == nom_theme or theme_recuperer.nom_fichier == nom_theme:
-                return theme_recuperer
+        try:
+            for theme_recuperer in self.__liste_themes:
+                if theme_recuperer.nom_theme == nom_theme or theme_recuperer.nom_fichier == nom_theme:
+                    return theme_recuperer
+        except FileNotFoundError:
+            print("fichier introuvable")
 
     @property
     def dictionnaire_themes(self):
@@ -96,8 +99,9 @@ class Bibliotheque:
         """
         nouveau_theme = Theme(nom_nouveau_fichier + ".csv")
         nom_fichier = nouveau_theme.nom_fichier
+        print(nom_fichier[11:])
 
-        try:
+        try :
             with open(nom_fichier, 'w', newline='') as csvfile:
                 write = csv.writer(csvfile)
                 write.writerow(["questions", "bonneReponse", "reponseA", "reponseB", "reponseC", "reponseD"])
@@ -105,11 +109,8 @@ class Bibliotheque:
             with open("ressources/themes.csv", 'a', newline='') as doss21:
                 write = csv.writer(doss21)
                 write.writerow([nom_fichier[11:]])
-
-        except FileNotFoundError:
-            print('Fichier introuvable.')
-        except IOError:
-            print('Erreur IO.')
+        except FileNotFoundError : print('Fichier introuvable')
+        except IOError: print('Erreur IO ')
 
         self.__liste_themes.append(nouveau_theme)
         self.__dictionnaire_themes[nouveau_theme.nom_theme] = ""
@@ -127,13 +128,26 @@ class Bibliotheque:
         del self.__liste_themes[self.__liste_themes.index(theme)]
 
         liste_fichiers = []
-        with open("ressources/themes.csv", "r") as fichier_lecture:
-            lire = csv.reader(fichier_lecture)
-            for ligne in lire:
-                if theme.nom_fichier[11:] != (','.join(ligne).rstrip()):
-                    liste_fichiers.append(','.join(ligne))
 
-        with open("ressources/themes.csv", 'w', newline='') as fichier_ecriture:
-            write = csv.writer(fichier_ecriture)
-            for i in liste_fichiers:
-                write.writerow([i])
+        try :
+            with open("ressources/themes.csv", "r") as fichier_lecture:
+                lire = csv.reader(fichier_lecture)
+                for ligne in lire:
+                    if theme.nom_fichier[11:] != (','.join(ligne).rstrip()):
+                        liste_fichiers.append(','.join(ligne))
+
+            with open("ressources/themes.csv", 'w', newline='') as fichier_ecriture:
+                write = csv.writer(fichier_ecriture)
+                for i in liste_fichiers:
+                    write.writerow([i])
+
+        except FileNotFoundError: print('Fichier introuvable')
+        except IOError : print('Erreur IO ')
+
+
+
+
+
+
+
+

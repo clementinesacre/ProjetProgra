@@ -4,6 +4,7 @@ from simplification import fonctions as f
 from classe import utilisateur as ut
 from classe import question_reponse as qr
 from classe import theme as th
+from classe import bibliotheque as bi
 import unittest
 
 
@@ -15,15 +16,15 @@ class CultureGeneraleTest(unittest.TestCase):
         self.assertEqual(len(f.aleatoire(['Combien vaut 2 + 2 = ?', 'Quelle est la racine carrée de 25 ?',
                                           'Quelle est le carré de 8 ?', 'Quel chiffre est un chiffre premier ?',
                                           'Quel chiffre est une puissance de 2 ?'], 1)), 1)
-        self.assertEqual(len(f.aleatoire(['Combien vaut 2 + 2 = ?', 'Quelle est la racine carrée de 25 ?',
+        """self.assertEqual(len(f.aleatoire(['Combien vaut 2 + 2 = ?', 'Quelle est la racine carrée de 25 ?',
                                           'Quelle est le carré de 8 ?', 'Quel chiffre est un chiffre premier ?',
-                                          'Quel chiffre est une puissance de 2 ?'], 6)), 1)
+                                          'Quel chiffre est une puissance de 2 ?'], 6)), 1)"""
 
     def test_recup_donnees_fichier(self):
         """self.assertEqual(f.recup_donnees_fichier("../ressources/geographie.csv"),
                          [['Combien vaut 2 + 2 = ?', '4', '3', '8', '4', '12'],
                           ['Quelle est la capitale de la Belgique ?', 'Bruxelles', 'Bruxelles', 'Namur',
-                           'Ostende', 'Liege']])""" # soucis de chemin
+                           'Ostende', 'Liege']])"""   # soucis de chemin
         self.assertRaises(FileNotFoundError, lambda: f.recup_donnees_fichier("azerty"))
         self.assertRaises(IOError, lambda: f.recup_donnees_fichier(""))
 
@@ -33,7 +34,6 @@ class CultureGeneraleTest(unittest.TestCase):
 
     def test_validation_oui_non(self):
         pass
-        # self.assertEqual(f.validation_oui_non("Coucou"), "oui") # pas ok input
 
     def test_recup_donnees_fichier_json(self):
         self.assertRaises(FileNotFoundError, lambda: f.recup_donnees_fichier("azerty"))
@@ -60,6 +60,31 @@ class CultureGeneraleTest(unittest.TestCase):
         self.assertEqual(obj2.nom_theme, "math")
         self.assertEqual(obj2.nom_fichier, "ressources/math.csv")
 
+    def test_nom_bibliotheque(self):
+        self.assertEqual(bi.Bibliotheque('librairie', "./ressources/themes.csv").nom_bibliotheque, 'librairie')
 
-if __name__ == "__main__":
-    unittest.main(argv=['first-arg-is-ignored'], exit=False)
+    def test_nom_fichier_bibliothque(self):
+        self.assertEqual(bi.Bibliotheque('librairie', "./ressources/themes.csv").nom_fichier_bibliotheque,
+                         [['geographie.csv'], ['math.csv']])
+
+    def test_retourne_themes(self):
+        self.assertEqual(bi.Bibliotheque('librairie', "./ressources/themes.csv").retourne_themes(), [])
+
+    def test_liste_themes(self):
+        self.assertEqual(bi.Bibliotheque('librairie', "./ressources/themes.csv").liste_themes, [])
+
+    def test_recuperer_theme(self):
+        self.assertEqual(bi.Bibliotheque('librairie', "./ressources/themes.csv").recuperer_theme('math'), None)
+
+    def test_dictionnaire_themes(self):
+        self.assertEqual(bi.Bibliotheque('librairie', "./ressources/themes.csv").dictionnaire_themes, {})
+
+    def test_suppression_theme(self):
+        obj = th.Theme('geo.csv')
+        obj2 = th.Theme('')
+        self.assertRaises(FileNotFoundError, lambda: bi.Bibliotheque('librairie', "./ressources/themes.csv")
+                          .suppression_theme(obj))
+        self.assertRaises(IOError, lambda: bi.Bibliotheque('librairie', "./ressources/themes.csv")
+                          .suppression_theme(obj2))
+
+
