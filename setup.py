@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name='cultureg',
-    version='1.0.1',
+    version='1.0.2',
     package_dir={'': 'ressources'},
     url='https://github.com/clementinesacre/ProjetProgra',
     license='',
