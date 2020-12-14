@@ -64,3 +64,5 @@ class Reponse:
         POST : Renvoie True ou False.
         """
         return self.__type_reponse
+
+

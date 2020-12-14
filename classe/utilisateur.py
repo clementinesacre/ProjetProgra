@@ -4,6 +4,7 @@
 from datetime import date
 from simplification import fonctions as fct
 from classe import variable_globale as vb
+from classe import theme as t
 import json
 
 
@@ -49,3 +50,4 @@ class Utilisateur:
             print('Fichier introuvable.')
         except IOError:
             print('Erreur IO.')
+
