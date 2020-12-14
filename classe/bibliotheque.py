@@ -72,9 +72,7 @@ class Bibliotheque:
         for theme_recuperer in self.__liste_themes:
             if theme_recuperer.nom_theme == nom_theme or theme_recuperer.nom_fichier == nom_theme:
                 return theme_recuperer
-
-        return ''
-
+        return ""
 
     @property
     def dictionnaire_themes(self):
@@ -110,8 +108,10 @@ class Bibliotheque:
             with open("ressources/themes.csv", 'a', newline='') as doss21:
                 write = csv.writer(doss21)
                 write.writerow([nom_fichier[11:]])
-        except FileNotFoundError : print('Fichier introuvable')
-        except IOError: print('Erreur IO ')
+        except FileNotFoundError :
+            print('Fichier introuvable')
+        except IOError:
+            print('Erreur IO ')
 
         self.__liste_themes.append(nouveau_theme)
         self.__dictionnaire_themes[nouveau_theme.nom_theme] = ""
@@ -142,15 +142,11 @@ class Bibliotheque:
                 for i in liste_fichiers:
                     write.writerow([i])
 
-        except FileNotFoundError: print('Fichier introuvable')
-        except IOError : print('Erreur IO ')
+        except FileNotFoundError:
+            raise FileNotFoundError('Fichier introuvable')
+        except IOError :
+            raise IOError('Erreur IO ')
 
-
-if __name__ == "__main__":
-    a = Bibliotheque('librairie', "./ressources/themes.csv")
-    a.initialisation_theme('math.csv')
-    a.initialisation_theme('geographie.csv')
-    print(type(a.recuperer_theme('math')))
 
 
 
