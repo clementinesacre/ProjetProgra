@@ -6,6 +6,9 @@ from simplification import fonctions as fct
 from classe import variable_globale as vb
 from classe import theme as t
 import json
+import logging
+import datetime
+logging.basicConfig(filename='../log/history.log', level=logging.DEBUG)
 
 
 class Utilisateur:
@@ -47,7 +50,11 @@ class Utilisateur:
                 fichier.write(dico_json)
 
         except FileNotFoundError:
+            logging.error(str(datetime.datetime.now())
+                          + ' classe/utilisateur.py : ajout_score() : FileNotFoundError : ' + theme)
             raise FileNotFoundError('Fichier introuvable.')
         except IOError:
+            logging.error(str(datetime.datetime.now())
+                          + ' classe/utilisateur.py : ajout_score() : IOError : ' + theme)
             raise IOError('Erreur IO.')
 

@@ -2,6 +2,10 @@
 
 from classe.question_reponse import *
 import csv
+import logging
+import datetime
+logging.basicConfig(filename='../log/history.log', level=logging.DEBUG)
+
 
 
 class Theme:
@@ -79,8 +83,12 @@ class Theme:
                 nouveau_fichier = csv.writer(fichier, quotechar=',')
                 nouveau_fichier.writerow(donnees)
         except FileNotFoundError:
+            logging.error(str(datetime.datetime.now())
+                          + ' classe/theme.py : creation_question() : FileNotFoundError : ' + donnees)
             raise FileNotFoundError('Fichier introuvable.')
         except IOError:
+            logging.error(str(datetime.datetime.now())
+                          + ' classe/theme.py : creation_question() : IOError : ' + donnees)
             raise IOError('Erreur IO.')
 
     def suppression_question(self, question_a_supprimer):
@@ -94,6 +102,8 @@ class Theme:
         try:
             del self.__question_theme[question_a_supprimer]
         except KeyError:
+            logging.error(str(datetime.datetime.now())
+                          + ' classe/theme.py : suppression_question() : KeyError : ' + question_a_supprimer)
             raise KeyError("Clé inconnue")
 
 
@@ -107,6 +117,10 @@ class Theme:
                                               reponses[0][0], reponses[1][0], reponses[2][0], reponses[3][0]])
 
         except FileNotFoundError:
+            logging.error(str(datetime.datetime.now())
+                          + ' classe/theme.py : suppression_question() : FileNotFoundError : ' + question_a_supprimer)
             raise FileNotFoundError('Fichier introuvable.')
         except IOError:
+            logging.error(str(datetime.datetime.now())
+                          + ' classe/theme.py : suppression_question() : IOError : ' + question_a_supprimer)
             raise IOError('Erreur IO.')

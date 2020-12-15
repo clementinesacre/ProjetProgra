@@ -4,6 +4,9 @@ import options.menu as om
 from simplification import fonctions as fct
 from classe.theme import *
 import os
+import logging
+import datetime
+logging.basicConfig(filename='../log/history.log', level=logging.DEBUG)
 
 
 class Bibliotheque:
@@ -109,8 +112,12 @@ class Bibliotheque:
                 write = csv.writer(doss21)
                 write.writerow([nom_fichier[11:]])
         except FileNotFoundError:
+            logging.error(str(datetime.datetime.now())
+                          + ' classe/bibliotheque.py : creation_theme() : FileNotFoundError : ' + nom_nouveau_fichier)
             raise FileNotFoundError('Fichier introuvable')
         except IOError:
+            logging.error(str(datetime.datetime.now())
+                          + ' classe/bibliotheque.py : creation_theme() : IOError : ' + nom_nouveau_fichier)
             raise IOError('Erreur IO ')
 
         self.__liste_themes.append(nouveau_theme)
@@ -127,6 +134,8 @@ class Bibliotheque:
         try:
             del self.__liste_themes[self.__liste_themes.index(theme)]
         except ValueError:
+            logging.error(str(datetime.datetime.now())
+                          + ' classe/bibliotheque.py : suppression_theme() : ValueError : ' + theme)
             raise ValueError("Clé inconnue")
 
         liste_fichiers = []
@@ -143,8 +152,12 @@ class Bibliotheque:
                     write.writerow([i])
 
         except FileNotFoundError:
+            logging.error(str(datetime.datetime.now())
+                          + ' classe/bibliotheque.py : suppression_theme() : FileNotFoundError : ' + theme)
             raise FileNotFoundError('Fichier introuvable')
         except IOError:
+            logging.error(str(datetime.datetime.now())
+                          + ' classe/bibliotheque.py : suppression_theme() : IOError : ' + theme)
             raise IOError('Erreur IO ')
 
         os.remove(theme.nom_fichier)
