@@ -25,10 +25,10 @@ class CultureGeneraleTest(unittest.TestCase):
 
     def test_theme(self):
         c = th.Theme('geographie.csv')
-        c.initialisation_question(["Que fait 3-2", 1])
+        c.initialisation_question(["Que fait 3-2", 1, 1, 2, 5, 7])
         self.assertEqual(c.nom_theme, 'geographie')
         self.assertEqual(c.nom_fichier, 'ressources/geographie.csv')
-        self.assertEqual(c.question_theme, {'Que fait 3-2': []})
+        self.assertEqual(c.question_theme, {'Que fait 3-2': [[1, True], [2, False], [5, False], [7, False]]})
 
     def test_utilisateurs(self):
         d = ut.Utilisateur('pouspous')

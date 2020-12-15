@@ -2,11 +2,14 @@
 
 from classe import bibliotheque, utilisateur, theme
 import logging
+import os
+import errno
+from simplification import fonctions as f
+from logging.handlers import TimedRotatingFileHandler
 
 joueur = None
 librairie = None
 theme_courant = None
-logger = None
 
 
 def initialisation_informations():

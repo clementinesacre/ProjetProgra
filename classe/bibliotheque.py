@@ -3,10 +3,13 @@
 import options.menu as om
 from simplification import fonctions as fct
 from classe.theme import *
+
 import os
 import logging
 import datetime
-logging.basicConfig(filename='./log/history.log', level=logging.DEBUG)
+# logging.basicConfig(filename='./log/history.log', level=logging.DEBUG)
+
+logger = logging.getLogger("cultureg")
 
 
 class Bibliotheque:
@@ -69,7 +72,7 @@ class Bibliotheque:
         """
         objet_t = Theme(nom_theme)
         self.__liste_themes.append(objet_t)
-        logging.info(str(datetime.datetime.now())
+        logger.info(str(datetime.datetime.now())
                       + ' classe/bibliotheque.py : initialisation_theme() : ' + nom_theme)
 
 
@@ -115,18 +118,18 @@ class Bibliotheque:
                 write = csv.writer(doss21)
                 write.writerow([nom_fichier[11:]])
         except FileNotFoundError:
-            logging.error(str(datetime.datetime.now())
+            logger.error(str(datetime.datetime.now())
                           + ' classe/bibliotheque.py : creation_theme() : FileNotFoundError : ' + nom_nouveau_fichier)
             raise FileNotFoundError('Fichier introuvable')
         except IOError:
-            logging.error(str(datetime.datetime.now())
+            logger.error(str(datetime.datetime.now())
                           + ' classe/bibliotheque.py : creation_theme() : IOError : ' + nom_nouveau_fichier)
             raise IOError('Erreur IO ')
 
         self.__liste_themes.append(nouveau_theme)
         self.__dictionnaire_themes[nouveau_theme.nom_theme] = ""
-        logging.info(str(datetime.datetime.now())
-                     + ' classe/bibliotheque.py : creation_theme() : ' + nom_nouveau_fichier)
+        logger.info(str(datetime.datetime.now()) + ' classe/bibliotheque.py : creation_theme() : '
+                    + nom_nouveau_fichier)
 
     def suppression_theme(self, theme):
         """
@@ -135,12 +138,11 @@ class Bibliotheque:
         PRE : 'theme' est un objet Theme.
         POST : Supprime le fichier du thème et le retire du fichier des thèmes et de la liste des objets Themes.
         """
-        # os.remove(theme.nom_fichier)
         try:
             del self.__liste_themes[self.__liste_themes.index(theme)]
         except ValueError:
-            logging.error(str(datetime.datetime.now())
-                          + ' classe/bibliotheque.py : suppression_theme() : ValueError : ' + theme)
+            logger.error(str(datetime.datetime.now())+ ' classe/bibliotheque.py : suppression_theme() : ValueError : '
+                         + theme.nom_theme)
             raise ValueError("Clé inconnue")
 
         liste_fichiers = []
@@ -157,14 +159,13 @@ class Bibliotheque:
                     write.writerow([i])
 
         except FileNotFoundError:
-            logging.error(str(datetime.datetime.now())
-                          + ' classe/bibliotheque.py : suppression_theme() : FileNotFoundError : ' + theme)
+            logger.error(str(datetime.datetime.now())
+                          + ' classe/bibliotheque.py : suppression_theme() : FileNotFoundError : ' + theme.nom_fichier)
             raise FileNotFoundError('Fichier introuvable')
         except IOError:
-            logging.error(str(datetime.datetime.now())
-                          + ' classe/bibliotheque.py : suppression_theme() : IOError : ' + theme)
+            logger.error(str(datetime.datetime.now())
+                          + ' classe/bibliotheque.py : suppression_theme() : IOError : ' + theme.nom_fichier)
             raise IOError('Erreur IO ')
 
         os.remove(theme.nom_fichier)
-        logging.info(str(datetime.datetime.now())
-                     + ' classe/bibliotheque.py : suppression_theme() : ' + theme)
+        logger.info(str(datetime.datetime.now()) + ' classe/bibliotheque.py : suppression_theme() : ' + theme.nom_theme)

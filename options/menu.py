@@ -12,8 +12,9 @@ from graphique import console_graphique as cg
 
 import datetime
 import logging
-logging.basicConfig(filename='./log/history.log', level=logging.DEBUG)
+# logging.basicConfig(filename='./log/history.log', level=logging.DEBUG)
 
+logger = logging.getLogger("cultureg")
 
 def introduction():
     """
@@ -32,11 +33,11 @@ def introduction():
                 fichier.write(nouveau_dictionnaire)
 
         except FileNotFoundError:
-            logging.error(str(datetime.datetime.now()) + ' options/menu.py : introduction() : FileNotFoundError : '
+            logger.error(str(datetime.datetime.now()) + ' options/menu.py : introduction() : FileNotFoundError : '
                                                          'ressources/scores.json')
             raise FileNotFoundError('Fichier introuvable.')
         except IOError:
-            logging.error(str(datetime.datetime.now()) + ' options/menu.py : introduction() : IOError : '
+            logger.error(str(datetime.datetime.now()) + ' options/menu.py : introduction() : IOError : '
                                                          'ressources/scores.json')
             raise IOError('Erreur IO.')
 
@@ -66,12 +67,14 @@ def jouer_console():
     print("    {0}. Revenir en arrière\n".format(len(vb.librairie.retourne_themes()) + 1))
 
     choix_theme = fct.validation_question("Choisissez un thème.", len(themes_jeu) + 1)
+    if choix_theme == len(themes_jeu) + 1:
+        fct.separation()
+        return menu_principal()
+
     vb.initialisation_theme(themes_jeu[choix_theme - 1])
     fct.separation()
 
-    if choix_theme == len(themes_jeu) + 1:
-        return menu_principal()
-    elif len(themes_jeu) == 0:
+    if len(themes_jeu) == 0:
         print("Il n'y a pas de question dans ce thème.")
         fct.separation()
         return jouer_console()

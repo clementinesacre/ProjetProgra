@@ -67,3 +67,369 @@ INFO:root:2020-12-15 16:54:19.808290 classe/theme.py : creation_question() : ini
 INFO:root:2020-12-15 16:54:19.808290 classe/questions_reponses.py : creation_reponses() : ['60', False], ['60', False]
 INFO:root:2020-12-15 16:54:19.808290 classe/theme.py : creation_question() : initialisation de Quel est le plus petit commun diviseur de 7 et 15 ? dans math
 ERROR:root:2020-12-15 16:54:24.439894 simplification/fonctions.py : validation_question() : ValueError : 
+INFO:root:2020-12-15 17:18:26.923205 classe/bibliotheque.py : initialisation_theme() : geographie.csv
+INFO:root:2020-12-15 17:18:26.924190 classe/bibliotheque.py : initialisation_theme() : math.csv
+INFO:root:2020-12-15 17:18:26.924190 classe/questions_reponses.py : creation_reponses() : ['3', False], ['3', False]
+INFO:root:2020-12-15 17:18:26.924190 classe/theme.py : creation_question() : initialisation de Combien vaut 2 + 2 = ? dans geographie
+INFO:root:2020-12-15 17:18:26.924190 classe/questions_reponses.py : creation_reponses() : ['Bruxelles', True], ['Bruxelles', True]
+INFO:root:2020-12-15 17:18:26.927183 classe/theme.py : creation_question() : initialisation de Quelle est la capitale de la Belgique ? dans geographie
+INFO:root:2020-12-15 17:18:26.927183 classe/questions_reponses.py : creation_reponses() : ['3', False], ['3', False]
+INFO:root:2020-12-15 17:18:26.928179 classe/theme.py : creation_question() : initialisation de Combien vaut 2 + 2 = ? dans math
+INFO:root:2020-12-15 17:18:26.928179 classe/questions_reponses.py : creation_reponses() : ['17', False], ['17', False]
+INFO:root:2020-12-15 17:18:26.928179 classe/theme.py : creation_question() : initialisation de Quelle est la racine carrée de 25 ? dans math
+INFO:root:2020-12-15 17:18:26.928179 classe/questions_reponses.py : creation_reponses() : ['49', False], ['49', False]
+INFO:root:2020-12-15 17:18:26.928179 classe/theme.py : creation_question() : initialisation de Quelle est le carré de 8 ? dans math
+INFO:root:2020-12-15 17:18:26.928179 classe/questions_reponses.py : creation_reponses() : ['22', False], ['22', False]
+INFO:root:2020-12-15 17:18:26.928179 classe/theme.py : creation_question() : initialisation de Quel chiffre est un chiffre premier ? dans math
+INFO:root:2020-12-15 17:18:26.928179 classe/questions_reponses.py : creation_reponses() : ['256', True], ['256', True]
+INFO:root:2020-12-15 17:18:26.928179 classe/theme.py : creation_question() : initialisation de Quel chiffre est une puissance de 2 ? dans math
+INFO:root:2020-12-15 17:18:26.929175 classe/questions_reponses.py : creation_reponses() : ['26', False], ['26', False]
+INFO:root:2020-12-15 17:18:26.929175 classe/theme.py : creation_question() : initialisation de Combien vaut 4 * 8 - 12 + 4 / 2 ? dans math
+INFO:root:2020-12-15 17:18:26.929175 classe/questions_reponses.py : creation_reponses() : ['Pythagore', True], ['Pythagore', True]
+INFO:root:2020-12-15 17:18:26.929175 classe/theme.py : creation_question() : initialisation de Qui est lié aux math ? dans math
+INFO:root:2020-12-15 17:18:26.929175 classe/questions_reponses.py : creation_reponses() : ['0.765', False], ['0.765', False]
+INFO:root:2020-12-15 17:18:26.929175 classe/theme.py : creation_question() : initialisation de Combien vaut 1/8 ? dans math
+INFO:root:2020-12-15 17:18:26.929175 classe/questions_reponses.py : creation_reponses() : ['3.5', True], ['3.5', True]
+INFO:root:2020-12-15 17:18:26.929175 classe/theme.py : creation_question() : initialisation de Si 2x - 7 = 0 x = ? dans math
+INFO:root:2020-12-15 17:18:26.929175 classe/questions_reponses.py : creation_reponses() : ['60', False], ['60', False]
+INFO:root:2020-12-15 17:18:26.929175 classe/theme.py : creation_question() : initialisation de Quel est le plus petit commun diviseur de 7 et 15 ? dans math
+ERROR:root:2020-12-15 17:18:33.736010 simplification/fonctions.py : validation_question() : ValueError : 
+INFO:root:2020-12-15 17:18:52.736963 classe/bibliotheque.py : initialisation_theme() : geographie.csv
+INFO:root:2020-12-15 17:18:52.736963 classe/bibliotheque.py : initialisation_theme() : math.csv
+INFO:root:2020-12-15 17:18:52.737955 classe/questions_reponses.py : creation_reponses() : ['3', False], ['3', False]
+INFO:root:2020-12-15 17:18:52.737955 classe/theme.py : creation_question() : initialisation de Combien vaut 2 + 2 = ? dans geographie
+INFO:root:2020-12-15 17:18:52.737955 classe/questions_reponses.py : creation_reponses() : ['Bruxelles', True], ['Bruxelles', True]
+INFO:root:2020-12-15 17:18:52.737955 classe/theme.py : creation_question() : initialisation de Quelle est la capitale de la Belgique ? dans geographie
+INFO:root:2020-12-15 17:18:52.737955 classe/questions_reponses.py : creation_reponses() : ['3', False], ['3', False]
+INFO:root:2020-12-15 17:18:52.737955 classe/theme.py : creation_question() : initialisation de Combien vaut 2 + 2 = ? dans math
+INFO:root:2020-12-15 17:18:52.737955 classe/questions_reponses.py : creation_reponses() : ['17', False], ['17', False]
+INFO:root:2020-12-15 17:18:52.737955 classe/theme.py : creation_question() : initialisation de Quelle est la racine carrée de 25 ? dans math
+INFO:root:2020-12-15 17:18:52.738953 classe/questions_reponses.py : creation_reponses() : ['49', False], ['49', False]
+INFO:root:2020-12-15 17:18:52.738953 classe/theme.py : creation_question() : initialisation de Quelle est le carré de 8 ? dans math
+INFO:root:2020-12-15 17:18:52.738953 classe/questions_reponses.py : creation_reponses() : ['22', False], ['22', False]
+INFO:root:2020-12-15 17:18:52.738953 classe/theme.py : creation_question() : initialisation de Quel chiffre est un chiffre premier ? dans math
+INFO:root:2020-12-15 17:18:52.738953 classe/questions_reponses.py : creation_reponses() : ['256', True], ['256', True]
+INFO:root:2020-12-15 17:18:52.738953 classe/theme.py : creation_question() : initialisation de Quel chiffre est une puissance de 2 ? dans math
+INFO:root:2020-12-15 17:18:52.739948 classe/questions_reponses.py : creation_reponses() : ['26', False], ['26', False]
+INFO:root:2020-12-15 17:18:52.739948 classe/theme.py : creation_question() : initialisation de Combien vaut 4 * 8 - 12 + 4 / 2 ? dans math
+INFO:root:2020-12-15 17:18:52.739948 classe/questions_reponses.py : creation_reponses() : ['Pythagore', True], ['Pythagore', True]
+INFO:root:2020-12-15 17:18:52.739948 classe/theme.py : creation_question() : initialisation de Qui est lié aux math ? dans math
+INFO:root:2020-12-15 17:18:52.739948 classe/questions_reponses.py : creation_reponses() : ['0.765', False], ['0.765', False]
+INFO:root:2020-12-15 17:18:52.739948 classe/theme.py : creation_question() : initialisation de Combien vaut 1/8 ? dans math
+INFO:root:2020-12-15 17:18:52.739948 classe/questions_reponses.py : creation_reponses() : ['3.5', True], ['3.5', True]
+INFO:root:2020-12-15 17:18:52.739948 classe/theme.py : creation_question() : initialisation de Si 2x - 7 = 0 x = ? dans math
+INFO:root:2020-12-15 17:18:52.739948 classe/questions_reponses.py : creation_reponses() : ['60', False], ['60', False]
+INFO:root:2020-12-15 17:18:52.740945 classe/theme.py : creation_question() : initialisation de Quel est le plus petit commun diviseur de 7 et 15 ? dans math
+INFO:root:2020-12-15 17:18:58.929752 classe/bibliotheque.py : initialisation_theme() : geographie.csv
+INFO:root:2020-12-15 17:18:58.929752 classe/bibliotheque.py : initialisation_theme() : math.csv
+INFO:root:2020-12-15 17:18:58.930750 classe/questions_reponses.py : creation_reponses() : ['3', False], ['3', False]
+INFO:root:2020-12-15 17:18:58.930750 classe/theme.py : creation_question() : initialisation de Combien vaut 2 + 2 = ? dans geographie
+INFO:root:2020-12-15 17:18:58.930750 classe/questions_reponses.py : creation_reponses() : ['Bruxelles', True], ['Bruxelles', True]
+INFO:root:2020-12-15 17:18:58.930750 classe/theme.py : creation_question() : initialisation de Quelle est la capitale de la Belgique ? dans geographie
+INFO:root:2020-12-15 17:18:58.931744 classe/questions_reponses.py : creation_reponses() : ['3', False], ['3', False]
+INFO:root:2020-12-15 17:18:58.931744 classe/theme.py : creation_question() : initialisation de Combien vaut 2 + 2 = ? dans math
+INFO:root:2020-12-15 17:18:58.931744 classe/questions_reponses.py : creation_reponses() : ['17', False], ['17', False]
+INFO:root:2020-12-15 17:18:58.931744 classe/theme.py : creation_question() : initialisation de Quelle est la racine carrée de 25 ? dans math
+INFO:root:2020-12-15 17:18:58.931744 classe/questions_reponses.py : creation_reponses() : ['49', False], ['49', False]
+INFO:root:2020-12-15 17:18:58.931744 classe/theme.py : creation_question() : initialisation de Quelle est le carré de 8 ? dans math
+INFO:root:2020-12-15 17:18:58.931744 classe/questions_reponses.py : creation_reponses() : ['22', False], ['22', False]
+INFO:root:2020-12-15 17:18:58.931744 classe/theme.py : creation_question() : initialisation de Quel chiffre est un chiffre premier ? dans math
+INFO:root:2020-12-15 17:18:58.931744 classe/questions_reponses.py : creation_reponses() : ['256', True], ['256', True]
+INFO:root:2020-12-15 17:18:58.932742 classe/theme.py : creation_question() : initialisation de Quel chiffre est une puissance de 2 ? dans math
+INFO:root:2020-12-15 17:18:58.932742 classe/questions_reponses.py : creation_reponses() : ['26', False], ['26', False]
+INFO:root:2020-12-15 17:18:58.932742 classe/theme.py : creation_question() : initialisation de Combien vaut 4 * 8 - 12 + 4 / 2 ? dans math
+INFO:root:2020-12-15 17:18:58.932742 classe/questions_reponses.py : creation_reponses() : ['Pythagore', True], ['Pythagore', True]
+INFO:root:2020-12-15 17:18:58.932742 classe/theme.py : creation_question() : initialisation de Qui est lié aux math ? dans math
+INFO:root:2020-12-15 17:18:58.933739 classe/questions_reponses.py : creation_reponses() : ['0.765', False], ['0.765', False]
+INFO:root:2020-12-15 17:18:58.933739 classe/theme.py : creation_question() : initialisation de Combien vaut 1/8 ? dans math
+INFO:root:2020-12-15 17:18:58.933739 classe/questions_reponses.py : creation_reponses() : ['3.5', True], ['3.5', True]
+INFO:root:2020-12-15 17:18:58.933739 classe/theme.py : creation_question() : initialisation de Si 2x - 7 = 0 x = ? dans math
+INFO:root:2020-12-15 17:18:58.933739 classe/questions_reponses.py : creation_reponses() : ['60', False], ['60', False]
+INFO:root:2020-12-15 17:18:58.933739 classe/theme.py : creation_question() : initialisation de Quel est le plus petit commun diviseur de 7 et 15 ? dans math
+INFO:root:2020-12-15 17:20:01.057646 classe/bibliotheque.py : initialisation_theme() : geographie.csv
+INFO:root:2020-12-15 17:20:01.064646 classe/bibliotheque.py : initialisation_theme() : math.csv
+INFO:root:2020-12-15 17:20:01.066630 classe/questions_reponses.py : creation_reponses() : ['3', False], ['3', False]
+INFO:root:2020-12-15 17:20:01.066630 classe/theme.py : creation_question() : initialisation de Combien vaut 2 + 2 = ? dans geographie
+INFO:root:2020-12-15 17:20:01.067622 classe/questions_reponses.py : creation_reponses() : ['Bruxelles', True], ['Bruxelles', True]
+INFO:root:2020-12-15 17:20:01.067622 classe/theme.py : creation_question() : initialisation de Quelle est la capitale de la Belgique ? dans geographie
+INFO:root:2020-12-15 17:20:01.068618 classe/questions_reponses.py : creation_reponses() : ['3', False], ['3', False]
+INFO:root:2020-12-15 17:20:01.068618 classe/theme.py : creation_question() : initialisation de Combien vaut 2 + 2 = ? dans math
+INFO:root:2020-12-15 17:20:01.068618 classe/questions_reponses.py : creation_reponses() : ['17', False], ['17', False]
+INFO:root:2020-12-15 17:20:01.069618 classe/theme.py : creation_question() : initialisation de Quelle est la racine carrée de 25 ? dans math
+INFO:root:2020-12-15 17:20:01.069618 classe/questions_reponses.py : creation_reponses() : ['49', False], ['49', False]
+INFO:root:2020-12-15 17:20:01.069618 classe/theme.py : creation_question() : initialisation de Quelle est le carré de 8 ? dans math
+INFO:root:2020-12-15 17:20:01.070614 classe/questions_reponses.py : creation_reponses() : ['22', False], ['22', False]
+INFO:root:2020-12-15 17:20:01.070614 classe/theme.py : creation_question() : initialisation de Quel chiffre est un chiffre premier ? dans math
+INFO:root:2020-12-15 17:20:01.070614 classe/questions_reponses.py : creation_reponses() : ['256', True], ['256', True]
+INFO:root:2020-12-15 17:20:01.070614 classe/theme.py : creation_question() : initialisation de Quel chiffre est une puissance de 2 ? dans math
+INFO:root:2020-12-15 17:20:01.070614 classe/questions_reponses.py : creation_reponses() : ['26', False], ['26', False]
+INFO:root:2020-12-15 17:20:01.071610 classe/theme.py : creation_question() : initialisation de Combien vaut 4 * 8 - 12 + 4 / 2 ? dans math
+INFO:root:2020-12-15 17:20:01.071610 classe/questions_reponses.py : creation_reponses() : ['Pythagore', True], ['Pythagore', True]
+INFO:root:2020-12-15 17:20:01.071610 classe/theme.py : creation_question() : initialisation de Qui est lié aux math ? dans math
+INFO:root:2020-12-15 17:20:01.072615 classe/questions_reponses.py : creation_reponses() : ['0.765', False], ['0.765', False]
+INFO:root:2020-12-15 17:20:01.072615 classe/theme.py : creation_question() : initialisation de Combien vaut 1/8 ? dans math
+INFO:root:2020-12-15 17:20:01.072615 classe/questions_reponses.py : creation_reponses() : ['3.5', True], ['3.5', True]
+INFO:root:2020-12-15 17:20:01.073606 classe/theme.py : creation_question() : initialisation de Si 2x - 7 = 0 x = ? dans math
+INFO:root:2020-12-15 17:20:01.073606 classe/questions_reponses.py : creation_reponses() : ['60', False], ['60', False]
+INFO:root:2020-12-15 17:20:01.073606 classe/theme.py : creation_question() : initialisation de Quel est le plus petit commun diviseur de 7 et 15 ? dans math
+INFO:root:2020-12-15 17:20:47.801119 classe/bibliotheque.py : initialisation_theme() : geographie.csv
+INFO:root:2020-12-15 17:20:47.811095 classe/bibliotheque.py : initialisation_theme() : math.csv
+INFO:root:2020-12-15 17:20:47.816594 classe/questions_reponses.py : creation_reponses() : ['3', False], ['3', False]
+INFO:root:2020-12-15 17:20:47.826568 classe/theme.py : creation_question() : initialisation de Combien vaut 2 + 2 = ? dans geographie
+INFO:root:2020-12-15 17:20:47.829560 classe/questions_reponses.py : creation_reponses() : ['Bruxelles', True], ['Bruxelles', True]
+INFO:root:2020-12-15 17:20:47.833548 classe/theme.py : creation_question() : initialisation de Quelle est la capitale de la Belgique ? dans geographie
+INFO:root:2020-12-15 17:20:47.842526 classe/questions_reponses.py : creation_reponses() : ['3', False], ['3', False]
+INFO:root:2020-12-15 17:20:47.850503 classe/theme.py : creation_question() : initialisation de Combien vaut 2 + 2 = ? dans math
+INFO:root:2020-12-15 17:20:47.864466 classe/questions_reponses.py : creation_reponses() : ['17', False], ['17', False]
+INFO:root:2020-12-15 17:20:47.872445 classe/theme.py : creation_question() : initialisation de Quelle est la racine carrée de 25 ? dans math
+INFO:root:2020-12-15 17:20:47.878427 classe/questions_reponses.py : creation_reponses() : ['49', False], ['49', False]
+INFO:root:2020-12-15 17:20:47.890398 classe/theme.py : creation_question() : initialisation de Quelle est le carré de 8 ? dans math
+INFO:root:2020-12-15 17:20:47.910942 classe/questions_reponses.py : creation_reponses() : ['22', False], ['22', False]
+INFO:root:2020-12-15 17:20:47.924907 classe/theme.py : creation_question() : initialisation de Quel chiffre est un chiffre premier ? dans math
+INFO:root:2020-12-15 17:20:47.937871 classe/questions_reponses.py : creation_reponses() : ['256', True], ['256', True]
+INFO:root:2020-12-15 17:20:47.947844 classe/theme.py : creation_question() : initialisation de Quel chiffre est une puissance de 2 ? dans math
+INFO:root:2020-12-15 17:20:47.960811 classe/questions_reponses.py : creation_reponses() : ['26', False], ['26', False]
+INFO:root:2020-12-15 17:20:47.965796 classe/theme.py : creation_question() : initialisation de Combien vaut 4 * 8 - 12 + 4 / 2 ? dans math
+INFO:root:2020-12-15 17:20:47.978762 classe/questions_reponses.py : creation_reponses() : ['Pythagore', True], ['Pythagore', True]
+INFO:root:2020-12-15 17:20:47.986740 classe/theme.py : creation_question() : initialisation de Qui est lié aux math ? dans math
+INFO:root:2020-12-15 17:20:47.992727 classe/questions_reponses.py : creation_reponses() : ['0.765', False], ['0.765', False]
+INFO:root:2020-12-15 17:20:48.031137 classe/theme.py : creation_question() : initialisation de Combien vaut 1/8 ? dans math
+INFO:root:2020-12-15 17:20:48.065046 classe/questions_reponses.py : creation_reponses() : ['3.5', True], ['3.5', True]
+INFO:root:2020-12-15 17:20:48.082998 classe/theme.py : creation_question() : initialisation de Si 2x - 7 = 0 x = ? dans math
+INFO:root:2020-12-15 17:20:48.097961 classe/questions_reponses.py : creation_reponses() : ['60', False], ['60', False]
+INFO:root:2020-12-15 17:20:48.127392 classe/theme.py : creation_question() : initialisation de Quel est le plus petit commun diviseur de 7 et 15 ? dans math
+INFO:root:2020-12-15 17:21:39.455022 classe/bibliotheque.py : initialisation_theme() : geographie.csv
+INFO:root:2020-12-15 17:21:39.460008 classe/bibliotheque.py : initialisation_theme() : math.csv
+INFO:root:2020-12-15 17:21:39.466992 classe/questions_reponses.py : creation_reponses() : ['3', False], ['3', False]
+INFO:root:2020-12-15 17:21:39.472973 classe/theme.py : creation_question() : initialisation de Combien vaut 2 + 2 = ? dans geographie
+INFO:root:2020-12-15 17:21:39.476349 classe/questions_reponses.py : creation_reponses() : ['Bruxelles', True], ['Bruxelles', True]
+INFO:root:2020-12-15 17:21:39.481339 classe/theme.py : creation_question() : initialisation de Quelle est la capitale de la Belgique ? dans geographie
+INFO:root:2020-12-15 17:21:39.487323 classe/questions_reponses.py : creation_reponses() : ['3', False], ['3', False]
+INFO:root:2020-12-15 17:21:39.493305 classe/theme.py : creation_question() : initialisation de Combien vaut 2 + 2 = ? dans math
+INFO:root:2020-12-15 17:21:39.498294 classe/questions_reponses.py : creation_reponses() : ['17', False], ['17', False]
+INFO:root:2020-12-15 17:21:39.503947 classe/theme.py : creation_question() : initialisation de Quelle est la racine carrée de 25 ? dans math
+INFO:root:2020-12-15 17:21:39.520902 classe/questions_reponses.py : creation_reponses() : ['49', False], ['49', False]
+INFO:root:2020-12-15 17:21:39.543840 classe/theme.py : creation_question() : initialisation de Quelle est le carré de 8 ? dans math
+INFO:root:2020-12-15 17:21:39.553814 classe/questions_reponses.py : creation_reponses() : ['22', False], ['22', False]
+INFO:root:2020-12-15 17:21:39.558802 classe/theme.py : creation_question() : initialisation de Quel chiffre est un chiffre premier ? dans math
+INFO:root:2020-12-15 17:21:39.566783 classe/questions_reponses.py : creation_reponses() : ['256', True], ['256', True]
+INFO:root:2020-12-15 17:21:39.582742 classe/theme.py : creation_question() : initialisation de Quel chiffre est une puissance de 2 ? dans math
+INFO:root:2020-12-15 17:21:39.587723 classe/questions_reponses.py : creation_reponses() : ['26', False], ['26', False]
+INFO:root:2020-12-15 17:21:39.591712 classe/theme.py : creation_question() : initialisation de Combien vaut 4 * 8 - 12 + 4 / 2 ? dans math
+INFO:root:2020-12-15 17:21:39.600701 classe/questions_reponses.py : creation_reponses() : ['Pythagore', True], ['Pythagore', True]
+INFO:root:2020-12-15 17:21:39.616646 classe/theme.py : creation_question() : initialisation de Qui est lié aux math ? dans math
+INFO:root:2020-12-15 17:21:39.622630 classe/questions_reponses.py : creation_reponses() : ['0.765', False], ['0.765', False]
+INFO:root:2020-12-15 17:21:39.627615 classe/theme.py : creation_question() : initialisation de Combien vaut 1/8 ? dans math
+INFO:root:2020-12-15 17:21:39.646565 classe/questions_reponses.py : creation_reponses() : ['3.5', True], ['3.5', True]
+INFO:root:2020-12-15 17:21:39.657537 classe/theme.py : creation_question() : initialisation de Si 2x - 7 = 0 x = ? dans math
+INFO:root:2020-12-15 17:21:39.668509 classe/questions_reponses.py : creation_reponses() : ['60', False], ['60', False]
+INFO:root:2020-12-15 17:21:39.674490 classe/theme.py : creation_question() : initialisation de Quel est le plus petit commun diviseur de 7 et 15 ? dans math
+INFO:root:2020-12-15 17:54:10.520308 classe/bibliotheque.py : initialisation_theme() : geographie.csv
+INFO:root:2020-12-15 17:54:10.520308 classe/bibliotheque.py : initialisation_theme() : math.csv
+INFO:root:2020-12-15 17:54:10.521310 classe/questions_reponses.py : creation_reponses() : ['3', False], ['3', False]
+INFO:root:2020-12-15 17:54:10.521310 classe/theme.py : creation_question() : initialisation de Combien vaut 2 + 2 = ? dans geographie
+INFO:root:2020-12-15 17:54:10.521310 classe/questions_reponses.py : creation_reponses() : ['Bruxelles', True], ['Bruxelles', True]
+INFO:root:2020-12-15 17:54:10.521310 classe/theme.py : creation_question() : initialisation de Quelle est la capitale de la Belgique ? dans geographie
+INFO:root:2020-12-15 17:54:10.521310 classe/questions_reponses.py : creation_reponses() : ['3', False], ['3', False]
+INFO:root:2020-12-15 17:54:10.521310 classe/theme.py : creation_question() : initialisation de Combien vaut 2 + 2 = ? dans math
+INFO:root:2020-12-15 17:54:10.521310 classe/questions_reponses.py : creation_reponses() : ['17', False], ['17', False]
+INFO:root:2020-12-15 17:54:10.521310 classe/theme.py : creation_question() : initialisation de Quelle est la racine carrée de 25 ? dans math
+INFO:root:2020-12-15 17:54:10.521310 classe/questions_reponses.py : creation_reponses() : ['49', False], ['49', False]
+INFO:root:2020-12-15 17:54:10.521310 classe/theme.py : creation_question() : initialisation de Quelle est le carré de 8 ? dans math
+INFO:root:2020-12-15 17:54:10.521310 classe/questions_reponses.py : creation_reponses() : ['22', False], ['22', False]
+INFO:root:2020-12-15 17:54:10.521310 classe/theme.py : creation_question() : initialisation de Quel chiffre est un chiffre premier ? dans math
+INFO:root:2020-12-15 17:54:10.521310 classe/questions_reponses.py : creation_reponses() : ['256', True], ['256', True]
+INFO:root:2020-12-15 17:54:10.521310 classe/theme.py : creation_question() : initialisation de Quel chiffre est une puissance de 2 ? dans math
+INFO:root:2020-12-15 17:54:10.521310 classe/questions_reponses.py : creation_reponses() : ['26', False], ['26', False]
+INFO:root:2020-12-15 17:54:10.521310 classe/theme.py : creation_question() : initialisation de Combien vaut 4 * 8 - 12 + 4 / 2 ? dans math
+INFO:root:2020-12-15 17:54:10.521310 classe/questions_reponses.py : creation_reponses() : ['Pythagore', True], ['Pythagore', True]
+INFO:root:2020-12-15 17:54:10.522303 classe/theme.py : creation_question() : initialisation de Qui est lié aux math ? dans math
+INFO:root:2020-12-15 17:54:10.522303 classe/questions_reponses.py : creation_reponses() : ['0.765', False], ['0.765', False]
+INFO:root:2020-12-15 17:54:10.522303 classe/theme.py : creation_question() : initialisation de Combien vaut 1/8 ? dans math
+INFO:root:2020-12-15 17:54:10.522303 classe/questions_reponses.py : creation_reponses() : ['3.5', True], ['3.5', True]
+INFO:root:2020-12-15 17:54:10.522303 classe/theme.py : creation_question() : initialisation de Si 2x - 7 = 0 x = ? dans math
+INFO:root:2020-12-15 17:54:10.522303 classe/questions_reponses.py : creation_reponses() : ['60', False], ['60', False]
+INFO:root:2020-12-15 17:54:10.522303 classe/theme.py : creation_question() : initialisation de Quel est le plus petit commun diviseur de 7 et 15 ? dans math
+INFO:root:2020-12-15 17:55:33.484035 classe/bibliotheque.py : initialisation_theme() : geographie.csv
+INFO:root:2020-12-15 17:55:33.484035 classe/bibliotheque.py : initialisation_theme() : math.csv
+INFO:root:2020-12-15 17:55:33.484035 classe/questions_reponses.py : creation_reponses() : ['3', False], ['3', False]
+INFO:root:2020-12-15 17:55:33.484035 classe/theme.py : creation_question() : initialisation de Combien vaut 2 + 2 = ? dans geographie
+INFO:root:2020-12-15 17:55:33.484035 classe/questions_reponses.py : creation_reponses() : ['Bruxelles', True], ['Bruxelles', True]
+INFO:root:2020-12-15 17:55:33.484035 classe/theme.py : creation_question() : initialisation de Quelle est la capitale de la Belgique ? dans geographie
+INFO:root:2020-12-15 17:55:33.484035 classe/questions_reponses.py : creation_reponses() : ['3', False], ['3', False]
+INFO:root:2020-12-15 17:55:33.484035 classe/theme.py : creation_question() : initialisation de Combien vaut 2 + 2 = ? dans math
+INFO:root:2020-12-15 17:55:33.484035 classe/questions_reponses.py : creation_reponses() : ['17', False], ['17', False]
+INFO:root:2020-12-15 17:55:33.484035 classe/theme.py : creation_question() : initialisation de Quelle est la racine carrée de 25 ? dans math
+INFO:root:2020-12-15 17:55:33.484035 classe/questions_reponses.py : creation_reponses() : ['49', False], ['49', False]
+INFO:root:2020-12-15 17:55:33.485033 classe/theme.py : creation_question() : initialisation de Quelle est le carré de 8 ? dans math
+INFO:root:2020-12-15 17:55:33.485033 classe/questions_reponses.py : creation_reponses() : ['22', False], ['22', False]
+INFO:root:2020-12-15 17:55:33.485033 classe/theme.py : creation_question() : initialisation de Quel chiffre est un chiffre premier ? dans math
+INFO:root:2020-12-15 17:55:33.485033 classe/questions_reponses.py : creation_reponses() : ['256', True], ['256', True]
+INFO:root:2020-12-15 17:55:33.485033 classe/theme.py : creation_question() : initialisation de Quel chiffre est une puissance de 2 ? dans math
+INFO:root:2020-12-15 17:55:33.485033 classe/questions_reponses.py : creation_reponses() : ['26', False], ['26', False]
+INFO:root:2020-12-15 17:55:33.485033 classe/theme.py : creation_question() : initialisation de Combien vaut 4 * 8 - 12 + 4 / 2 ? dans math
+INFO:root:2020-12-15 17:55:33.485033 classe/questions_reponses.py : creation_reponses() : ['Pythagore', True], ['Pythagore', True]
+INFO:root:2020-12-15 17:55:33.485033 classe/theme.py : creation_question() : initialisation de Qui est lié aux math ? dans math
+INFO:root:2020-12-15 17:55:33.485033 classe/questions_reponses.py : creation_reponses() : ['0.765', False], ['0.765', False]
+INFO:root:2020-12-15 17:55:33.485033 classe/theme.py : creation_question() : initialisation de Combien vaut 1/8 ? dans math
+INFO:root:2020-12-15 17:55:33.485033 classe/questions_reponses.py : creation_reponses() : ['3.5', True], ['3.5', True]
+INFO:root:2020-12-15 17:55:33.485033 classe/theme.py : creation_question() : initialisation de Si 2x - 7 = 0 x = ? dans math
+INFO:root:2020-12-15 17:55:33.485033 classe/questions_reponses.py : creation_reponses() : ['60', False], ['60', False]
+INFO:root:2020-12-15 17:55:33.485033 classe/theme.py : creation_question() : initialisation de Quel est le plus petit commun diviseur de 7 et 15 ? dans math
+INFO:root:2020-12-15 17:57:12.903744 classe/bibliotheque.py : initialisation_theme() : geographie.csv
+INFO:root:2020-12-15 17:57:12.903744 classe/bibliotheque.py : initialisation_theme() : math.csv
+INFO:root:2020-12-15 17:57:12.904740 classe/questions_reponses.py : creation_reponses() : ['3', False], ['3', False]
+INFO:root:2020-12-15 17:57:12.904740 classe/theme.py : creation_question() : initialisation de Combien vaut 2 + 2 = ? dans geographie
+INFO:root:2020-12-15 17:57:12.904740 classe/questions_reponses.py : creation_reponses() : ['Bruxelles', True], ['Bruxelles', True]
+INFO:root:2020-12-15 17:57:12.904740 classe/theme.py : creation_question() : initialisation de Quelle est la capitale de la Belgique ? dans geographie
+INFO:root:2020-12-15 17:57:12.904740 classe/questions_reponses.py : creation_reponses() : ['3', False], ['3', False]
+INFO:root:2020-12-15 17:57:12.904740 classe/theme.py : creation_question() : initialisation de Combien vaut 2 + 2 = ? dans math
+INFO:root:2020-12-15 17:57:12.904740 classe/questions_reponses.py : creation_reponses() : ['17', False], ['17', False]
+INFO:root:2020-12-15 17:57:12.904740 classe/theme.py : creation_question() : initialisation de Quelle est la racine carrée de 25 ? dans math
+INFO:root:2020-12-15 17:57:12.904740 classe/questions_reponses.py : creation_reponses() : ['49', False], ['49', False]
+INFO:root:2020-12-15 17:57:12.904740 classe/theme.py : creation_question() : initialisation de Quelle est le carré de 8 ? dans math
+INFO:root:2020-12-15 17:57:12.904740 classe/questions_reponses.py : creation_reponses() : ['22', False], ['22', False]
+INFO:root:2020-12-15 17:57:12.904740 classe/theme.py : creation_question() : initialisation de Quel chiffre est un chiffre premier ? dans math
+INFO:root:2020-12-15 17:57:12.904740 classe/questions_reponses.py : creation_reponses() : ['256', True], ['256', True]
+INFO:root:2020-12-15 17:57:12.904740 classe/theme.py : creation_question() : initialisation de Quel chiffre est une puissance de 2 ? dans math
+INFO:root:2020-12-15 17:57:12.904740 classe/questions_reponses.py : creation_reponses() : ['26', False], ['26', False]
+INFO:root:2020-12-15 17:57:12.905736 classe/theme.py : creation_question() : initialisation de Combien vaut 4 * 8 - 12 + 4 / 2 ? dans math
+INFO:root:2020-12-15 17:57:12.905736 classe/questions_reponses.py : creation_reponses() : ['Pythagore', True], ['Pythagore', True]
+INFO:root:2020-12-15 17:57:12.905736 classe/theme.py : creation_question() : initialisation de Qui est lié aux math ? dans math
+INFO:root:2020-12-15 17:57:12.905736 classe/questions_reponses.py : creation_reponses() : ['0.765', False], ['0.765', False]
+INFO:root:2020-12-15 17:57:12.905736 classe/theme.py : creation_question() : initialisation de Combien vaut 1/8 ? dans math
+INFO:root:2020-12-15 17:57:12.905736 classe/questions_reponses.py : creation_reponses() : ['3.5', True], ['3.5', True]
+INFO:root:2020-12-15 17:57:12.905736 classe/theme.py : creation_question() : initialisation de Si 2x - 7 = 0 x = ? dans math
+INFO:root:2020-12-15 17:57:12.905736 classe/questions_reponses.py : creation_reponses() : ['60', False], ['60', False]
+INFO:root:2020-12-15 17:57:12.905736 classe/theme.py : creation_question() : initialisation de Quel est le plus petit commun diviseur de 7 et 15 ? dans math
+INFO:root:2020-12-15 18:02:05.845291 classe/bibliotheque.py : initialisation_theme() : geographie.csv
+INFO:root:2020-12-15 18:02:05.845291 classe/bibliotheque.py : initialisation_theme() : math.csv
+INFO:root:2020-12-15 18:02:05.846289 classe/questions_reponses.py : creation_reponses() : ['3', False], ['3', False]
+INFO:root:2020-12-15 18:02:05.846289 classe/theme.py : creation_question() : initialisation de Combien vaut 2 + 2 = ? dans geographie
+INFO:root:2020-12-15 18:02:05.846289 classe/questions_reponses.py : creation_reponses() : ['Bruxelles', True], ['Bruxelles', True]
+INFO:root:2020-12-15 18:02:05.846289 classe/theme.py : creation_question() : initialisation de Quelle est la capitale de la Belgique ? dans geographie
+INFO:root:2020-12-15 18:02:05.846289 classe/questions_reponses.py : creation_reponses() : ['3', False], ['3', False]
+INFO:root:2020-12-15 18:02:05.846289 classe/theme.py : creation_question() : initialisation de Combien vaut 2 + 2 = ? dans math
+INFO:root:2020-12-15 18:02:05.846289 classe/questions_reponses.py : creation_reponses() : ['17', False], ['17', False]
+INFO:root:2020-12-15 18:02:05.846289 classe/theme.py : creation_question() : initialisation de Quelle est la racine carrée de 25 ? dans math
+INFO:root:2020-12-15 18:02:05.846289 classe/questions_reponses.py : creation_reponses() : ['49', False], ['49', False]
+INFO:root:2020-12-15 18:02:05.846289 classe/theme.py : creation_question() : initialisation de Quelle est le carré de 8 ? dans math
+INFO:root:2020-12-15 18:02:05.846289 classe/questions_reponses.py : creation_reponses() : ['22', False], ['22', False]
+INFO:root:2020-12-15 18:02:05.846289 classe/theme.py : creation_question() : initialisation de Quel chiffre est un chiffre premier ? dans math
+INFO:root:2020-12-15 18:02:05.846289 classe/questions_reponses.py : creation_reponses() : ['256', True], ['256', True]
+INFO:root:2020-12-15 18:02:05.846289 classe/theme.py : creation_question() : initialisation de Quel chiffre est une puissance de 2 ? dans math
+INFO:root:2020-12-15 18:02:05.846289 classe/questions_reponses.py : creation_reponses() : ['26', False], ['26', False]
+INFO:root:2020-12-15 18:02:05.846289 classe/theme.py : creation_question() : initialisation de Combien vaut 4 * 8 - 12 + 4 / 2 ? dans math
+INFO:root:2020-12-15 18:02:05.846289 classe/questions_reponses.py : creation_reponses() : ['Pythagore', True], ['Pythagore', True]
+INFO:root:2020-12-15 18:02:05.847286 classe/theme.py : creation_question() : initialisation de Qui est lié aux math ? dans math
+INFO:root:2020-12-15 18:02:05.847286 classe/questions_reponses.py : creation_reponses() : ['0.765', False], ['0.765', False]
+INFO:root:2020-12-15 18:02:05.847286 classe/theme.py : creation_question() : initialisation de Combien vaut 1/8 ? dans math
+INFO:root:2020-12-15 18:02:05.847286 classe/questions_reponses.py : creation_reponses() : ['3.5', True], ['3.5', True]
+INFO:root:2020-12-15 18:02:05.847286 classe/theme.py : creation_question() : initialisation de Si 2x - 7 = 0 x = ? dans math
+INFO:root:2020-12-15 18:02:05.847286 classe/questions_reponses.py : creation_reponses() : ['60', False], ['60', False]
+INFO:root:2020-12-15 18:02:05.847286 classe/theme.py : creation_question() : initialisation de Quel est le plus petit commun diviseur de 7 et 15 ? dans math
+INFO:root:2020-12-15 18:02:32.926334 classe/bibliotheque.py : initialisation_theme() : geographie.csv
+INFO:root:2020-12-15 18:02:32.926334 classe/bibliotheque.py : initialisation_theme() : math.csv
+INFO:root:2020-12-15 18:02:32.926334 classe/questions_reponses.py : creation_reponses() : ['3', False], ['3', False]
+INFO:root:2020-12-15 18:02:32.926334 classe/theme.py : creation_question() : initialisation de Combien vaut 2 + 2 = ? dans geographie
+INFO:root:2020-12-15 18:02:32.926334 classe/questions_reponses.py : creation_reponses() : ['Bruxelles', True], ['Bruxelles', True]
+INFO:root:2020-12-15 18:02:32.926334 classe/theme.py : creation_question() : initialisation de Quelle est la capitale de la Belgique ? dans geographie
+INFO:root:2020-12-15 18:02:32.926334 classe/questions_reponses.py : creation_reponses() : ['3', False], ['3', False]
+INFO:root:2020-12-15 18:02:32.926334 classe/theme.py : creation_question() : initialisation de Combien vaut 2 + 2 = ? dans math
+INFO:root:2020-12-15 18:02:32.926334 classe/questions_reponses.py : creation_reponses() : ['17', False], ['17', False]
+INFO:root:2020-12-15 18:02:32.926334 classe/theme.py : creation_question() : initialisation de Quelle est la racine carrée de 25 ? dans math
+INFO:root:2020-12-15 18:02:32.927332 classe/questions_reponses.py : creation_reponses() : ['49', False], ['49', False]
+INFO:root:2020-12-15 18:02:32.927332 classe/theme.py : creation_question() : initialisation de Quelle est le carré de 8 ? dans math
+INFO:root:2020-12-15 18:02:32.927332 classe/questions_reponses.py : creation_reponses() : ['22', False], ['22', False]
+INFO:root:2020-12-15 18:02:32.927332 classe/theme.py : creation_question() : initialisation de Quel chiffre est un chiffre premier ? dans math
+INFO:root:2020-12-15 18:02:32.927332 classe/questions_reponses.py : creation_reponses() : ['256', True], ['256', True]
+INFO:root:2020-12-15 18:02:32.927332 classe/theme.py : creation_question() : initialisation de Quel chiffre est une puissance de 2 ? dans math
+INFO:root:2020-12-15 18:02:32.927332 classe/questions_reponses.py : creation_reponses() : ['26', False], ['26', False]
+INFO:root:2020-12-15 18:02:32.927332 classe/theme.py : creation_question() : initialisation de Combien vaut 4 * 8 - 12 + 4 / 2 ? dans math
+INFO:root:2020-12-15 18:02:32.927332 classe/questions_reponses.py : creation_reponses() : ['Pythagore', True], ['Pythagore', True]
+INFO:root:2020-12-15 18:02:32.927332 classe/theme.py : creation_question() : initialisation de Qui est lié aux math ? dans math
+INFO:root:2020-12-15 18:02:32.927332 classe/questions_reponses.py : creation_reponses() : ['0.765', False], ['0.765', False]
+INFO:root:2020-12-15 18:02:32.927332 classe/theme.py : creation_question() : initialisation de Combien vaut 1/8 ? dans math
+INFO:root:2020-12-15 18:02:32.927332 classe/questions_reponses.py : creation_reponses() : ['3.5', True], ['3.5', True]
+INFO:root:2020-12-15 18:02:32.927332 classe/theme.py : creation_question() : initialisation de Si 2x - 7 = 0 x = ? dans math
+INFO:root:2020-12-15 18:02:32.927332 classe/questions_reponses.py : creation_reponses() : ['60', False], ['60', False]
+INFO:root:2020-12-15 18:02:32.927332 classe/theme.py : creation_question() : initialisation de Quel est le plus petit commun diviseur de 7 et 15 ? dans math
+INFO:root:2020-12-15 18:02:44.402169 classe/utilisateur.py : ajout_score() : ajout de points : 100.0, theme : math, joueur : clem
+INFO:root:2020-12-15 18:03:26.640045 classe/bibliotheque.py : initialisation_theme() : geographie.csv
+INFO:root:2020-12-15 18:03:26.641043 classe/bibliotheque.py : initialisation_theme() : math.csv
+INFO:root:2020-12-15 18:03:26.641043 classe/questions_reponses.py : creation_reponses() : ['3', False], ['3', False]
+INFO:root:2020-12-15 18:03:26.641043 classe/theme.py : creation_question() : initialisation de Combien vaut 2 + 2 = ? dans geographie
+INFO:root:2020-12-15 18:03:26.641043 classe/questions_reponses.py : creation_reponses() : ['Bruxelles', True], ['Bruxelles', True]
+INFO:root:2020-12-15 18:03:26.641043 classe/theme.py : creation_question() : initialisation de Quelle est la capitale de la Belgique ? dans geographie
+INFO:root:2020-12-15 18:03:26.641043 classe/questions_reponses.py : creation_reponses() : ['3', False], ['3', False]
+INFO:root:2020-12-15 18:03:26.641043 classe/theme.py : creation_question() : initialisation de Combien vaut 2 + 2 = ? dans math
+INFO:root:2020-12-15 18:03:26.641043 classe/questions_reponses.py : creation_reponses() : ['17', False], ['17', False]
+INFO:root:2020-12-15 18:03:26.641043 classe/theme.py : creation_question() : initialisation de Quelle est la racine carrée de 25 ? dans math
+INFO:root:2020-12-15 18:03:26.641043 classe/questions_reponses.py : creation_reponses() : ['49', False], ['49', False]
+INFO:root:2020-12-15 18:03:26.641043 classe/theme.py : creation_question() : initialisation de Quelle est le carré de 8 ? dans math
+INFO:root:2020-12-15 18:03:26.641043 classe/questions_reponses.py : creation_reponses() : ['22', False], ['22', False]
+INFO:root:2020-12-15 18:03:26.641043 classe/theme.py : creation_question() : initialisation de Quel chiffre est un chiffre premier ? dans math
+INFO:root:2020-12-15 18:03:26.641043 classe/questions_reponses.py : creation_reponses() : ['256', True], ['256', True]
+INFO:root:2020-12-15 18:03:26.642040 classe/theme.py : creation_question() : initialisation de Quel chiffre est une puissance de 2 ? dans math
+INFO:root:2020-12-15 18:03:26.642040 classe/questions_reponses.py : creation_reponses() : ['26', False], ['26', False]
+INFO:root:2020-12-15 18:03:26.642040 classe/theme.py : creation_question() : initialisation de Combien vaut 4 * 8 - 12 + 4 / 2 ? dans math
+INFO:root:2020-12-15 18:03:26.642040 classe/questions_reponses.py : creation_reponses() : ['Pythagore', True], ['Pythagore', True]
+INFO:root:2020-12-15 18:03:26.642040 classe/theme.py : creation_question() : initialisation de Qui est lié aux math ? dans math
+INFO:root:2020-12-15 18:03:26.642040 classe/questions_reponses.py : creation_reponses() : ['0.765', False], ['0.765', False]
+INFO:root:2020-12-15 18:03:26.642040 classe/theme.py : creation_question() : initialisation de Combien vaut 1/8 ? dans math
+INFO:root:2020-12-15 18:03:26.642040 classe/questions_reponses.py : creation_reponses() : ['3.5', True], ['3.5', True]
+INFO:root:2020-12-15 18:03:26.642040 classe/theme.py : creation_question() : initialisation de Si 2x - 7 = 0 x = ? dans math
+INFO:root:2020-12-15 18:03:26.642040 classe/questions_reponses.py : creation_reponses() : ['60', False], ['60', False]
+INFO:root:2020-12-15 18:03:26.642040 classe/theme.py : creation_question() : initialisation de Quel est le plus petit commun diviseur de 7 et 15 ? dans math
+INFO:root:2020-12-15 18:09:32.912175 classe/bibliotheque.py : initialisation_theme() : geographie.csv
+INFO:root:2020-12-15 18:09:32.912175 classe/bibliotheque.py : initialisation_theme() : math.csv
+INFO:root:2020-12-15 18:09:32.913172 classe/questions_reponses.py : creation_reponses() : ['3', False], ['3', False]
+INFO:root:2020-12-15 18:09:32.913172 classe/theme.py : creation_question() : initialisation de Combien vaut 2 + 2 = ? dans geographie
+INFO:root:2020-12-15 18:09:32.913172 classe/questions_reponses.py : creation_reponses() : ['Bruxelles', True], ['Bruxelles', True]
+INFO:root:2020-12-15 18:09:32.913172 classe/theme.py : creation_question() : initialisation de Quelle est la capitale de la Belgique ? dans geographie
+INFO:root:2020-12-15 18:09:32.913172 classe/questions_reponses.py : creation_reponses() : ['3', False], ['3', False]
+INFO:root:2020-12-15 18:09:32.913172 classe/theme.py : creation_question() : initialisation de Combien vaut 2 + 2 = ? dans math
+INFO:root:2020-12-15 18:09:32.913172 classe/questions_reponses.py : creation_reponses() : ['17', False], ['17', False]
+INFO:root:2020-12-15 18:09:32.913172 classe/theme.py : creation_question() : initialisation de Quelle est la racine carrée de 25 ? dans math
+INFO:root:2020-12-15 18:09:32.913172 classe/questions_reponses.py : creation_reponses() : ['49', False], ['49', False]
+INFO:root:2020-12-15 18:09:32.913172 classe/theme.py : creation_question() : initialisation de Quelle est le carré de 8 ? dans math
+INFO:root:2020-12-15 18:09:32.913172 classe/questions_reponses.py : creation_reponses() : ['22', False], ['22', False]
+INFO:root:2020-12-15 18:09:32.913172 classe/theme.py : creation_question() : initialisation de Quel chiffre est un chiffre premier ? dans math
+INFO:root:2020-12-15 18:09:32.913172 classe/questions_reponses.py : creation_reponses() : ['256', True], ['256', True]
+INFO:root:2020-12-15 18:09:32.913172 classe/theme.py : creation_question() : initialisation de Quel chiffre est une puissance de 2 ? dans math
+INFO:root:2020-12-15 18:09:32.913172 classe/questions_reponses.py : creation_reponses() : ['26', False], ['26', False]
+INFO:root:2020-12-15 18:09:32.913172 classe/theme.py : creation_question() : initialisation de Combien vaut 4 * 8 - 12 + 4 / 2 ? dans math
+INFO:root:2020-12-15 18:09:32.913172 classe/questions_reponses.py : creation_reponses() : ['Pythagore', True], ['Pythagore', True]
+INFO:root:2020-12-15 18:09:32.914169 classe/theme.py : creation_question() : initialisation de Qui est lié aux math ? dans math
+INFO:root:2020-12-15 18:09:32.914169 classe/questions_reponses.py : creation_reponses() : ['0.765', False], ['0.765', False]
+INFO:root:2020-12-15 18:09:32.914169 classe/theme.py : creation_question() : initialisation de Combien vaut 1/8 ? dans math
+INFO:root:2020-12-15 18:09:32.914169 classe/questions_reponses.py : creation_reponses() : ['3.5', True], ['3.5', True]
+INFO:root:2020-12-15 18:09:32.914169 classe/theme.py : creation_question() : initialisation de Si 2x - 7 = 0 x = ? dans math
+INFO:root:2020-12-15 18:09:32.914169 classe/questions_reponses.py : creation_reponses() : ['60', False], ['60', False]
+INFO:root:2020-12-15 18:09:32.914169 classe/theme.py : creation_question() : initialisation de Quel est le plus petit commun diviseur de 7 et 15 ? dans math
+INFO:cultureg:2020-12-15 18:10:17.495136 classe/bibliotheque.py : initialisation_theme() : geographie.csv
+INFO:cultureg:2020-12-15 18:10:17.495136 classe/bibliotheque.py : initialisation_theme() : math.csv
+INFO:root:2020-12-15 18:10:17.495136 classe/questions_reponses.py : creation_reponses() : ['3', False], ['3', False]
+INFO:root:2020-12-15 18:10:17.496134 classe/theme.py : creation_question() : initialisation de Combien vaut 2 + 2 = ? dans geographie
+INFO:root:2020-12-15 18:10:17.496134 classe/questions_reponses.py : creation_reponses() : ['Bruxelles', True], ['Bruxelles', True]
+INFO:root:2020-12-15 18:10:17.496134 classe/theme.py : creation_question() : initialisation de Quelle est la capitale de la Belgique ? dans geographie
+INFO:root:2020-12-15 18:10:17.496134 classe/questions_reponses.py : creation_reponses() : ['3', False], ['3', False]
+INFO:root:2020-12-15 18:10:17.496134 classe/theme.py : creation_question() : initialisation de Combien vaut 2 + 2 = ? dans math
+INFO:root:2020-12-15 18:10:17.496134 classe/questions_reponses.py : creation_reponses() : ['17', False], ['17', False]
+INFO:root:2020-12-15 18:10:17.496134 classe/theme.py : creation_question() : initialisation de Quelle est la racine carrée de 25 ? dans math
+INFO:root:2020-12-15 18:10:17.496134 classe/questions_reponses.py : creation_reponses() : ['49', False], ['49', False]
+INFO:root:2020-12-15 18:10:17.496134 classe/theme.py : creation_question() : initialisation de Quelle est le carré de 8 ? dans math
+INFO:root:2020-12-15 18:10:17.496134 classe/questions_reponses.py : creation_reponses() : ['22', False], ['22', False]
+INFO:root:2020-12-15 18:10:17.496134 classe/theme.py : creation_question() : initialisation de Quel chiffre est un chiffre premier ? dans math
+INFO:root:2020-12-15 18:10:17.496134 classe/questions_reponses.py : creation_reponses() : ['256', True], ['256', True]
+INFO:root:2020-12-15 18:10:17.496134 classe/theme.py : creation_question() : initialisation de Quel chiffre est une puissance de 2 ? dans math
+INFO:root:2020-12-15 18:10:17.496134 classe/questions_reponses.py : creation_reponses() : ['26', False], ['26', False]
+INFO:root:2020-12-15 18:10:17.496134 classe/theme.py : creation_question() : initialisation de Combien vaut 4 * 8 - 12 + 4 / 2 ? dans math
+INFO:root:2020-12-15 18:10:17.496134 classe/questions_reponses.py : creation_reponses() : ['Pythagore', True], ['Pythagore', True]
+INFO:root:2020-12-15 18:10:17.496134 classe/theme.py : creation_question() : initialisation de Qui est lié aux math ? dans math
+INFO:root:2020-12-15 18:10:17.496134 classe/questions_reponses.py : creation_reponses() : ['0.765', False], ['0.765', False]
+INFO:root:2020-12-15 18:10:17.497132 classe/theme.py : creation_question() : initialisation de Combien vaut 1/8 ? dans math
+INFO:root:2020-12-15 18:10:17.497132 classe/questions_reponses.py : creation_reponses() : ['3.5', True], ['3.5', True]
+INFO:root:2020-12-15 18:10:17.497132 classe/theme.py : creation_question() : initialisation de Si 2x - 7 = 0 x = ? dans math
+INFO:root:2020-12-15 18:10:17.497132 classe/questions_reponses.py : creation_reponses() : ['60', False], ['60', False]
+INFO:root:2020-12-15 18:10:17.497132 classe/theme.py : creation_question() : initialisation de Quel est le plus petit commun diviseur de 7 et 15 ? dans math

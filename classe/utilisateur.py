@@ -8,8 +8,9 @@ from classe import theme as t
 import json
 import logging
 import datetime
-logging.basicConfig(filename='./log/history.log', level=logging.DEBUG)
+# logging.basicConfig(filename='./log/history.log', level=logging.DEBUG)
 
+logger = logging.getLogger("cultureg")
 
 class Utilisateur:
     def __init__(self, nom):
@@ -50,14 +51,14 @@ class Utilisateur:
                 fichier.write(dico_json)
 
         except FileNotFoundError:
-            logging.error(str(datetime.datetime.now())
+            logger.error(str(datetime.datetime.now())
                           + ' classe/utilisateur.py : ajout_score() : FileNotFoundError : ' + theme)
             raise FileNotFoundError('Fichier introuvable.')
         except IOError:
-            logging.error(str(datetime.datetime.now())
+            logger.error(str(datetime.datetime.now())
                           + ' classe/utilisateur.py : ajout_score() : IOError : ' + theme)
             raise IOError('Erreur IO.')
 
-        logging.info(str(datetime.datetime.now()) + ' classe/utilisateur.py : ajout_score() : ajout de points : ' +
+        logger.info(str(datetime.datetime.now()) + ' classe/utilisateur.py : ajout_score() : ajout de points : ' +
                      str(point) + ", theme : " + theme.nom_theme + ", joueur : " + self.__nom)
 
