@@ -35,7 +35,7 @@ def initialisation_theme(nom_du_theme):
     Permet d'initialiser l'objet Theme courant.
 
     PRE : Nécessite l'existence de la classe Theme et une initialisation préalable de la classe Bibliotheque via la
-    variable librairie.
+    variable librairie. 'nom_du_theme' est une string.
     POST : Instancie l'objet Theme dans la variale globale theme_courant.
     """
     global theme_courant

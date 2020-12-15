@@ -104,9 +104,7 @@ def recup_donnees_fichier_json(fichier):
         with open(fichier, 'r') as file:
             donnees = json.load(file)
     except FileNotFoundError:
-        print('Fichier introuvable.')
+        raise FileNotFoundError('Fichier introuvable.')
     except IOError:
-        print('Erreur IO.')
+        raise IOError('Erreur IO.')
     return donnees
-
-

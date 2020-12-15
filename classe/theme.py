@@ -79,9 +79,9 @@ class Theme:
                 nouveau_fichier = csv.writer(fichier, quotechar=',')
                 nouveau_fichier.writerow(donnees)
         except FileNotFoundError:
-            print('Fichier introuvable.')
+            raise FileNotFoundError('Fichier introuvable.')
         except IOError:
-            print('Erreur IO.')
+            raise IOError('Erreur IO.')
 
     def suppression_question(self, question_a_supprimer):
         """
@@ -91,7 +91,12 @@ class Theme:
         POST : Supprime 'question_a_supprimer' et ses réponses associées du fichier du thème associé, ainsi qu'en la
         supprimant du dictionnaire des questions du thème.
         """
-        del self.__question_theme[question_a_supprimer]
+        try:
+            del self.__question_theme[question_a_supprimer]
+        except KeyError:
+            raise KeyError("Clé inconnue")
+
+
         try:
             with open(self.__nom_fichier, "w", newline='') as fichier:
                 nouveau_fichier = csv.writer(fichier, quotechar=',', quoting=csv.QUOTE_MINIMAL)
@@ -102,9 +107,6 @@ class Theme:
                                               reponses[0][0], reponses[1][0], reponses[2][0], reponses[3][0]])
 
         except FileNotFoundError:
-            print('Fichier introuvable.')
+            raise FileNotFoundError('Fichier introuvable.')
         except IOError:
-            print('Erreur IO.')
-
-
-
+            raise IOError('Erreur IO.')

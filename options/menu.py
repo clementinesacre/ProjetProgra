@@ -28,9 +28,9 @@ def introduction():
                 fichier.write(nouveau_dictionnaire)
 
         except FileNotFoundError:
-            print('Fichier introuvable.')
+            raise FileNotFoundError('Fichier introuvable.')
         except IOError:
-            print('Erreur IO.')
+            raise IOError('Erreur IO.')
 
         print("Bienvenue dans le jeu.")
     else:
@@ -202,7 +202,7 @@ def ajouter_theme_console():
     print("\nLe thème '{0}' a été ajouté.\n".format(nouveau_theme))
     print("Vous allez maintenant devoir rajouter des questions dans le nouveau thème.")
     fct.separation()
-    modifier()
+    ajouter_question_console()
 
 
 def supprimer_theme_console():

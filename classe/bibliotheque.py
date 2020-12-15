@@ -22,6 +22,7 @@ class Bibliotheque:
         POST : Retourne le nom de la bibliotheque de l'objet sous forme de string.
         """
         return self.__nom_bibliotheque
+
     @property
     def nom_fichier_bibliotheque(self):
         """
@@ -31,6 +32,30 @@ class Bibliotheque:
         POST : Retourne le nom du fichier de l'objet sous forme de string.
         """
         return fct.recup_donnees_fichier(self.__nom_fichier_bibliotheque)
+
+    @property
+    def liste_themes(self):
+        """
+        Retourne tous les objets Theme instanciés dans l'objet Bibliotheque.
+
+        PRE : -
+        POST : Renvoie les objets Theme dans une liste.
+        """
+        return self.__liste_themes
+
+    @property
+    def dictionnaire_themes(self):
+        """
+        Permet de récupérer toutes les données liées à l'objet Bibliotheque, tels que les thèmes avec leurs questions
+        et leurs réponses.
+
+        PRE : -
+        POST : Renvoie un dictionnaire, avec comme clé le nom des thèmes, et un dictionnaire comme valeur, contenant
+        les questions et réponses du thème.
+        """
+        for theme_total in self.__liste_themes:
+            self.__dictionnaire_themes[theme_total.nom_theme] = theme_total.question_theme
+        return self.__dictionnaire_themes
 
     def initialisation_theme(self, nom_theme):
         """
@@ -51,16 +76,6 @@ class Bibliotheque:
         """
         return list(map(lambda x: x.nom_theme, self.__liste_themes))
 
-    @property
-    def liste_themes(self):
-        """
-        Retourne tous les objets Theme instanciés dans l'objet Bibliotheque.
-
-        PRE : -
-        POST : Renvoie les objets Theme dans une liste.
-        """
-        return self.__liste_themes
-
     def recuperer_theme(self, nom_theme):
         """
         Récupère l'objet d'un Theme.
@@ -68,25 +83,10 @@ class Bibliotheque:
         PRE : 'nom_theme' est une string.
         POST : Retourne l'objet Theme sur base de son nom ou du nom de son fichier.
         """
-
         for theme_recuperer in self.__liste_themes:
             if theme_recuperer.nom_theme == nom_theme or theme_recuperer.nom_fichier == nom_theme:
                 return theme_recuperer
         return ""
-
-    @property
-    def dictionnaire_themes(self):
-        """
-        Permet de récupérer toutes les données liées à l'objet Bibliotheque, tels que les thèmes avec leurs questions
-        et leurs réponses.
-
-        PRE : -
-        POST : Renvoie un dictionnaire, avec comme clé le nom des thèmes, et un dictionnaire comme valeur, contenant
-        les questions et réponses du thème.
-        """
-        for theme_total in self.__liste_themes:
-            self.__dictionnaire_themes[theme_total.nom_theme] = theme_total.question_theme
-        return self.__dictionnaire_themes
 
     def creation_theme(self, nom_nouveau_fichier):
         """
@@ -98,9 +98,9 @@ class Bibliotheque:
         """
         nouveau_theme = Theme(nom_nouveau_fichier + ".csv")
         nom_fichier = nouveau_theme.nom_fichier
-        print(nom_fichier[11:])
+        # print(nom_fichier[11:])
 
-        try :
+        try:
             with open(nom_fichier, 'w', newline='') as csvfile:
                 write = csv.writer(csvfile)
                 write.writerow(["questions", "bonneReponse", "reponseA", "reponseB", "reponseC", "reponseD"])
@@ -108,15 +108,13 @@ class Bibliotheque:
             with open("ressources/themes.csv", 'a', newline='') as doss21:
                 write = csv.writer(doss21)
                 write.writerow([nom_fichier[11:]])
-        except FileNotFoundError :
-            print('Fichier introuvable')
+        except FileNotFoundError:
+            raise FileNotFoundError('Fichier introuvable')
         except IOError:
-            print('Erreur IO ')
+            raise IOError('Erreur IO ')
 
         self.__liste_themes.append(nouveau_theme)
         self.__dictionnaire_themes[nouveau_theme.nom_theme] = ""
-
-        om.ajouter_question_console()
 
     def suppression_theme(self, theme):
         """
@@ -125,12 +123,14 @@ class Bibliotheque:
         PRE : 'theme' est un objet Theme.
         POST : Supprime le fichier du thème et le retire du fichier des thèmes et de la liste des objets Themes.
         """
-        os.remove(theme.nom_fichier)
-        del self.__liste_themes[self.__liste_themes.index(theme)]
+        # os.remove(theme.nom_fichier)
+        try:
+            del self.__liste_themes[self.__liste_themes.index(theme)]
+        except ValueError:
+            raise ValueError("Clé inconnue")
 
         liste_fichiers = []
-
-        try :
+        try:
             with open("ressources/themes.csv", "r") as fichier_lecture:
                 lire = csv.reader(fichier_lecture)
                 for ligne in lire:
@@ -144,11 +144,6 @@ class Bibliotheque:
 
         except FileNotFoundError:
             raise FileNotFoundError('Fichier introuvable')
-        except IOError :
+        except IOError:
             raise IOError('Erreur IO ')
-
-
-
-
-
-
+        os.remove(theme.nom_fichier)
