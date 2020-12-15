@@ -79,7 +79,7 @@ class CultureGeneraleTest(unittest.TestCase):
         obj_b2 = bi.Bibliotheque("test2", "")
         obj_b2.initialisation_theme("math.csv")
         obj_t2 = obj_b2.recuperer_theme("math")
-        ######self.assertRaises(IOError, lambda: obj_b2.suppression_theme(obj_t2))
+        self.assertRaises(IOError, lambda: obj_b2.suppression_theme(obj_t2))
 
         # test une bibliotheque qui a un nom de fichier inexistant en création de theme
         #######self.assertRaises(FileNotFoundError, lambda: obj_b1.creation_theme("math"))
