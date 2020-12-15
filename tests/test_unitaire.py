@@ -57,8 +57,8 @@ class CultureGeneraleTest(unittest.TestCase):
     def test_bibliotheque(self):
         Bibli = bi.Bibliotheque('librairie', "./ressources/themes.csv")
         Bibli.initialisation_theme('math.csv')
-        obj = th.Theme('geo.csv')
-        obj2 = th.Theme('')
+        # obj = th.Theme('geo.csv')
+        # obj2 = th.Theme('')
 
         self.assertEqual(Bibli.nom_bibliotheque, 'librairie')
         self.assertEqual(Bibli.nom_fichier_bibliotheque, [['geographie.csv'], ['math.csv']])
