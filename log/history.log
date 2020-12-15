@@ -27,3 +27,6 @@ ERROR:root:2020-12-15 16:02:01.456571 : recup_donnees_fichier() : Fichier introu
 ERROR:root:Erreur IO
 ERROR:root:2020-12-15 16:02:18.127261 : recup_donnees_fichier() : Fichier introuvable : azerty
 ERROR:root:Erreur IO
+ERROR:root:2020-12-15 16:25:27.720985 simplification/fonctions.py : validation_question() : ValueError : 
+ERROR:root:2020-12-15 16:26:24.650574 simplification/fonctions.py : validation_question() : ValueError : 
+ERROR:root:2020-12-15 16:26:25.688429 simplification/fonctions.py : validation_question() : ValueError : 

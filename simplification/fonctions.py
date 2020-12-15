@@ -37,13 +37,14 @@ def recup_donnees_fichier(fichier_a_ouvrir):
             return liste
 
     except FileNotFoundError:
-        logging.error(str(datetime.datetime.now()) + ' fonctions.py : recup_donnees_fichier() : Fichier introuvable : ' + fichier_a_ouvrir)
+        logging.error(str(datetime.datetime.now()) + ' simplification/fonctions.py : recup_donnees_fichier() : '
+                                                     'FileNotFoundError : ' + fichier_a_ouvrir)
         raise FileNotFoundError('Fichier introuvable.')
     except IOError:
-        logging.error('Erreur IO')
+        logging.error(str(datetime.datetime.now()) + ' simplification/fonctions.py : recup_donnees_fichier() : '
+                                                     'IOError : ' + fichier_a_ouvrir)
         raise IOError('Erreur IO.')
 
-# print(recup_donnees_fichier("donnee"))
 
 def separation():
     """
@@ -66,6 +67,7 @@ def validation_question(question, longueur):
     PRE : 'question' doit être une chaine de caractère, 'longueur' doit être un entier.
     POST : Retourne le chiffre respectant les conditions, sous forme d'entier.
     """
+    nombre = ""
     while True:
         try:
             nombre = int(input("{0} (entrez un chiffre entre 1 et {1}) : ".format(question, longueur)))
@@ -75,7 +77,9 @@ def validation_question(question, longueur):
                 print("Veuillez entrez un chiffre entre 1 et {0}.".format(longueur))
 
         except ValueError:
-            raise ValueError("Veuillez entrer un nombre.")
+            logging.error(str(datetime.datetime.now()) + ' simplification/fonctions.py : validation_question() : '
+                                                         'ValueError : ' + str(nombre))
+            print("Veuillez entrer un nombre.")
 
     return nombre
 
@@ -96,7 +100,9 @@ def validation_oui_non(question):
             else:
                 print("Les seules réponses acceptées sont 'oui' et 'non'.")
         except TypeError:
-            raise TypeError("Erreur.")
+            logging.error(str(datetime.datetime.now()) + ' simplification/fonctions.py : validation_oui_non() : '
+                                                         'TypeError : ' + reponse)
+            print("Erreur.")
 
     return reponse
 
@@ -112,7 +118,11 @@ def recup_donnees_fichier_json(fichier):
         with open(fichier, 'r') as file:
             donnees = json.load(file)
     except FileNotFoundError:
+        logging.error(str(datetime.datetime.now()) + ' simplification/fonctions.py : recup_donnees_fichier_json() : '
+                                                     'FileNotFoundError : ' + fichier)
         raise FileNotFoundError('Fichier introuvable.')
     except IOError:
+        logging.error(str(datetime.datetime.now()) + ' simplification/fonctions.py : recup_donnees_fichier_json() : '
+                                                     'IOError : ' + fichier)
         raise IOError('Erreur IO.')
     return donnees

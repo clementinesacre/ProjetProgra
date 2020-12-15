@@ -10,6 +10,10 @@ from classe.bibliotheque import *
 import sys
 from graphique import console_graphique as cg
 
+import datetime
+import logging
+logging.basicConfig(filename='./log/history.log', level=logging.DEBUG)
+
 
 def introduction():
     """
@@ -28,8 +32,12 @@ def introduction():
                 fichier.write(nouveau_dictionnaire)
 
         except FileNotFoundError:
+            logging.error(str(datetime.datetime.now()) + ' options/menu.py : introduction() : FileNotFoundError : '
+                                                         'ressources/scores.json')
             raise FileNotFoundError('Fichier introuvable.')
         except IOError:
+            logging.error(str(datetime.datetime.now()) + ' options/menu.py : introduction() : IOError : '
+                                                         'ressources/scores.json')
             raise IOError('Erreur IO.')
 
         print("Bienvenue dans le jeu.")
