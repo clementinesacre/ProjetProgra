@@ -75,7 +75,7 @@ class CultureGeneraleTest(unittest.TestCase):
         ######self.assertRaises(FileNotFoundError, lambda: obj_b1.suppression_theme(obj_t1))
 
         # test une bibliotheque qui a un nom de fichier vide en suppresion de theme
-        """obj_b2 = bi.Bibliotheque("test2", "")
+        obj_b2 = bi.Bibliotheque("test2", "")
         obj_b2.initialisation_theme("math.csv")
         obj_t2 = obj_b2.recuperer_theme("math")
         self.assertRaises(IOError, lambda: obj_b2.suppression_theme(obj_t2))
@@ -86,7 +86,7 @@ class CultureGeneraleTest(unittest.TestCase):
         # test une bibliotheque qui a un nom de fichier vide en création de theme
         self.assertRaises(IOError, lambda: obj_b2.creation_theme("math"))
 
-    def test_clem_theme(self):
+    """def test_clem_theme(self):
         question = ["ques", "bonrep", "rep1", "rep2", "rep3", "rep4"]
 
         # test d'un theme qui a un nom de fichier inexistant en creation de question
