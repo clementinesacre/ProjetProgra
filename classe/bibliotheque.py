@@ -148,13 +148,3 @@ class Bibliotheque:
             raise IOError('Erreur IO ')
 
 
-if __name__ == "__main__" :
-
-    Bibli = Bibliotheque('librairie', "../ressources/themes.csv")
-    Bibli.initialisation_theme('math.csv')
-    print(Bibli.nom_fichier_bibliotheque, [['math.csv']])
-
-
-
-
-
