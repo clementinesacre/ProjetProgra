@@ -51,7 +51,7 @@ class CultureGeneraleTest(unittest.TestCase):
         self.assertRaises(FileNotFoundError, lambda: f.recup_donnees_fichier_json("azerty"))
         self.assertRaises(IOError, lambda: f.recup_donnees_fichier_json('./'))
 
-    """def test_bibliotheque(self):
+    def test_bibliotheque(self):
         Bibli = bi.Bibliotheque('librairie', "./ressources/themes.csv")
         Bibli.initialisation_theme('math.csv')
         # obj = th.Theme('geo.csv')
@@ -64,7 +64,7 @@ class CultureGeneraleTest(unittest.TestCase):
         self.assertEqual(Bibli.recuperer_theme('test'), '')
         self.assertEqual(Bibli.dictionnaire_themes, {'math': {}})
 
-    def test_clem_biblio(self):
+    """def test_clem_biblio(self):
         # test un theme qui n'est pas dans la liste
         Bibli = bi.Bibliotheque('librairie', "./ressources/themes.csv")
         obj = th.Theme('geo.csv')
