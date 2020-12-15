@@ -33,7 +33,7 @@ def recup_donnees_fichier(fichier_a_ouvrir):
     POST : Retourne les informations du fichier sour forme de liste.
     """
     try:
-        with open(fichier_a_ouvrir) as file:
+        with open(chemin_absolu(fichier_a_ouvrir)) as file:
             lecture = csv.reader(file)
             liste = list(map(lambda x: x, lecture))[1:]
             return liste
@@ -117,7 +117,7 @@ def recup_donnees_fichier_json(fichier):
     POST : Retourne le dictionnaire contenu dans le fichier json.
     """
     try:
-        with open(fichier, 'r') as file:
+        with open(chemin_absolu(fichier), 'r') as file:
             donnees = json.load(file)
     except FileNotFoundError:
         logger.error(str(datetime.datetime.now()) + ' simplification/fonctions.py : recup_donnees_fichier_json() '
@@ -138,4 +138,6 @@ def chemin_absolu(relative_path):
     POST : -
     """
     base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
-    return os.path.join(base_path, relative_path)
+    return os.path.join(base_path[:-15], relative_path)
+
+

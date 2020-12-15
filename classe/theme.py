@@ -3,6 +3,8 @@
 from classe.question_reponse import *
 import csv
 import logging
+from simplification import fonctions as fct
+
 import datetime
 
 # logging.basicConfig(filename='./log/history.log', level=logging.DEBUG)
@@ -84,7 +86,7 @@ class Theme:
         """
         self.initialisation_question(donnees)
         try:
-            with open(self.__nom_fichier, "a", newline='') as fichier:
+            with open(fct.chemin_absolu(self.__nom_fichier), "a", newline='') as fichier:
                 nouveau_fichier = csv.writer(fichier, quotechar=',')
                 nouveau_fichier.writerow(donnees)
         except FileNotFoundError:
@@ -115,7 +117,7 @@ class Theme:
             raise KeyError("Clé inconnue")
 
         try:
-            with open(self.__nom_fichier, "w", newline='') as fichier:
+            with open(fct.chemin_absolu(self.__nom_fichier), "w", newline='') as fichier:
                 nouveau_fichier = csv.writer(fichier, quotechar=',', quoting=csv.QUOTE_MINIMAL)
                 nouveau_fichier.writerow(["questions", "bonneReponse", "reponseA", "reponseB", "reponseC", "reponseD"])
                 for question in self.__question_theme:

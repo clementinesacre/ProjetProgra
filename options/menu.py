@@ -5,6 +5,7 @@
 import json
 from classe import variable_globale as vb
 from classe.bibliotheque import *
+from simplification import fonctions as fct
 
 """import argparse"""
 import sys
@@ -28,7 +29,7 @@ def introduction():
     if vb.joueur.nom not in dictionnaire:
         dictionnaire[vb.joueur.nom] = vb.joueur.init_resultats()
         try:
-            with open('ressources/scores.json', 'w') as fichier:
+            with open(fct.chemin_absolu('ressources/scores.json', 'w')) as fichier:
                 nouveau_dictionnaire = json.dumps(dictionnaire)
                 fichier.write(nouveau_dictionnaire)
 

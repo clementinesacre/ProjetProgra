@@ -75,7 +75,6 @@ class Bibliotheque:
         logger.info(str(datetime.datetime.now())
                       + ' classe/bibliotheque.py : initialisation_theme() : ' + nom_theme)
 
-
     def retourne_themes(self):
         """
         Renvoie les noms de tous les objets Theme que l'objet Bibliotheque contient.
@@ -110,11 +109,11 @@ class Bibliotheque:
         # print(nom_fichier[11:])
 
         try:
-            with open(nom_fichier, 'w', newline='') as csvfile:
+            with open(fct.chemin_absolu(nom_fichier), 'w', newline='') as csvfile:
                 write = csv.writer(csvfile)
                 write.writerow(["questions", "bonneReponse", "reponseA", "reponseB", "reponseC", "reponseD"])
 
-            with open("ressources/themes.csv", 'a', newline='') as doss21:
+            with open(fct.chemin_absolu("ressources/themes.csv"), 'a', newline='') as doss21:
                 write = csv.writer(doss21)
                 write.writerow([nom_fichier[11:]])
         except FileNotFoundError:
@@ -147,13 +146,13 @@ class Bibliotheque:
 
         liste_fichiers = []
         try:
-            with open("ressources/themes.csv", "r") as fichier_lecture:
+            with open(fct.chemin_absolu("ressources/themes.csv", "r")) as fichier_lecture:
                 lire = csv.reader(fichier_lecture)
                 for ligne in lire:
                     if theme.nom_fichier[11:] != (','.join(ligne).rstrip()):
                         liste_fichiers.append(','.join(ligne))
 
-            with open("ressources/themes.csv", 'w', newline='') as fichier_ecriture:
+            with open(fct.chemin_absolu("ressources/themes.csv", 'w', newline='')) as fichier_ecriture:
                 write = csv.writer(fichier_ecriture)
                 for i in liste_fichiers:
                     write.writerow([i])
