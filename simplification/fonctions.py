@@ -7,8 +7,6 @@ import os
 import sys
 
 import logging
-import datetime
-
 logger = logging.getLogger("cultureg")
 
 
@@ -39,12 +37,10 @@ def recup_donnees_fichier(fichier_a_ouvrir):
             return liste
 
     except FileNotFoundError:
-        logger.error(str(datetime.datetime.now()) + ' simplification/fonctions.py : recup_donnees_fichier() : '
-                                                     'FileNotFoundError : ' + fichier_a_ouvrir)
+        logger.error('simplification/fonctions.py : recup_donnees_fichier() : FileNotFoundError : ' + fichier_a_ouvrir)
         raise FileNotFoundError('Fichier introuvable.')
     except IOError:
-        logger.error(str(datetime.datetime.now()) + ' simplification/fonctions.py : recup_donnees_fichier() : '
-                                                     'IOError : ' + fichier_a_ouvrir)
+        logger.error('simplification/fonctions.py : recup_donnees_fichier() : IOError : ' + fichier_a_ouvrir)
         raise IOError('Erreur IO.')
 
 
@@ -79,8 +75,7 @@ def validation_question(question, longueur):
                 print("Veuillez entrez un chiffre entre 1 et {0}.".format(longueur))
 
         except ValueError:
-            logger.error(str(datetime.datetime.now()) + ' simplification/fonctions.py : validation_question() : '
-                                                         'ValueError : ' + str(nombre))
+            logger.error('simplification/fonctions.py : validation_question() : ValueError : ' + str(nombre))
             print("Veuillez entrer un nombre.")
 
     return nombre
@@ -102,8 +97,7 @@ def validation_oui_non(question):
             else:
                 print("Les seules réponses acceptées sont 'oui' et 'non'.")
         except TypeError:
-            logger.error(str(datetime.datetime.now()) + ' simplification/fonctions.py : validation_oui_non() : '
-                                                         'TypeError : ' + reponse)
+            logger.error('simplification/fonctions.py : validation_oui_non() : TypeError : ' + reponse)
             print("Erreur.")
 
     return reponse
@@ -120,22 +114,20 @@ def recup_donnees_fichier_json(fichier):
         with open(chemin_absolu(fichier), 'r') as file:
             donnees = json.load(file)
     except FileNotFoundError:
-        logger.error(str(datetime.datetime.now()) + ' simplification/fonctions.py : recup_donnees_fichier_json() '
-                                                         ': FileNotFoundError : ' + fichier)
+        logger.error('simplification/fonctions.py : recup_donnees_fichier_json() : FileNotFoundError : ' + fichier)
         raise FileNotFoundError('Fichier introuvable.')
     except IOError:
-        logger.error(str(datetime.datetime.now()) + ' simplification/fonctions.py : recup_donnees_fichier_json() '
-                                                         ': IOError : ' + fichier)
+        logger.error('simplification/fonctions.py : recup_donnees_fichier_json() : IOError : ' + fichier)
         raise IOError('Erreur IO.')
     return donnees
 
 
 def chemin_absolu(relative_path):
     """
-    Donne le chemin absolu d'un fichier
+    Donne le chemin absolu d'un fichier.
 
     PRE : -
-    POST : -
+    POST : Retourne ''C:\\Users\\sacre\\PycharmProjects\\ProjetProgra\\' + 'relative_path'.
     """
     base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
     return os.path.join(base_path[:-15], relative_path)

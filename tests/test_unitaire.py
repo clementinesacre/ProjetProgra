@@ -7,7 +7,6 @@ from classe import theme as th
 from classe import bibliotheque as bi
 from classe import variable_globale as vg
 import unittest
-import os
 
 
 class CultureGeneraleTest(unittest.TestCase):
@@ -89,7 +88,7 @@ class CultureGeneraleTest(unittest.TestCase):
         obj_b2 = bi.Bibliotheque("test2", "")
         obj_b2.initialisation_theme("math.csv")
         obj_t2 = obj_b2.recuperer_theme("math")
-        self.assertRaises(IOError, lambda: obj_b2.suppression_theme(obj_t2))
+        #self.assertRaises(IOError, lambda: obj_b2.suppression_theme(obj_t2)) #supprime les infos du thème math
 
         # test une bibliotheque qui a un nom de fichier vide en création de theme
         self.assertRaises(IOError, lambda: obj_b2.creation_theme("math"))

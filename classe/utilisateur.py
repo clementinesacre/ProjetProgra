@@ -1,16 +1,13 @@
 # -*- coding: utf-8 -*-
 
-
 from datetime import date
 from simplification import fonctions as fct
 from classe import variable_globale as vb
-from classe import theme as t
 import json
-import logging
-import datetime
-# logging.basicConfig(filename='./log/history.log', level=logging.DEBUG)
 
+import logging
 logger = logging.getLogger("cultureg")
+
 
 class Utilisateur:
     def __init__(self, nom):
@@ -51,14 +48,11 @@ class Utilisateur:
                 fichier.write(dico_json)
 
         except FileNotFoundError:
-            logger.error(str(datetime.datetime.now())
-                          + ' classe/utilisateur.py : ajout_score() : FileNotFoundError : ' + theme)
+            logger.error('classe/utilisateur.py : ajout_score() : FileNotFoundError : ressources/scores.json')
             raise FileNotFoundError('Fichier introuvable.')
         except IOError:
-            logger.error(str(datetime.datetime.now())
-                          + ' classe/utilisateur.py : ajout_score() : IOError : ' + theme)
+            logger.error('classe/utilisateur.py : ajout_score() : IOError : ressources/scores.json')
             raise IOError('Erreur IO.')
 
-        logger.info(str(datetime.datetime.now()) + ' classe/utilisateur.py : ajout_score() : ajout de points : ' +
-                     str(point) + ", theme : " + theme.nom_theme + ", joueur : " + self.__nom)
-
+        logger.info('classe/utilisateur.py : ajout_score() : ajout de points : ' + str(point) + ", theme : "
+                    + theme.nom_theme + ", joueur : " + self.__nom)
