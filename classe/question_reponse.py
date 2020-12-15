@@ -41,7 +41,8 @@ class Question:
             objet_r = Reponse(reponse_creation[0], reponse_creation[1])
             self.__reponses.append([objet_r.nom_reponse, objet_r.type_reponse])
         logging.info(str(datetime.datetime.now())
-                     + ' classe/questions_reponses.py : creation_reponses() : ' + reponses)
+                     + ' classe/questions_reponses.py : creation_reponses() : ' + str(reponses[0]) + ", "
+                     + str(reponses[0]))
 
 
 class Reponse:
