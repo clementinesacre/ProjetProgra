@@ -8,7 +8,7 @@ from classe import theme as t
 import json
 import logging
 import datetime
-logging.basicConfig(filename='../log/history.log', level=logging.DEBUG)
+logging.basicConfig(filename='./log/history.log', level=logging.DEBUG)
 
 
 class Utilisateur:

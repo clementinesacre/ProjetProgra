@@ -4,7 +4,7 @@ from classe.question_reponse import *
 import csv
 import logging
 import datetime
-logging.basicConfig(filename='../log/history.log', level=logging.DEBUG)
+logging.basicConfig(filename='./log/history.log', level=logging.DEBUG)
 
 
 

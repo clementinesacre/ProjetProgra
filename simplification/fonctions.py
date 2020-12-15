@@ -7,7 +7,7 @@ from classe import variable_globale as vg
 
 import logging
 import datetime
-logging.basicConfig(filename='../log/history.log', level=logging.DEBUG)
+logging.basicConfig(filename='./log/history.log', level=logging.DEBUG)
 
 
 def aleatoire(questions, nbr_questions):

@@ -6,7 +6,7 @@ from classe.theme import *
 import os
 import logging
 import datetime
-logging.basicConfig(filename='../log/history.log', level=logging.DEBUG)
+logging.basicConfig(filename='./log/history.log', level=logging.DEBUG)
 
 
 class Bibliotheque:
