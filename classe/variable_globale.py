@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 
 from classe import bibliotheque, utilisateur, theme
+import logging
 
 joueur = None
 librairie = None
 theme_courant = None
+logger = None
 
 
 def initialisation_informations():

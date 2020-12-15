@@ -3,6 +3,11 @@
 import random
 import csv
 import json
+from classe import variable_globale as vg
+
+import logging
+import datetime
+logging.basicConfig(filename='../log/history.log', level=logging.DEBUG)
 
 
 def aleatoire(questions, nbr_questions):
@@ -32,10 +37,13 @@ def recup_donnees_fichier(fichier_a_ouvrir):
             return liste
 
     except FileNotFoundError:
+        logging.error(str(datetime.datetime.now()) + ' fonctions.py : recup_donnees_fichier() : Fichier introuvable : ' + fichier_a_ouvrir)
         raise FileNotFoundError('Fichier introuvable.')
     except IOError:
+        logging.error('Erreur IO')
         raise IOError('Erreur IO.')
 
+# print(recup_donnees_fichier("donnee"))
 
 def separation():
     """

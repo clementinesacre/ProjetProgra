@@ -146,4 +146,5 @@ class Bibliotheque:
             raise FileNotFoundError('Fichier introuvable')
         except IOError:
             raise IOError('Erreur IO ')
+
         os.remove(theme.nom_fichier)

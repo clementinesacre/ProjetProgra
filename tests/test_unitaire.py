@@ -29,8 +29,6 @@ class CultureGeneraleTest(unittest.TestCase):
         self.assertEqual(c.nom_theme, 'geographie')
         self.assertEqual(c.nom_fichier, 'ressources/geographie.csv')
         self.assertEqual(c.question_theme, {'Que fait 3-2': []})
-        # self.assertRaises(FileNotFoundError, lambda: c.suppression_question('bonjour'))
-        # self.assertRaises(IOError, lambda: c.suppression_question(''))
 
     def test_utilisateurs(self):
         d = ut.Utilisateur('pouspous')
@@ -54,7 +52,7 @@ class CultureGeneraleTest(unittest.TestCase):
         self.assertRaises(IOError, lambda: f.recup_donnees_fichier_json('./'))
 
     def test_bibliotheque(self):
-        Bibli = bi.Bibliotheque('librairie', "./ressources/themes.csv")
+        Bibli = bi.Bibliotheque('librairie', "../ressources/themes.csv")
         Bibli.initialisation_theme('math.csv')
         # obj = th.Theme('geo.csv')
         # obj2 = th.Theme('')
@@ -65,14 +63,10 @@ class CultureGeneraleTest(unittest.TestCase):
         self.assertEqual(len(Bibli.liste_themes), 1)
         self.assertEqual(Bibli.recuperer_theme('test'), '')
         self.assertEqual(Bibli.dictionnaire_themes, {'math': {}})
-        # self.assertRaises(FileNotFoundError, lambda: Bibli.suppression_theme(obj))
-        # self.assertRaises(FileNotFoundError, lambda: Bibli.suppression_theme(obj2))
-        # self.assertRaises(IOError, lambda: Bibli.suppression_theme(obj2))
-        # self.assertRaises(IOError, lambda: Bibli.suppression_theme(obj))
 
     def test_clem_biblio(self):
         # test un theme qui n'est pas dans la liste
-        Bibli = bi.Bibliotheque('librairie', "./ressources/themes.csv")
+        Bibli = bi.Bibliotheque('librairie', "../ressources/themes.csv")
         obj = th.Theme('geo.csv')
         self.assertRaises(ValueError, lambda: Bibli.suppression_theme(obj))
 

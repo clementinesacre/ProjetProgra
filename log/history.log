@@ -1,0 +1,29 @@
+ERROR:root:Fichier introuvable
+ERROR:root:Erreur IO
+ERROR:root:Erreur IO
+ERROR:root:Erreur IO
+ERROR:root:Erreur IO
+ERROR:root:Fichier introuvable
+ERROR:root:Fichier introuvable
+ERROR:root:('Fichier introuvable : ', 'coucou')
+ERROR:root:('Fichier introuvable : ', 'coucou')
+ERROR:root:('Fichier introuvable : ', 'coucou')
+ERROR:root:('Fichier introuvable : ', 'coucou')
+ERROR:root:Fichier introuvable : coucou
+ERROR:root:Fichier introuvable : coucou
+ERROR:root:recup_donnees_fichier : Fichier introuvable : coucou
+ERROR:root:recup_donnees_fichier : Fichier introuvable : coucou
+ERROR:root:recup_donnees_fichier : Fichier introuvable : coucou
+ERROR:root:recup_donnees_fichier : Fichier introuvable : coucou
+ERROR:root:recup_donnees_fichier : Fichier introuvable : coucou
+ERROR:root:recup_donnees_fichier : Fichier introuvable : coucou
+ERROR:root:recup_donnees_fichier : Fichier introuvable : coucou
+ERROR:root:recup_donnees_fichier : Fichier introuvable : coucou
+ERROR:root:2020-12-15 15:59:40.705239recup_donnees_fichier() : Fichier introuvable : donnee
+ERROR:root:2020-12-15 15:59:40.707234recup_donnees_fichier() : Fichier introuvable : donnee
+ERROR:root:2020-12-15 15:59:58.097184 : recup_donnees_fichier() : Fichier introuvable : donnee
+ERROR:root:2020-12-15 15:59:58.101178 : recup_donnees_fichier() : Fichier introuvable : donnee
+ERROR:root:2020-12-15 16:02:01.456571 : recup_donnees_fichier() : Fichier introuvable : azerty
+ERROR:root:Erreur IO
+ERROR:root:2020-12-15 16:02:18.127261 : recup_donnees_fichier() : Fichier introuvable : azerty
+ERROR:root:Erreur IO
