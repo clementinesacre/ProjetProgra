@@ -7,7 +7,6 @@ import datetime
 logging.basicConfig(filename='./log/history.log', level=logging.DEBUG)
 
 
-
 class Theme:
     def __init__(self, nom_fichier):
         self.__nom_theme = nom_fichier[:-4]
@@ -69,6 +68,9 @@ class Theme:
         self.__question_theme[objet_q.nom_question] = objet_q.reponses
         self.__liste_questions.append(objet_q)
 
+        logging.info(str(datetime.datetime.now()) + ' classe/theme.py : creation_question() : initialisation de ' +
+                     donnees[0] + " dans " + self.__nom_theme)
+
     def creation_question(self, donnees):
         """
         Permet de créer un objet Question.
@@ -84,12 +86,15 @@ class Theme:
                 nouveau_fichier.writerow(donnees)
         except FileNotFoundError:
             logging.error(str(datetime.datetime.now())
-                          + ' classe/theme.py : creation_question() : FileNotFoundError : ' + donnees)
+                          + ' classe/theme.py : creation_question() : FileNotFoundError : ' + self.__nom_fichier)
             raise FileNotFoundError('Fichier introuvable.')
         except IOError:
             logging.error(str(datetime.datetime.now())
-                          + ' classe/theme.py : creation_question() : IOError : ' + donnees)
+                          + ' classe/theme.py : creation_question() : IOError : ' + self.__nom_fichier)
             raise IOError('Erreur IO.')
+
+        logging.info(str(datetime.datetime.now()) + ' classe/theme.py : creation_question() : écriture de ' + donnees[0]
+                     + " dans " + self.__nom_fichier)
 
     def suppression_question(self, question_a_supprimer):
         """
@@ -106,7 +111,6 @@ class Theme:
                           + ' classe/theme.py : suppression_question() : KeyError : ' + question_a_supprimer)
             raise KeyError("Clé inconnue")
 
-
         try:
             with open(self.__nom_fichier, "w", newline='') as fichier:
                 nouveau_fichier = csv.writer(fichier, quotechar=',', quoting=csv.QUOTE_MINIMAL)
@@ -115,12 +119,15 @@ class Theme:
                     reponses = self.__question_theme[question]
                     nouveau_fichier.writerow([question, list(filter(lambda x: x[1] is True, reponses))[0][0],
                                               reponses[0][0], reponses[1][0], reponses[2][0], reponses[3][0]])
-
         except FileNotFoundError:
             logging.error(str(datetime.datetime.now())
-                          + ' classe/theme.py : suppression_question() : FileNotFoundError : ' + question_a_supprimer)
+                          + ' classe/theme.py : suppression_question() : FileNotFoundError : ' + self.__nom_fichier)
             raise FileNotFoundError('Fichier introuvable.')
         except IOError:
             logging.error(str(datetime.datetime.now())
-                          + ' classe/theme.py : suppression_question() : IOError : ' + question_a_supprimer)
+                          + ' classe/theme.py : suppression_question() : IOError : ' + self.__nom_fichier)
             raise IOError('Erreur IO.')
+
+        logging.info(str(datetime.datetime.now()) + ' classe/theme.py : suppression_question() : suppression de ' +
+                     question_a_supprimer + " dans " + self.__nom_fichier)
+

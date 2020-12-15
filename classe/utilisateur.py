@@ -58,3 +58,6 @@ class Utilisateur:
                           + ' classe/utilisateur.py : ajout_score() : IOError : ' + theme)
             raise IOError('Erreur IO.')
 
+        logging.info(str(datetime.datetime.now()) + ' classe/utilisateur.py : ajout_score() : ajout de points : ' +
+                     str(point) + ", theme : " + theme.nom_theme + ", joueur : " + self.__nom)
+

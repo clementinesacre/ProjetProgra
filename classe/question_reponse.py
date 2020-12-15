@@ -32,8 +32,8 @@ class Question:
         """
         Permet de créer un objet Réponse.
 
-        PRE : 'reponses' est une liste de liste, avec en première position le nom de la réponse et en deuxième position, son
-        type.
+        PRE : 'reponses' est une liste de liste, avec en première position le nom de la réponse et en deuxième position,
+        son type.
         POST : Instancie 4 objets Reponse, sur base de leur nom et de leur type, et les ajoute à la liste de
         l'objet Question.
         """
