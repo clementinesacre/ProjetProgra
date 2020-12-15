@@ -54,8 +54,6 @@ class CultureGeneraleTest(unittest.TestCase):
     def test_bibliotheque(self):
         Bibli = bi.Bibliotheque('librairie', "./ressources/themes.csv")
         Bibli.initialisation_theme('math.csv')
-        # obj = th.Theme('geo.csv')
-        # obj2 = th.Theme('')
 
         self.assertEqual(Bibli.nom_bibliotheque, 'librairie')
         self.assertEqual(Bibli.nom_fichier_bibliotheque, [['geographie.csv'], ['math.csv']])
@@ -64,7 +62,7 @@ class CultureGeneraleTest(unittest.TestCase):
         self.assertEqual(Bibli.recuperer_theme('test'), '')
         self.assertEqual(Bibli.dictionnaire_themes, {'math': {}})
 
-    """def test_clem_biblio(self):
+    def test_clem_biblio(self):
         # test un theme qui n'est pas dans la liste
         Bibli = bi.Bibliotheque('librairie', "./ressources/themes.csv")
         obj = th.Theme('geo.csv')
@@ -77,7 +75,7 @@ class CultureGeneraleTest(unittest.TestCase):
         ######self.assertRaises(FileNotFoundError, lambda: obj_b1.suppression_theme(obj_t1))
 
         # test une bibliotheque qui a un nom de fichier vide en suppresion de theme
-        obj_b2 = bi.Bibliotheque("test2", "")
+        """obj_b2 = bi.Bibliotheque("test2", "")
         obj_b2.initialisation_theme("math.csv")
         obj_t2 = obj_b2.recuperer_theme("math")
         self.assertRaises(IOError, lambda: obj_b2.suppression_theme(obj_t2))
