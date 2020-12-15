@@ -27,6 +27,4 @@ if __name__ == '__main__':
     handler2.setFormatter(formatter)
     logger.addHandler(handler2)
 
-
     menu.lancement_application()
-
