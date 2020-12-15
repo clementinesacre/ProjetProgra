@@ -9,7 +9,9 @@ from classe import variable_globale as vg
 import unittest
 
 
+
 class CultureGeneraleTest(unittest.TestCase):
+
     def test_reponse(self):
         a = qr.Reponse(1, True)
         self.assertEqual(a.nom_reponse, 1)
@@ -28,11 +30,8 @@ class CultureGeneraleTest(unittest.TestCase):
         self.assertEqual(c.nom_theme, 'geographie')
         self.assertEqual(c.nom_fichier, 'ressources/geographie.csv')
         self.assertEqual(c.question_theme, {'Que fait 3-2': []})
-        # self.assertEqual(type(c.recuperer_question("Que fait 3-2")), "<class 'classe.question_reponse.Question'>")
-        # self.assertRaises(FileNotFoundError, lambda: c.creation_question(["Que fait 5-2"]))
-        # self.assertEqual(IOError, lambda: c.creation_question([""]))
-        # self.assertRaises(FileNotFoundError, lambda: c.suppression_question('geo'))
-        # self.assertRaises(IOError, lambda: c.suppression_question(''))
+        #self.assertRaises(FileNotFoundError, lambda: c.suppression_question('bonjour'))
+        #self.assertRaises(IOError, lambda: c.suppression_question(''))
 
     def test_utilisateurs(self):
         d = ut.Utilisateur('pouspous')
@@ -62,7 +61,7 @@ class CultureGeneraleTest(unittest.TestCase):
         obj2 = th.Theme('')
 
         self.assertEqual(Bibli.nom_bibliotheque, 'librairie')
-        self.assertEqual(Bibli.nom_fichier_bibliotheque,[['geographie.csv'], ['math.csv']])
+        self.assertEqual(Bibli.nom_fichier_bibliotheque, [['geographie.csv'], ['math.csv']])
         self.assertEqual(Bibli.retourne_themes(), ['math'])
         self.assertEqual(len(Bibli.liste_themes), 1)
         self.assertEqual(Bibli.recuperer_theme('test'), '')
