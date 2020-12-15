@@ -43,7 +43,7 @@ class CultureGeneraleTest(unittest.TestCase):
                                           'Quelle est le carré de 8 ?', 'Quel chiffre est un chiffre premier ?',
                                           'Quel chiffre est une puissance de 2 ?'], 1)), 1)
 
-    """def test_recup_donnees_fichier(self):
+    def test_recup_donnees_fichier(self):
         self.assertRaises(FileNotFoundError, lambda: f.recup_donnees_fichier("azerty"))
         self.assertRaises(IOError, lambda: f.recup_donnees_fichier('./'))
 
@@ -51,7 +51,7 @@ class CultureGeneraleTest(unittest.TestCase):
         self.assertRaises(FileNotFoundError, lambda: f.recup_donnees_fichier_json("azerty"))
         self.assertRaises(IOError, lambda: f.recup_donnees_fichier_json('./'))
 
-    def test_bibliotheque(self):
+    """def test_bibliotheque(self):
         Bibli = bi.Bibliotheque('librairie', "./ressources/themes.csv")
         Bibli.initialisation_theme('math.csv')
         # obj = th.Theme('geo.csv')
