@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-
+import logging
+import datetime
+logging.basicConfig(filename='./log/history.log', level=logging.DEBUG)
 
 class Question:
     def __init__(self, nom_question):
@@ -38,6 +40,8 @@ class Question:
         for reponse_creation in reponses:
             objet_r = Reponse(reponse_creation[0], reponse_creation[1])
             self.__reponses.append([objet_r.nom_reponse, objet_r.type_reponse])
+        logging.info(str(datetime.datetime.now())
+                     + ' classe/questions_reponses.py : creation_reponses() : ' + reponses)
 
 
 class Reponse:

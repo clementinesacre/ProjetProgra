@@ -69,6 +69,9 @@ class Bibliotheque:
         """
         objet_t = Theme(nom_theme)
         self.__liste_themes.append(objet_t)
+        logging.info(str(datetime.datetime.now())
+                      + ' classe/bibliotheque.py : initialisation_theme() : ' + nom_theme)
+
 
     def retourne_themes(self):
         """
@@ -122,6 +125,8 @@ class Bibliotheque:
 
         self.__liste_themes.append(nouveau_theme)
         self.__dictionnaire_themes[nouveau_theme.nom_theme] = ""
+        logging.info(str(datetime.datetime.now())
+                     + ' classe/bibliotheque.py : creation_theme() : ' + nom_nouveau_fichier)
 
     def suppression_theme(self, theme):
         """
@@ -161,3 +166,5 @@ class Bibliotheque:
             raise IOError('Erreur IO ')
 
         os.remove(theme.nom_fichier)
+        logging.info(str(datetime.datetime.now())
+                     + ' classe/bibliotheque.py : suppression_theme() : ' + theme)
