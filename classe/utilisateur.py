@@ -47,7 +47,7 @@ class Utilisateur:
                 fichier.write(dico_json)
 
         except FileNotFoundError:
-            print('Fichier introuvable.')
+            raise FileNotFoundError('Fichier introuvable.')
         except IOError:
-            print('Erreur IO.')
+            raise IOError('Erreur IO.')
 

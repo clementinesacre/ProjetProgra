@@ -79,9 +79,9 @@ class Theme:
                 nouveau_fichier = csv.writer(fichier, quotechar=',')
                 nouveau_fichier.writerow(donnees)
         except FileNotFoundError:
-            print('Fichier introuvable.')
+            raise FileNotFoundError('Fichier introuvable.')
         except IOError:
-            print('Erreur IO.')
+            raise IOError('Erreur IO.')
 
     def suppression_question(self, question_a_supprimer):
         """
@@ -102,9 +102,9 @@ class Theme:
                                               reponses[0][0], reponses[1][0], reponses[2][0], reponses[3][0]])
 
         except FileNotFoundError:
-            print('Fichier introuvable.')
+            raise FileNotFoundError('Fichier introuvable.')
         except IOError:
-            print('Erreur IO.')
+            raise IOError('Erreur IO.')
 
 
 

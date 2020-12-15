@@ -108,10 +108,10 @@ class Bibliotheque:
             with open("ressources/themes.csv", 'a', newline='') as doss21:
                 write = csv.writer(doss21)
                 write.writerow([nom_fichier[11:]])
-        except FileNotFoundError :
-            print('Fichier introuvable')
+        except FileNotFoundError:
+            raise FileNotFoundError('Fichier introuvable')
         except IOError:
-            print('Erreur IO ')
+            raise IOError('Erreur IO ')
 
         self.__liste_themes.append(nouveau_theme)
         self.__dictionnaire_themes[nouveau_theme.nom_theme] = ""
@@ -147,6 +147,12 @@ class Bibliotheque:
         except IOError :
             raise IOError('Erreur IO ')
 
+
+if __name__ == "__main__" :
+
+    Bibli = Bibliotheque('librairie', "../ressources/themes.csv")
+    Bibli.initialisation_theme('math.csv')
+    print(Bibli.nom_fichier_bibliotheque, [['math.csv']])
 
 
 

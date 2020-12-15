@@ -67,7 +67,7 @@ def validation_question(question, longueur):
                 print("Veuillez entrez un chiffre entre 1 et {0}.".format(longueur))
 
         except ValueError:
-            print("Veuillez entrer un nombre.")
+            raise ValueError("Veuillez entrer un nombre.")
 
     return nombre
 
@@ -88,7 +88,7 @@ def validation_oui_non(question):
             else:
                 print("Les seules réponses acceptées sont 'oui' et 'non'.")
         except TypeError:
-            print("Erreur.")
+            raise TypeError("Erreur.")
 
     return reponse
 
@@ -104,9 +104,9 @@ def recup_donnees_fichier_json(fichier):
         with open(fichier, 'r') as file:
             donnees = json.load(file)
     except FileNotFoundError:
-        print('Fichier introuvable.')
+        raise FileNotFoundError('Fichier introuvable.')
     except IOError:
-        print('Erreur IO.')
+        raise IOError('Erreur IO.')
     return donnees
 
 
