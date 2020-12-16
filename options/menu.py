@@ -22,7 +22,7 @@ def introduction():
     POST : Si le joueur est déjà encodé dans la base, on affiche ses scores précédents. Si il n'est pas encore encodé,
     son pseudo est enregistré dans l'application.
     """
-    dictionnaire = fct.recup_donnees_fichier_json('ressources/scores.json')
+    dictionnaire = fct.recup_donnees_fichier_json(fct.chemin_absolu('ressources/scores.json'))
     if vb.joueur.nom not in dictionnaire:
         dictionnaire[vb.joueur.nom] = vb.joueur.init_resultats()
         try:
@@ -317,7 +317,7 @@ def initialisation_bibliotheque():
 
     for theme_fichier in vb.librairie.liste_themes:
         vb.initialisation_theme(theme_fichier.nom_theme)
-        liste_questions = fct.recup_donnees_fichier(vb.theme_courant.nom_fichier)
+        liste_questions = fct.recup_donnees_fichier(fct.chemin_absolu(vb.theme_courant.nom_fichier))
         for question in liste_questions:
             vb.theme_courant.initialisation_question(question)
 
@@ -346,7 +346,7 @@ def lancement_application():
         menu_principal()
 
     elif commande[1] == "graphique":
-        dico_scores = fct.recup_donnees_fichier_json('ressources/scores.json')
+        dico_scores = fct.recup_donnees_fichier_json(fct.chemin_absolu('ressources/scores.json'))
         cg.Graphique(dico_scores)
 
     else:

@@ -40,7 +40,7 @@ class Utilisateur:
         PRE : 'theme' est un objet Theme. 'point' peut être un float ou un int.
         POST : Ecrit le score dans le fichier contenant l'historique des scores des différents joueurs.
         """
-        dico_python = fct.recup_donnees_fichier_json('ressources/scores.json')
+        dico_python = fct.recup_donnees_fichier_json(fct.chemin_absolu('ressources/scores.json'))
         dico_python[vb.joueur.nom][theme.nom_theme].append([round(point, 2), date.today().strftime('%d/%m/%Y')])
         try:
             with open(fct.chemin_absolu('ressources/scores.json'), 'w') as fichier:

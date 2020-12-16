@@ -18,11 +18,11 @@ if __name__ == '__main__':
         if e.errno != errno.EEXIST:
             raise
 
-    handler1 = logging.handlers.TimedRotatingFileHandler('log/info.log', when="d", interval=7, encoding="utf-8")
+    handler1 = logging.handlers.TimedRotatingFileHandler(f.chemin_absolu('log/info.log'), when="d", interval=7, encoding="utf-8")
     handler1.setLevel(logging.INFO)
     handler1.setFormatter(formatter)
     logger.addHandler(handler1)
-    handler2 = logging.handlers.TimedRotatingFileHandler("log/error.log", when="d", interval=7, encoding="utf-8")
+    handler2 = logging.handlers.TimedRotatingFileHandler(f.chemin_absolu("log/error.log"), when="d", interval=7, encoding="utf-8")
     handler2.setLevel(logging.ERROR)
     handler2.setFormatter(formatter)
     logger.addHandler(handler2)
