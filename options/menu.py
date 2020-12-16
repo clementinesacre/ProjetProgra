@@ -6,16 +6,13 @@ import json
 from classe import variable_globale as vb
 from classe.bibliotheque import *
 from simplification import fonctions as fct
-
-"""import argparse"""
 import sys
 from graphique import console_graphique as cg
-
 import datetime
-import logging
-# logging.basicConfig(filename='./log/history.log', level=logging.DEBUG)
 
+import logging
 logger = logging.getLogger("cultureg")
+
 
 def introduction():
     """
@@ -29,17 +26,15 @@ def introduction():
     if vb.joueur.nom not in dictionnaire:
         dictionnaire[vb.joueur.nom] = vb.joueur.init_resultats()
         try:
-            with open(fct.chemin_absolu('ressources/scores.json', 'w')) as fichier:
+            with open(fct.chemin_absolu('ressources/scores.json'), 'w') as fichier:
                 nouveau_dictionnaire = json.dumps(dictionnaire)
                 fichier.write(nouveau_dictionnaire)
 
         except FileNotFoundError:
-            logger.error(str(datetime.datetime.now()) + ' options/menu.py : introduction() : FileNotFoundError : '
-                                                         'ressources/scores.json')
+            logger.error('options/menu.py : introduction() : FileNotFoundError : ressources/scores.json')
             raise FileNotFoundError('Fichier introuvable.')
         except IOError:
-            logger.error(str(datetime.datetime.now()) + ' options/menu.py : introduction() : IOError : '
-                                                         'ressources/scores.json')
+            logger.error('options/menu.py : introduction() : IOError : ressources/scores.json')
             raise IOError('Erreur IO.')
 
         print("Bienvenue dans le jeu.")
@@ -110,7 +105,7 @@ def jouer_console():
     vb.joueur.ajout_score(vb.theme_courant, pourcentage)
 
     fct.separation()
-    om.menu_principal()
+    menu_principal()
 
 
 def ajouter_question_console():

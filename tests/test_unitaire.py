@@ -30,6 +30,20 @@ class CultureGeneraleTest(unittest.TestCase):
         self.assertEqual(c.nom_fichier, 'ressources/geographie.csv')
         self.assertEqual(c.question_theme, {'Que fait 3-2': [[1, True], [2, False], [5, False], [7, False]]})
 
+        question = ["ques", "bonrep", "rep1", "rep2", "rep3", "rep4"]
+        # test d'un theme qui a un nom de fichier vide en creation de question
+        obj_t4 = th.Theme("")
+        self.assertRaises(IOError, lambda: obj_t4.creation_question(question))
+
+        # test une question qui n'est pas dans la liste
+        obj_t3 = th.Theme("inexistant.csv")
+        question_a_supp = "question"
+        self.assertRaises(KeyError, lambda: obj_t3.suppression_question(question_a_supp))
+
+        # test d'un theme qui a un nom de fichier vide en suppression de question
+        obj_t4.initialisation_question(question)
+        self.assertRaises(IOError, lambda: obj_t4.suppression_question("ques"))
+
     def test_utilisateurs(self):
         d = ut.Utilisateur('pouspous')
         self.assertEqual(d.nom, 'pouspous')
@@ -52,7 +66,7 @@ class CultureGeneraleTest(unittest.TestCase):
         self.assertRaises(IOError, lambda: f.recup_donnees_fichier_json('./'))
 
     def test_bibliotheque(self):
-        Bibli = bi.Bibliotheque('librairie', "./ressources/themes.csv")
+        Bibli = bi.Bibliotheque('librairie', f.chemin_absolu("ressources/themes.csv"))
         Bibli.initialisation_theme('math.csv')
 
         self.assertEqual(Bibli.nom_bibliotheque, 'librairie')
@@ -62,53 +76,24 @@ class CultureGeneraleTest(unittest.TestCase):
         self.assertEqual(Bibli.recuperer_theme('test'), '')
         self.assertEqual(Bibli.dictionnaire_themes, {'math': {}})
 
-    def test_clem_biblio(self):
         # test un theme qui n'est pas dans la liste
-        Bibli = bi.Bibliotheque('librairie', "./ressources/themes.csv")
         obj = th.Theme('geo.csv')
         self.assertRaises(ValueError, lambda: Bibli.suppression_theme(obj))
 
         # test une bibliotheque qui a un nom de fichier inexistant en suppresion de theme
-        obj_b1 = bi.Bibliotheque("test1", "fichier_inexistant.csv")
+        obj_b1 = bi.Bibliotheque("test1", "ressources/fichier_inexistant.csv")
         obj_b1.initialisation_theme("math.csv")
-        obj_t1 = obj_b1.recuperer_theme("math")
-        ######self.assertRaises(FileNotFoundError, lambda: obj_b1.suppression_theme(obj_t1))
 
         # test une bibliotheque qui a un nom de fichier vide en suppresion de theme
         obj_b2 = bi.Bibliotheque("test2", "")
         obj_b2.initialisation_theme("math.csv")
         obj_t2 = obj_b2.recuperer_theme("math")
-        ######self.assertRaises(IOError, lambda: obj_b2.suppression_theme(obj_t2))
-
-        # test une bibliotheque qui a un nom de fichier inexistant en création de theme
-        #######self.assertRaises(FileNotFoundError, lambda: obj_b1.creation_theme("math"))
+        #self.assertRaises(IOError, lambda: obj_b2.suppression_theme(obj_t2)) #supprime les infos du thème math
 
         # test une bibliotheque qui a un nom de fichier vide en création de theme
-        ######self.assertRaises(IOError, lambda: obj_b2.creation_theme("math"))
+        self.assertRaises(IOError, lambda: obj_b2.creation_theme("math"))
 
-    def test_clem_theme(self):
-        question = ["ques", "bonrep", "rep1", "rep2", "rep3", "rep4"]
-
-        # test d'un theme qui a un nom de fichier inexistant en creation de question
-        obj_t3 = th.Theme("inexistant.csv")
-        #########self.assertRaises(FileNotFoundError, lambda: obj_t3.creation_question(question))
-
-        # test d'un theme qui a un nom de fichier vide en creation de question
-        obj_t4 = th.Theme("")
-        self.assertRaises(IOError, lambda: obj_t4.creation_question(question))
-
-        # test une question qui n'est pas dans la liste
-        question_a_supp = "question"
-        self.assertRaises(KeyError, lambda: obj_t3.suppression_question(question_a_supp))
-
-        # test d'un theme qui a un nom de fichier inexistant en suppression de question
-        obj_t3.initialisation_question(question)
-        ######self.assertRaises(FileNotFoundError, lambda: obj_t3.suppression_question("ques"))
-
-        # test d'un theme qui a un nom de fichier vide en suppression de question
-        obj_t4.initialisation_question(question)
-        self.assertRaises(IOError, lambda: obj_t4.suppression_question("ques"))
-
-    def test_clem_global(self):
+    def test_variable_global(self):
         vg.initialisation_informations()
         self.assertEqual(vg.librairie.nom_bibliotheque, "Application")
+

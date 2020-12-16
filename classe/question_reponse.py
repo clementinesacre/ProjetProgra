@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
+
 import logging
 import datetime
-
-# logging.basicConfig(filename='./log/history.log', level=logging.DEBUG)
 
 logger = logging.getLogger("cultureg")
 
@@ -44,8 +43,8 @@ class Question:
         for reponse_creation in reponses:
             objet_r = Reponse(reponse_creation[0], reponse_creation[1])
             self.__reponses.append([objet_r.nom_reponse, objet_r.type_reponse])
-        logger.info(str(datetime.datetime.now()) + ' classe/questions_reponses.py : creation_reponses() : ' + str(
-            reponses[0]) + ", " + str(reponses[1]))
+        logger.info('classe/questions_reponses.py : creation_reponses() : ' + str(reponses[0]) + ", "
+                    + str(reponses[1]))
 
 
 class Reponse:

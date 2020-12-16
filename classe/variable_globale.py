@@ -1,11 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from classe import bibliotheque, utilisateur, theme
-import logging
-import os
-import errno
-from simplification import fonctions as f
-from logging.handlers import TimedRotatingFileHandler
 
 joueur = None
 librairie = None
@@ -20,7 +15,7 @@ def initialisation_informations():
     POST : Instancie l'objet Bibliotheque dans la variale globale librairie.
     """
     global librairie
-    librairie = bibliotheque.Bibliotheque("Application", "./ressources/themes.csv")
+    librairie = bibliotheque.Bibliotheque("Application", "ressources/themes.csv")
 
 
 def initialisation_joueur():
