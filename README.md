@@ -1,4 +1,4 @@
-# Projet programmation - Culture Générale ![Test](https://github.com/clementinesacre/ProjetProgra/workflows/test/badge.svg?branch=main)
+# Projet programmation - Culture Générale ![Test](https://github.com/clementinesacre/ProjetProgra/workflows/test/badge.svg?branch=main) ![Build](https://github.com/clementinesacre/ProjetProgra/workflows/build/badge.svg?branch=main)
 Auteurs : Cécile Bonnet - Clémentine Sacré
 
 ##Etapes :
