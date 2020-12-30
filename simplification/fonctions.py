@@ -7,6 +7,7 @@ import os
 import sys
 
 import logging
+
 logger = logging.getLogger("cultureg")
 
 
@@ -130,6 +131,21 @@ def chemin_absolu(relative_path):
     POST : Retourne ''C:\\Users\\sacre\\PycharmProjects\\ProjetProgra\\' + 'relative_path'.
     """
     base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+    correct = base_path.index("ProjetProgra")
+    return os.path.join(base_path[:correct + 13], relative_path)
+
+
+def ancienne_fonction_chemin_absolu(relative_path):
+    """
+        Donne le chemin absolu d'un fichier.
+
+        PRE : -
+        POST : Retourne ''C:\\Users\\sacre\\PycharmProjects\\ProjetProgra\\' + 'relative_path'.
+        """
+    base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+    print("b : ", base_path)
+
+    correct = base_path.index("ProjetProgra")
+    print("lll : ", base_path[:correct + 13])
+
     return os.path.join(base_path[:-15], relative_path)
-
-
