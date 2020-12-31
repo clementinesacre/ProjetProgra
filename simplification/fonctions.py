@@ -149,3 +149,4 @@ def ancienne_fonction_chemin_absolu(relative_path):
     print("lll : ", base_path[:correct + 13])
 
     return os.path.join(base_path[:-15], relative_path)
+

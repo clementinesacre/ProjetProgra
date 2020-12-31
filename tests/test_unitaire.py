@@ -66,7 +66,7 @@ class CultureGeneraleTest(unittest.TestCase):
         self.assertRaises(IOError, lambda: f.recup_donnees_fichier_json('./'))
 
     def test_bibliotheque(self):
-        Bibli = bi.Bibliotheque('librairie', f.chemin_absolu("ressources/themes.csv"))
+        Bibli = bi.Bibliotheque('librairie', f.ancienne_fonction_chemin_absolu("ressources/themes.csv"))
         Bibli.initialisation_theme('math.csv')
 
         self.assertEqual(Bibli.nom_bibliotheque, 'librairie')
